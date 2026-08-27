@@ -1,4 +1,4 @@
-user-agent: *
-allow: /
+User-agent: *
+Allow: /
 
 Sitemap: https://jolanclarksorillo.site/sitemap.xml
