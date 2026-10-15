@@ -312,7 +312,7 @@ function initReveals() {
 
 function renderStoreCard(store, visible = false) {
   const imagePath = String(store.image || "").trim();
-  const image = imagePath && !/^(?:[a-z][a-z\d+.-]*:|[/\\]{2})/i.test(imagePath)
+  const image = imagePath && !/^(?:[a-z][a-z\\d+.-]*:|[/\\\\]{2})/i.test(imagePath)
     ? `<img class="store-image" src="${escapeHtml(imagePath)}" alt="${escapeHtml(store.name)}" loading="lazy" decoding="async">`
     : `<div class="store-image-placeholder" aria-hidden="true">${iconSvg("package", 24)}<span>Product image placeholder</span></div>`;
   const url = /^https?:\/\//i.test(String(store.url || "").trim()) ? String(store.url).trim() : "";
@@ -700,7 +700,48 @@ function initDynamicShopAndDemo() {
   initDemoModalBehavior();
 }
 
+/* Inject small navigation spacing fix via JS to avoid editing large CSS file */
+function injectNavFixStyles() {
+  const css = `
+/* Navigation spacing fixes (injected) */
+.nav-shell {
+  padding: 14px 20px;
+  gap: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-shell::-webkit-scrollbar { display: none; }
+
+.nav-links {
+  gap: 20px; /* increased gap so icons aren't cramped */
+  white-space: nowrap;
+}
+
+.nav-links > a:not(.button) {
+  gap: 8px;
+  padding: 6px 10px; /* better touch target */
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-links > a:not(.button):hover {
+  background: rgba(255,255,255,0.04);
+  color: var(--color-accent);
+}
+
+.nav-actions {
+  gap: 12px;
+  flex-shrink: 0;
+}
+`;
+  const style = document.createElement('style');
+  style.setAttribute('data-injected','nav-fix');
+  style.appendChild(document.createTextNode(css));
+  document.head.appendChild(style);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  injectNavFixStyles();
   initShell();
   initProducts();
   initStoreCatalog();
