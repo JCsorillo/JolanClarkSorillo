@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shop practical apps and browse recommended gear from Shopee, Lazada, TikTok Shop, and other stores. Check current listing details before buying.">
+  <meta name="keywords" content="recommended gear, apps, Shopee picks, Lazada picks, TikTok Shop picks, tech recommendations">
+  <meta name="robots" content="index, follow">
+  <meta name="google-site-verification" content="7jUbWUeSWiC-hlNPndTyGzZZxZpVmZKuSPXuNOEky3Y">
+  <meta name="theme-color" content="#EDF1FA">
+  <title>Shop Gear, Apps and Recommendations | Larck</title>
+  <link rel="canonical" href="https://jolanclarksorillo.site/">
+  <meta property="og:title" content="Shop Gear, Apps and Recommendations | Larck">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jolanclarksorillo.site/">
+  <meta property="og:description" content="Shop practical apps and browse recommended gear from Shopee, Lazada, TikTok Shop, and other stores.">
+  <meta property="og:site_name" content="Larck">
+  <meta property="og:locale" content="en_PH">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Shop Gear, Apps and Recommendations | Larck">
+  <meta name="twitter:description" content="Shop practical apps and browse gear picks from Shopee, Lazada, TikTok Shop, and other stores.">
+  <script>
+    (() => {
+      let theme = null;
+      try { theme = localStorage.getItem("theme"); } catch {}
+      if (theme !== "light" && theme !== "dark") {
+        theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="192x192" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Larck Shop — Recommended Gear and Apps",
+      "url": "https://jolanclarksorillo.site/",
+      "description": "A shop for practical apps and recommended gear, featuring curated picks from Shopee, Lazada, TikTok Shop, and other stores.",
+      "inLanguage": "en-PH"
+    }
+  </script>
+</head>
+<body class="page-home" data-page="home">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="aurora-background" aria-hidden="true">
+    <span class="aurora-blob aurora-blob-sky"></span>
+    <span class="aurora-blob aurora-blob-lavender"></span>
+    <span class="aurora-blob aurora-blob-mint"></span>
+    <span class="aurora-blob aurora-blob-peach"></span>
+  </div>
+  <div id="site-header"></div>
+  <noscript><nav aria-label="Main navigation"><a href="index.html">Home</a> · <a href="shop.html">Shop</a> · <a href="portfolio.html">Portfolio</a> · <a href="resume.html">Resume</a> · <a href="contact.html">Contact</a></nav></noscript>
+  <main id="main-content" class="page-main">
+    <section class="container hero shop-hero hero-bento">
+      <div class="hero-tile glass-card reveal span-8">
+        <p class="eyebrow">Recommended gear · Practical apps</p>
+        <h1>Find gear and apps that fit your setup.</h1>
+        <p class="hero-intro">Browse considered product picks and practical software, with current listing details on each store.</p>
+        <form class="shop-search" action="shop.html" method="get">
+          <svg class="icon icon-20 icon-search" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="img/icons.svg#search"></use></svg>
+          <label class="visually-hidden" for="home-search">Search recommended products</label>
+          <input id="home-search" name="q" type="search" placeholder="Search gear, apps, and collections">
+          <button class="button button-secondary" type="submit">Search</button>
+        </form>
+        <p class="shop-disclosure">Affiliate disclosure: Some links may be affiliate links. I may earn a commission at no extra cost to you.</p>
+        <div class="platform-shortcuts" aria-label="Browse recommendations by platform">
+          <a class="platform-chip" href="shop.html?platform=Shopee#recommended-picks">Shopee</a>
+          <a class="platform-chip" href="shop.html?platform=Lazada#recommended-picks">Lazada</a>
+          <a class="platform-chip" href="shop.html?platform=TikTok%20Shop#recommended-picks">TikTok Shop</a>
+          <a class="platform-chip" href="shop.html?platform=Other#recommended-picks">Other</a>
+        </div>
+      </div>
+      <aside class="hero-note-tile glass-card reveal span-4">
+        <p class="eyebrow">Before you buy</p>
+        <h2>Compare the current listing.</h2>
+        <p>Availability and price can change by seller. Check the product details on the store before placing an order.</p>
+        <a class="inline-link" href="shop.html#recommended-picks">See all recommendations <span aria-hidden="true">→</span></a>
+      </aside>
+    </section>
+
+    <section class="container section home-featured" aria-labelledby="featured-title">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow">Selected from the catalog</p><h2 id="featured-title">Featured picks</h2><p>A short list of useful products to start with. Check the linked listing for availability and current price.</p></div>
+        <a class="inline-link" href="shop.html#recommended-picks">Browse all recommendations <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="store-grid featured-store-grid" id="featured-store-grid" aria-live="polite"></div>
+      <noscript><p class="noscript-panel card">Featured recommendations load from the local product list when JavaScript is enabled.</p></noscript>
+    </section>
+
+    <section class="container home-app" aria-labelledby="home-app-title">
+      <div class="section-heading reveal"><div><p class="eyebrow">Software</p><h2 id="home-app-title">Featured app</h2></div></div>
+      <div class="home-app-bento">
+        <div class="product-grid home-product-grid" data-product-list="home" aria-live="polite"></div>
+        <aside class="home-app-note glass-card reveal span-4">
+          <p class="eyebrow">Try before you buy</p>
+          <h3>Start with the demo.</h3>
+          <p>Review the demo limits, supported devices, and license details before making an enquiry.</p>
+          <a class="inline-link" href="shop.html#my-apps">See app details <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container home-shop-banner reveal">
+      <div><h2>Browse the full catalog</h2><p>Explore every app, recommendation, and curated collection.</p></div>
+      <a class="button" href="shop.html">Go to Shop <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#EDF1FA">
+  <title>Page not found — Larck</title>
+  <script>
+    (() => {
+      let theme = null;
+      try { theme = localStorage.getItem("theme"); } catch {}
+      if (theme !== "light" && theme !== "dark") theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="404">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="aurora-background" aria-hidden="true">
+    <span class="aurora-blob aurora-blob-sky"></span>
+    <span class="aurora-blob aurora-blob-lavender"></span>
+    <span class="aurora-blob aurora-blob-mint"></span>
+    <span class="aurora-blob aurora-blob-peach"></span>
+  </div>
+  <div id="site-header"></div>
+  <noscript><nav aria-label="Main navigation"><a href="index.html">Home</a> · <a href="shop.html">Shop</a> · <a href="portfolio.html">Portfolio</a> · <a href="resume.html">Resume</a> · <a href="contact.html">Contact</a></nav></noscript>
+  <main id="main-content" class="page-main container">
+    <section class="page-intro page-intro-tile glass-card reveal">
+      <p class="eyebrow">404 · Page not found</p>
+      <h1>This page has moved on.</h1>
+      <p class="lead">The page may have been removed or its address may have changed. Browse Home or visit the Portfolio for background and education details.</p>
+      <div class="button-row">
+        <a class="button" href="index.html">Go to Home</a>
+        <a class="button button-secondary" href="portfolio.html#education">Portfolio and Education</a>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <noscript><footer><p><a href="index.html">Home</a> · <a href="portfolio.html#education">Education</a></p></footer></noscript>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
