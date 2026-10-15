@@ -64,7 +64,11 @@ function renderFooter() {
           <a href="https://wa.me/639287328109" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">${iconSvg("whatsapp", 20)}</a>
           <a href="viber://chat?number=%2B639287328109" aria-label="Viber">${iconSvg("viber", 20)}</a>
         </nav>
-        <p class="footer-disclosure">Affiliate disclosure: some links may earn a commission at no extra cost to you.</p>
+        <p class="footer-disclosure">Affiliate disclosure: some links may earn a commission at no extra cost to you. I am not liable for third-party purchases or software provided as is. See <a href="legal.html">Legal Disclaimer</a> for details.</p>
+        <nav class="footer-legal-links" aria-label="Legal links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="legal.html">Legal Disclaimer</a>
+        </nav>
         <p class="footer-bottom">© ${new Date().getFullYear()} Larck. Product information and availability are subject to change.</p>
       </div>
     </footer>`;
@@ -574,8 +578,26 @@ async function loadDynamicProductsGrid() {
     const items = await res.json();
 
     container.innerHTML = items.map((item) => {
-      const spanClass = item.colSpan ? ` span-${Number(item.colSpan)}` : "";
+      // Parse colSpan from various formats: 6, "6", "span-6", "col-span-6"
+      let colSpan = 6;
+      if (item.colSpan !== undefined && item.colSpan !== null) {
+        const spanStr = String(item.colSpan).toLowerCase().replace(/^(span-|col-span-)/, '');
+        const spanNum = parseInt(spanStr, 10);
+        if ([4, 6, 8, 12].includes(spanNum)) colSpan = spanNum;
+      }
+      const spanClass = ` span-${colSpan}`;
+      
       const badge = item.badge ? `<span class="category-tag">${escapeHtml(item.badge)}</span>` : "";
+      
+      // Case-insensitive category check for affiliate handling
+      const isAffiliate = item.category && String(item.category).toLowerCase() === 'affiliate' || String(item.category).toLowerCase() === 'curated';
+      
+      const imagePath = String(item.image || "").trim();
+      const imageAlt = item.imageAlt || item.title || "";
+      const image = imagePath && !/^(?:[a-z][a-z\\d+.-]*:|[/\\\\]{2})/i.test(imagePath)
+        ? `<img class="store-image" src="${escapeHtml(imagePath)}" alt="${escapeHtml(imageAlt)}" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"><div class="store-image-placeholder" aria-hidden="true" style="display:none">${iconSvg("package", 24)}<span>Image not available</span></div>`
+        : `<div class="store-image-placeholder" aria-hidden="true">${iconSvg("package", 24)}<span>Product image placeholder</span></div>`;
+      
       const heading = `
         <div>
           <h3>${iconSvg("tag", 24)}<span>${escapeHtml(item.title)}</span></h3>
@@ -584,13 +606,14 @@ async function loadDynamicProductsGrid() {
       const action = item.isDemo
         ? `<button class="button button-secondary demo-launch" type="button" data-demo-id="${escapeHtml(item.id)}" aria-controls="demo-modal">${iconSvg("arrow-up-right", 20)} ${escapeHtml(item.linkText || "Launch Demo")}</button>`
         : (item.linkUrl && /^https?:\/\//i.test(String(item.linkUrl))
-            ? `<a class="button button-secondary" href="${escapeHtml(item.linkUrl)}" target="_blank" rel="noopener noreferrer sponsored">${iconSvg("arrow-up-right", 20)} ${escapeHtml(item.linkText || "View")}</a>`
+            ? `<a class="button button-secondary" href="${escapeHtml(item.linkUrl)}" target="_blank" rel="${isAffiliate ? 'sponsored ' : ''}noopener noreferrer">${iconSvg("arrow-up-right", 20)} ${escapeHtml(item.linkText || "View")}</a>`
             : `<span class="button button-secondary button-disabled">${iconSvg("arrow-up-right", 20)} ${escapeHtml(item.linkText || "View")}</span>`
           );
 
       return `
         <article id="dynamic-${escapeHtml(item.id)}" class="store-card${spanClass} reveal">
           ${badge}
+          ${image}
           ${heading}
           <p class="card-description">${escapeHtml(item.description)}</p>
           <div class="card-actions">${action}</div>
@@ -700,48 +723,40 @@ function initDynamicShopAndDemo() {
   initDemoModalBehavior();
 }
 
-/* Inject small navigation spacing fix via JS to avoid editing large CSS file */
-function injectNavFixStyles() {
-  const css = `
-/* Navigation spacing fixes (injected) */
-.nav-shell {
-  padding: 14px 20px;
-  gap: 12px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.nav-shell::-webkit-scrollbar { display: none; }
+/* --- Dynamic projects.json loader for portfolio showcase --- */
 
-.nav-links {
-  gap: 20px; /* increased gap so icons aren't cramped */
-  white-space: nowrap;
-}
+async function loadDynamicProjectsGrid() {
+  const container = document.getElementById("dynamic-projects-grid");
+  if (!container) return;
 
-.nav-links > a:not(.button) {
-  gap: 8px;
-  padding: 6px 10px; /* better touch target */
-  border-radius: 8px;
-  transition: background 0.2s ease, color 0.2s ease;
-}
+  try {
+    const res = await fetch("/projects.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error("Failed to fetch projects.json");
+    const projects = await res.json();
 
-.nav-links > a:not(.button):hover {
-  background: rgba(255,255,255,0.04);
-  color: var(--color-accent);
-}
+    container.innerHTML = projects.map((project) => {
+      const tags = (project.tags || []).map((tag) =>
+        `<span class="tag">${escapeHtml(tag)}</span>`
+      ).join("");
+      return `
+        <article class="project-card glass-card reveal">
+          <h3>${iconSvg("github", 24)}<span>${escapeHtml(project.title)}</span></h3>
+          <p>${escapeHtml(project.description)}</p>
+          <div class="tags">${tags}</div>
+          <div class="card-actions">
+            <a class="button button-secondary" href="${escapeHtml(project.repoUrl)}" target="_blank" rel="noopener noreferrer">${iconSvg("external-link")}View Repository</a>
+          </div>
+        </article>`;
+    }).join("");
 
-.nav-actions {
-  gap: 12px;
-  flex-shrink: 0;
-}
-`;
-  const style = document.createElement('style');
-  style.setAttribute('data-injected','nav-fix');
-  style.appendChild(document.createTextNode(css));
-  document.head.appendChild(style);
+    initReveals();
+  } catch (err) {
+    container.innerHTML = `<p class="empty-results">Could not load projects.</p>`;
+    console.warn("loadDynamicProjectsGrid:", err);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  injectNavFixStyles();
   initShell();
   initProducts();
   initStoreCatalog();
@@ -749,4 +764,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initContactForm();
   initReveals();
   initDynamicShopAndDemo();
+  loadDynamicProjectsGrid();
 });
