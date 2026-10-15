@@ -1,5 +1,9 @@
 ## Larck Shop
 
+![response time](https://img.shields.io/badge/response%20time-24%20h-blue)
+
+**Typical response time:** ~24 hours
+
 A lightweight shop and recommendations hub hosted on GitHub Pages. It uses plain HTML, CSS, and vanilla JavaScript with no framework or build step.
 
 ### Workflow
@@ -18,6 +22,6 @@ A lightweight shop and recommendations hub hosted on GitHub Pages. It uses plain
 - `resume.html` is the printable resume.
 - `contact.html` contains contact links and the mailto form.
 
-Update app details in `js/products.js` and recommendations and collections in `js/stores.js`. Preserve the light/dark theme, affiliate disclosure and link rules, and reduced-motion behavior when editing the site.
+Update app details in `js/products.js` and recommendations and collections in `js/stores.js`. Preserve the light/dark theme, affiliate disclosure and link rules, and reduced-motion behavior when e[...]
 
-Icons are bundled locally in `img/icons.svg` and referenced from the site shell and page content. Motion is limited to the aurora drift, one-time tile reveals, hover/press feedback, and the theme icon swap; reduced-motion preferences keep content visible and still.
+Icons are bundled locally in `img/icons.svg` and referenced from the site shell and page content. Motion is limited to the aurora drift, one-time tile reveals, hover/press feedback, and the theme [...]
