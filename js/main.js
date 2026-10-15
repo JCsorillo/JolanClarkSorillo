@@ -35,7 +35,8 @@ function renderHeader() {
         <a class="brand" href="index.html" aria-label="Larck home"><span class="brand-mark" aria-hidden="true">L</span><span>Larck.</span></a>
         <nav class="nav-links" aria-label="Main navigation">${navigation}</nav>
         <div class="nav-actions">
-          <button class="theme-toggle" type="button" aria-pressed="${currentTheme === "dark"}" aria-label="Switch to ${currentTheme === "dark" ? "light" : "dark"} theme">${themeIcon(currentTheme)}</button>
+          <button class="theme-toggle" type="button" aria-pressed="${currentTheme === "dark"}" aria-label="Switch to ${currentTheme === "dark" ? "light" : "dark"} theme">${themeIcon(currentTheme)}
+          </button>
           <a class="button nav-contact" href="contact.html"${currentPage === "contact" ? ' aria-current="page"' : ""}>${iconSvg("mail")}<span>Contact</span></a>
         </div>
       </div>
@@ -284,7 +285,7 @@ function initAuroraEffects() {
 }
 
 function initReveals() {
-  const revealTileSelector = ".card, .glass-card, .project-card, .product-card, .product-detail, .store-card, .collection-card, .contact-card, .resume-section, .timeline-entry, .hero-tile, .hero-note-tile, .home-shop-banner";
+  const revealTileSelector = ".card, .glass-card, .project-card, .product-card, .product-detail, .store-card, .collection-card, .contact-card, .resume-section, .timeline-entry, .hero-tile, .hero-note-tile, .feature-card";
   const revealTargets = [...document.querySelectorAll(".reveal")].filter((element) => element.matches(revealTileSelector));
   const sectionCounts = new Map();
   revealTargets.forEach((element) => {
@@ -320,7 +321,7 @@ function renderStoreCard(store, visible = false) {
     ? `<a class="button button-secondary" href="${escapeHtml(url)}" target="_blank" rel="sponsored noopener noreferrer">View on ${platform} ${iconSvg("external-link")}</a>`
     : `<span class="button button-secondary button-disabled">View on ${platform} ${iconSvg("external-link")}</span>`;
   return `
-    <article class="store-card${store.featured ? " store-card-featured" : ""} reveal reveal-tile${visible ? " is-visible" : ""}" id="store-${escapeHtml(store.id)}" data-store-id="${escapeHtml(store.id)}" data-platform="${platform}" data-category="${escapeHtml(store.category)}" data-featured="${Boolean(store.featured)}" data-added-at="${escapeHtml(store.addedAt || "")}">
+    <article class="store-card${store.featured ? " store-card-featured" : ""} reveal reveal-tile${visible ? " is-visible" : ""}" id="store-${escapeHtml(store.id)}" data-store-id="${escapeHtml(store.id)}">
       <span class="sponsored-tag">${iconSvg("shield-check")}<span>Sponsored link</span></span>
       ${image}
       <span class="platform-badge">${platform}</span>
@@ -333,36 +334,36 @@ function renderStoreCard(store, visible = false) {
 }
 
 function renderProductCard(product, index, mode) {
-  const screenshotCards = product.screenshots.map((screenshot) => screenshot.src
+  const screenshotCards = (product.screenshots || []).map((screenshot) => screenshot.src
     ? `<img class="screenshot-placeholder" src="${escapeHtml(screenshot.src)}" alt="${escapeHtml(screenshot.label)}" loading="lazy" decoding="async">`
     : `<div class="screenshot-placeholder">${escapeHtml(screenshot.label)}</div>`).join("");
-  const features = product.features.map((feature) => `<li>${escapeHtml(feature)}</li>`).join("");
-  const heading = `<div><span class="category-tag">${iconSvg("package", 24)}${escapeHtml(product.category)}</span><h3>${escapeHtml(product.name)}</h3><p>${escapeHtml(product.description)}</p></div>`;
-  const demo = `<a class="button button-secondary" href="${escapeHtml(product.demoUrl)}" target="_blank" rel="noopener noreferrer">${iconSvg("download")}Download Demo</a>`;
+  const features = (product.features || []).map((feature) => `<li>${escapeHtml(feature)}</li>`).join("");
+  const heading = `<div><span class="category-tag">${iconSvg("package", 24)}${escapeHtml(product.category || "")}</span><h3>${escapeHtml(product.name)}</h3><p>${escapeHtml(product.description || "")}</p></div>`;
+  const demo = `<a class="button button-secondary" href="${escapeHtml(product.demoUrl || "#")}" target="_blank" rel="noopener noreferrer">${iconSvg("download")}Download Demo</a>`;
   const buy = `<button class="button buy-button" type="button" data-product-id="${escapeHtml(product.id)}">${iconSvg("message-circle")}Inquire / Buy</button>`;
   if (mode === "shop") {
     return `
-      <article class="product-detail reveal" id="${index === 0 ? "featured-app" : `product-${escapeHtml(product.id)}`}">
+      <article class="product-detail reveal" id="${index === 0 ? "featured-app" : `product-${escapeHtml(product.id)}`}" >
         <div class="product-detail-main">
           ${heading}
           <ul class="feature-list">${features}</ul>
-          <p class="price">${escapeHtml(product.price)}</p>
-          <p class="placeholder-label">${escapeHtml(product.demoNote)}</p>
-          <p class="terms-note">${escapeHtml(product.terms)}</p>
+          <p class="price">${escapeHtml(product.price || "")}</p>
+          <p class="placeholder-label">${escapeHtml(product.demoNote || "")}</p>
+          <p class="terms-note">${escapeHtml(product.terms || "")}</p>
           <div class="card-actions">${demo}${buy}</div>
         </div>
         <div class="product-detail-aside">
           <p class="filter-label">Screenshots</p>
           <div class="product-screenshots">${screenshotCards}</div>
-          <p class="payment-note">${escapeHtml(product.paymentDetails)}</p>
+          <p class="payment-note">${escapeHtml(product.paymentDetails || "")}</p>
         </div>
       </article>`;
   }
   return `
     <article class="product-card card reveal">
       ${heading}
-      <p class="price">${escapeHtml(product.price)}</p>
-      <p class="placeholder-label">${escapeHtml(product.demoNote)}</p>
+      <p class="price">${escapeHtml(product.price || "")}</p>
+      <p class="placeholder-label">${escapeHtml(product.demoNote || "")}</p>
       <div class="card-actions">${demo}${buy}</div>
     </article>`;
 }
@@ -379,7 +380,7 @@ function renderBuyDialog() {
           <li>Arrange payment using the confirmed method.</li>
           <li>Receive the full copy and license information.</li>
         </ol>
-        <div class="button-row"><a class="button" id="buy-whatsapp" href="#">${iconSvg("whatsapp")}WhatsApp</a><a class="button button-secondary" id="buy-viber" href="#">${iconSvg("viber")}Viber</a><a class="inline-link" id="buy-email" href="#">Email instead ${iconSvg("arrow-up-right", 20, "icon-arrow")}</a><a class="inline-link" id="buy-contact" href="contact.html">Continue on Contact page ${iconSvg("arrow-up-right", 20, "icon-arrow")}</a></div>
+        <div class="button-row"><a class="button" id="buy-whatsapp" href="#">${iconSvg("whatsapp")}WhatsApp</a><a class="button button-secondary" id="buy-viber" href="#">${iconSvg("viber")}Viber</a><a class="button button-secondary" id="buy-email" href="#">${iconSvg("mail")}Email</a><a class="button button-secondary" id="buy-contact" href="#">Contact page</a></div>
         <p class="payment-note" id="payment-note"></p><p class="terms-note" id="terms-note"></p>
       </section>
     </dialog>`;
@@ -547,6 +548,158 @@ function initContactForm() {
   });
 }
 
+/* --- Dynamic products.json loader & demo modal handling --- */
+
+async function loadDynamicProductsGrid() {
+  // Ensure there's a container; create one if missing
+  let container = document.getElementById("dynamic-shop-grid");
+  if (!container) {
+    const picksSection = document.getElementById("recommended-picks") || document.querySelector("section[aria-labelledby='picks-title']");
+    if (picksSection) {
+      container = document.createElement("div");
+      container.id = "dynamic-shop-grid";
+      container.className = "store-grid catalog-grid";
+      container.setAttribute("aria-live", "polite");
+      // insert before the existing static store grid if present
+      const staticGrid = document.getElementById("store-grid");
+      if (staticGrid) picksSection.insertBefore(container, staticGrid);
+      else picksSection.appendChild(container);
+    }
+  }
+  if (!container) return;
+
+  try {
+    const res = await fetch("/products.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error("Failed to fetch products.json");
+    const items = await res.json();
+
+    container.innerHTML = items.map((item) => {
+      const spanClass = item.colSpan ? ` span-${Number(item.colSpan)}` : "";
+      const badge = item.badge ? `<span class="category-tag">${escapeHtml(item.badge)}</span>` : "";
+      const heading = `
+        <div>
+          <h3>${iconSvg("tag", 24)}<span>${escapeHtml(item.title)}</span></h3>
+        </div>`;
+
+      const action = item.isDemo
+        ? `<button class="button button-secondary demo-launch" type="button" data-demo-id="${escapeHtml(item.id)}" aria-controls="demo-modal">${iconSvg("arrow-up-right", 20)} ${escapeHtml(item.linkText || "Launch Demo")}</button>`
+        : (item.linkUrl && /^https?:\/\//i.test(String(item.linkUrl))
+            ? `<a class="button button-secondary" href="${escapeHtml(item.linkUrl)}" target="_blank" rel="noopener noreferrer sponsored">${iconSvg("arrow-up-right", 20)} ${escapeHtml(item.linkText || "View")}</a>`
+            : `<span class="button button-secondary button-disabled">${iconSvg("arrow-up-right", 20)} ${escapeHtml(item.linkText || "View")}</span>`
+          );
+
+      return `
+        <article id="dynamic-${escapeHtml(item.id)}" class="store-card${spanClass} reveal">
+          ${badge}
+          ${heading}
+          <p class="card-description">${escapeHtml(item.description)}</p>
+          <div class="card-actions">${action}</div>
+        </article>`;
+    }).join("");
+
+    // Re-run reveals so IntersectionObserver picks up new elements
+    initReveals();
+  } catch (err) {
+    container.innerHTML = `<p class="empty-results">Could not load dynamic products.</p>`;
+    // eslint-disable-next-line no-console
+    console.warn("loadDynamicProductsGrid:", err);
+  }
+}
+
+function demoModalMarkup() {
+  return `
+  <div id="demo-modal" class="demo-modal" hidden role="dialog" aria-modal="true" aria-label="Webview demo overlay">
+    <div class="demo-modal-backdrop" aria-hidden="true"></div>
+    <div class="demo-modal-card">
+      <header class="demo-frame-header">
+        <div class="window-controls" aria-hidden="true"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+        <div class="demo-url">bebet-kiosk.app/live-preview</div>
+        <button class="demo-modal-close button" type="button" aria-label="Close demo">Close</button>
+      </header>
+      <section class="demo-frame" role="region" aria-label="Device preview frame">
+        <div class="device-shell">
+          <div class="device-topbar">
+            <span class="demo-live-badge">Live</span>
+            <ul class="demo-telemetry">
+              <li>Active sessions: <strong>3</strong></li>
+              <li>Uptime: <strong>00:12:34</strong></li>
+              <li>Network: <strong>Online</strong></li>
+            </ul>
+          </div>
+          <div class="device-viewport" aria-hidden="true">
+            <div class="kiosk-mock">
+              <h4>Bebet Kiosk</h4>
+              <p class="kiosk-note">This is an in-browser preview of the kiosk shell. Interaction is simulated for demo purposes.</p>
+              <div class="kiosk-actions">
+                <button class="button">Start session</button>
+                <button class="button button-secondary">End session</button>
+                <button class="button button-secondary">Reset kiosk</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>`;
+}
+
+function initDemoModalBehavior() {
+  if (!document.getElementById("demo-modal")) {
+    document.body.insertAdjacentHTML("beforeend", demoModalMarkup());
+  }
+  const modal = document.getElementById("demo-modal");
+  const closeBtnSelector = ".demo-modal-close";
+
+  // Delegated open handler
+  document.addEventListener("click", (ev) => {
+    const btn = ev.target.closest(".demo-launch");
+    if (!btn) return;
+    const demoId = btn.dataset.demoId;
+    showDemoModal(demoId);
+  });
+
+  function showDemoModal(demoId) {
+    if (!modal) return;
+    modal.classList.add("is-open");
+    modal.removeAttribute("hidden");
+    // Update content if needed per demoId
+    const titleEl = modal.querySelector(".demo-url");
+    const liveBadge = modal.querySelector(".demo-live-badge");
+    if (demoId === "bebet-mobile-kiosk") {
+      titleEl.textContent = "bebet-kiosk.app/live-preview";
+      liveBadge.textContent = "Live";
+      liveBadge.classList.remove("badge-offline");
+    } else {
+      titleEl.textContent = "preview";
+      liveBadge.textContent = "Preview";
+    }
+    // focus management
+    const closeButton = modal.querySelector(closeBtnSelector);
+    closeButton?.focus();
+  }
+
+  function hideDemoModal() {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("hidden", "");
+  }
+
+  // Close on close button or backdrop
+  modal.addEventListener("click", (ev) => {
+    if (ev.target.closest(closeBtnSelector) || ev.target === modal) hideDemoModal();
+  });
+
+  // Close on Escape
+  document.addEventListener("keydown", (ev) => {
+    if (ev.key === "Escape" && modal && !modal.hasAttribute("hidden")) hideDemoModal();
+  });
+}
+
+function initDynamicShopAndDemo() {
+  loadDynamicProductsGrid();
+  initDemoModalBehavior();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initShell();
   initProducts();
@@ -554,4 +707,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCollections();
   initContactForm();
   initReveals();
+  initDynamicShopAndDemo();
 });
