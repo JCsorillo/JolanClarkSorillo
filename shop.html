@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse apps from Larck and a filterable catalog of recommended products and collections from Shopee, Lazada, TikTok Shop, and other stores.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Larck">
+  <meta name="theme-color" content="#EDF1FA">
+  <title>Shop Apps, Recommended Picks and Collections | Larck</title>
+  <link rel="canonical" href="https://jolanclarksorillo.site/shop.html">
+  <meta property="og:title" content="Shop Apps, Recommended Picks and Collections | Larck">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jolanclarksorillo.site/shop.html">
+  <meta property="og:description" content="Explore apps built by Larck, a filterable affiliate product catalog, and curated collections.">
+  <meta property="og:site_name" content="Larck">
+  <meta property="og:locale" content="en_PH">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Shop Apps, Recommended Picks and Collections | Larck">
+  <meta name="twitter:description" content="Browse apps, recommended products, and curated collections from Larck.">
+  <script>
+    (() => {
+      let theme = null;
+      try { theme = localStorage.getItem("theme"); } catch {}
+      if (theme !== "light" && theme !== "dark") {
+        theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="192x192" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Larck Shop",
+      "url": "https://jolanclarksorillo.site/shop.html",
+      "description": "Apps, recommended products, and curated collections from Larck.",
+      "inLanguage": "en-PH"
+    }
+  </script>
+</head>
+<body data-page="shop">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="aurora-background" aria-hidden="true">
+    <span class="aurora-blob aurora-blob-sky"></span>
+    <span class="aurora-blob aurora-blob-lavender"></span>
+    <span class="aurora-blob aurora-blob-mint"></span>
+    <span class="aurora-blob aurora-blob-peach"></span>
+  </div>
+  <div id="site-header"></div>
+  <noscript><nav aria-label="Main navigation"><a href="index.html">Home</a> · <a href="shop.html">Shop</a> · <a href="portfolio.html">Portfolio</a> · <a href="resume.html">Resume</a> · <a href="contact.html">Contact</a></nav></noscript>
+  <main id="main-content" class="page-main">
+    <section class="container page-intro page-intro-tile glass-card reveal">
+      <p class="eyebrow">Catalog</p>
+      <h1>Apps, picks, and useful collections.</h1>
+      <p class="lead">Browse software and practical products. Affiliate listings link to the store for current availability and prices.</p>
+      <p class="affiliate-disclosure">Affiliate disclosure: Some recommended links may be affiliate links. If you buy through one, I may earn a commission at no extra cost to you.</p>
+    </section>
+
+    <section class="container section shop-apps" id="my-apps" aria-labelledby="apps-title">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow">Direct from Larck</p><h2 id="apps-title">My apps</h2><p>Software I make, with demo downloads and a contact-first purchase flow.</p></div>
+      </div>
+      <div class="shop-app-bento">
+        <div class="product-grid product-grid-shop" id="shop-product-list" data-product-list="shop" aria-live="polite"></div>
+        <aside class="buying-works-tile glass-card reveal span-4">
+          <p class="eyebrow">Contact-first purchase</p>
+          <h3>How buying works</h3>
+          <ol class="buy-steps">
+            <li>Message me with the app name and device details.</li>
+            <li>Confirm the price, license, support, and delivery.</li>
+            <li>Pay after the details are agreed.</li>
+            <li>Receive the full copy and license information.</li>
+          </ol>
+          <p>GCash, Maya, or bank transfer details are shared after confirming an order.</p>
+          <a class="inline-link" href="contact.html?product=bebet-mobile-kiosk">Ask about an app <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+      <noscript><p class="card noscript-panel">Enable JavaScript to view app details and demo buttons, or use the Contact page to ask about products.</p></noscript>
+      <section class="product-faq" aria-labelledby="faq-title">
+        <h3 id="faq-title">App questions</h3>
+        <details><summary>How do I buy an app?</summary><p>Choose Inquire / Buy, message through the listed contact option, confirm device and license details, then arrange payment and delivery.</p></details>
+        <details><summary>What does the demo include?</summary><p>Demo access and limits are shown in each app listing. Replace the placeholder notes before publishing a release.</p></details>
+        <details><summary>What is included with a purchase?</summary><p>Each app's listing shows its license, support period, price, and payment details. Confirm the current terms before paying.</p></details>
+      </section>
+    </section>
+
+    <section class="container section" id="recommended-picks" aria-labelledby="picks-title">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow">Affiliate catalog</p><h2 id="picks-title">Recommended picks</h2><p>Filter the full list by marketplace and category, search names and descriptions, or change the sort order.</p></div>
+      </div>
+      <div class="store-filter-panel">
+        <div class="store-filter-controls">
+          <div class="store-filter-group">
+            <span class="filter-label" id="platform-filter-label">Platform</span>
+            <div class="platform-tabs filter-options" data-filter-group="platform" role="group" aria-labelledby="platform-filter-label"></div>
+          </div>
+          <div class="store-filter-group">
+            <span class="filter-label" id="category-filter-label">Category</span>
+            <div class="filter-options" data-filter-group="category" role="group" aria-labelledby="category-filter-label"></div>
+          </div>
+        </div>
+        <div class="catalog-tools">
+          <label class="search-control store-search">
+            <svg class="icon icon-20 icon-search" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="img/icons.svg#search"></use></svg>
+            <span class="visually-hidden">Search recommendations</span>
+            <input id="store-search" type="search" placeholder="Search picks" autocomplete="off">
+          </label>
+          <label class="visually-hidden" for="store-sort">Sort recommendations</label>
+          <select class="store-sort" id="store-sort">
+            <option value="featured">Featured</option>
+            <option value="newest">Newest</option>
+            <option value="az">A to Z</option>
+          </select>
+        </div>
+      </div>
+      <div class="store-grid catalog-grid" id="store-grid" aria-live="polite"></div>
+      <button class="button button-secondary show-more-button" id="show-more-stores" type="button" hidden>Show more</button>
+      <p class="empty-results" id="empty-results" hidden>No picks match those filters yet.</p>
+      <noscript><p class="card noscript-panel">Store recommendations and filters require JavaScript. Affiliate listings are maintained in the local store data file.</p></noscript>
+    </section>
+
+    <section class="container section" id="collections" aria-labelledby="collections-title">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow">Curated groups</p><h2 id="collections-title">Collections</h2><p>Starter lists organized around a shared use. Descriptions and item selections are editable placeholders.</p></div>
+      </div>
+      <div class="collection-grid" id="collection-grid" aria-live="polite"></div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
