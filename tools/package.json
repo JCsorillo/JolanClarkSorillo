@@ -1,0 +1,9 @@
+{
+  "name": "jolan-larck-tools",
+  "version": "1.0.0",
+  "description": "Local tools for managing products.json and previewing the site",
+  "type": "module",
+  "dependencies": {
+    "sharp": "^0.33.5"
+  }
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "bebet-mobile-kiosk",
+    "category": "software",
+    "badge": "FEATURED SOFTWARE",
+    "title": "Bebet Mobile Kiosk",
+    "description": "Android kiosk app engineered for mobile device rental tracking, session timers, and usage access control.",
+    "image": "",
+    "linkText": "Launch Webview Demo",
+    "linkUrl": "#demo-modal",
+    "isPrimary": true,
+    "colSpan": 8,
+    "isDemo": true
+  },
+  {
+    "id": "gille-helmet-deal",
+    "category": "curated",
+    "badge": "BUY 1 TAKE 1 · TRUSTED DEAL",
+    "title": "Gille Couple Kerena Revo Visor Full Face Helmet",
+    "description": "Buy 1 Take 1 deal featuring Revo visor full face motorcycle helmets. Includes free visor and multiple color variants.",
+    "image": "img/gille-helmet.jpg",
+    "linkText": "View Product Deal",
+    "linkUrl": "https://vt.tiktok.com/ZS9UkSHkFVBbM-xOnwI/",
+    "isPrimary": false,
+    "colSpan": 6,
+    "isDemo": false
+  },
+  {
+    "id": "curated-tech-accessories",
+    "category": "curated",
+    "badge": "HANDPICKED GEAR",
+    "title": "Verified Mobile & Setup Gear",
+    "description": "Tested and recommended mobile peripherals, gaming gear, cables, and workstation setup essentials.",
+    "image": "",
+    "linkText": "Browse Recommended Gear",
+    "linkUrl": "#",
+    "isPrimary": false,
+    "colSpan": 6,
+    "isDemo": false
+  }
+]
