@@ -2,55 +2,106 @@
   {
     "title": "Bebet Mobile Kiosk",
     "description": "Android kiosk application engineered for mobile device rental tracking, session timers, PIN-protected admin controls, and app access restriction.",
-    "repoUrl": "https://github.com/JCsorillo/Jolan-Larck",
-    "tags": ["Android", "Kotlin", "Kiosk", "Security"]
+    "url": "https://jcsorillo.github.io/Jolan-Larck/#featured-app-showcase",
+    "linkText": "Launch Demo",
+    "tags": ["Android", "Kiosk"]
   },
   {
     "title": "Jolan-Larck",
     "description": "Personal developer portfolio and interactive showcase built with modern responsive web standards, glassmorphic UI, and dynamic JSON data loading.",
-    "repoUrl": "https://github.com/JCsorillo/Jolan-Larck",
-    "tags": ["Portfolio", "JavaScript", "CSS3", "HTML5"]
+    "url": "https://jcsorillo.github.io/Jolan-Larck/",
+    "linkText": "Visit Site",
+    "tags": ["Portfolio", "Web"]
   },
   {
-    "title": "Saber-Badminton-Club",
-    "description": "Web-based badminton club management platform for tracking player registrations, match schedules, and tournament brackets.",
-    "repoUrl": "https://github.com/JCsorillo/Saber-Badminton-Club",
-    "tags": ["Web System", "Management", "Sports", "JS"]
+    "title": "Jolan-Clark",
+    "description": "Developer profile hub and project index showcasing web solutions, technical software tools, and repository links.",
+    "url": "https://jcsorillo.github.io/Jolan-Clark/",
+    "linkText": "Visit Site",
+    "tags": ["Profile", "Hub"]
   },
   {
     "title": "Dariel",
     "description": "Business operations utility and inventory recording system built to streamline local office tracking and data archiving.",
-    "repoUrl": "https://github.com/JCsorillo/Dariel",
-    "tags": ["Data Management", "Inventory", "Web"]
+    "url": "https://jcsorillo.github.io/Dariel/",
+    "linkText": "Visit Site",
+    "tags": ["Inventory", "Web System"]
   },
   {
     "title": "Ahlia-Daile",
     "description": "Custom digital catalog and interactive record management tool designed for fast data entry and searching.",
-    "repoUrl": "https://github.com/JCsorillo/Ahlia-Daile",
-    "tags": ["Catalog", "Frontend", "UI Design"]
+    "url": "https://jcsorillo.github.io/Ahlia-Daile/",
+    "linkText": "Visit Site",
+    "tags": ["Catalog", "Frontend"]
   },
   {
     "title": "Ronabe",
     "description": "Technical support utility scripts and automated diagnostic toolset for desktop environment troubleshooting.",
-    "repoUrl": "https://github.com/JCsorillo/Ronabe",
-    "tags": ["IT Support", "Diagnostics", "Automation"]
+    "url": "https://jcsorillo.github.io/Ronabe/",
+    "linkText": "Visit Site",
+    "tags": ["IT Support", "Automation"]
   },
   {
     "title": "Saralyn",
     "description": "Frontend component lab exploring modern CSS layout techniques, accessible UI patterns, and state interactions.",
-    "repoUrl": "https://github.com/JCsorillo/Saralyn",
-    "tags": ["UI/UX", "CSS", "Components"]
+    "url": "https://jcsorillo.github.io/Saralyn/",
+    "linkText": "Visit Site",
+    "tags": ["Interface", "Design"]
   },
   {
     "title": "Angelyn",
     "description": "Administrative document archiving module engineered for digital file indexing and quick retrieval.",
-    "repoUrl": "https://github.com/JCsorillo/Archiving",
-    "tags": ["Archiving", "Database", "Utilities"]
+    "url": "https://jcsorillo.github.io/Angelyn/",
+    "linkText": "Visit Site",
+    "tags": ["Archiving", "Module"]
   },
   {
     "title": "Mary-Gail",
     "description": "Responsive landing page template and client showcase designed for mobile-first web performance.",
-    "repoUrl": "https://github.com/JCsorillo/Mary-Gail",
-    "tags": ["Responsive", "Landing Page", "Web"]
+    "url": "https://jcsorillo.github.io/Mary-Gail/",
+    "linkText": "Visit Site",
+    "tags": ["Template", "Landing"]
+  },
+  {
+    "title": "Lory-Ann",
+    "description": "Interactive web application featuring responsive design layouts and dynamic UI interaction modules.",
+    "url": "https://jcsorillo.github.io/Lory-Ann/",
+    "linkText": "Visit Site",
+    "tags": ["Web App", "Frontend"]
+  },
+  {
+    "title": "Eidref",
+    "description": "Data management and record indexing web system tailored for fast queries and mobile viewports.",
+    "url": "https://jcsorillo.github.io/Eidref/",
+    "linkText": "Visit Site",
+    "tags": ["Data System", "Web"]
+  },
+  {
+    "title": "Rolyn",
+    "description": "Lightweight administrative portal interface for tracking local task workflows and records.",
+    "url": "https://jcsorillo.github.io/Rolyn/",
+    "linkText": "Visit Site",
+    "tags": ["Portal", "Utilities"]
+  },
+  {
+    "title": "Angel-Mae",
+    "description": "Custom digital layout template showcasing modern web typography, themes, and micro-interactions.",
+    "url": "https://jcsorillo.github.io/Angel-Mae/",
+    "linkText": "Visit Site",
+    "tags": ["UI Showcase", "CSS"]
+  },
+  {
+    "title": "Angelie",
+    "description": "Web component showcase exploring accessible form design, data inputs, and client validation.",
+    "url": "https://jcsorillo.github.io/Angelie/",
+    "linkText": "Visit Site",
+    "tags": ["Components", "Forms"]
+  },
+  {
+    "title": "Tricia",
+    "description": "Modern web showcase application built with fast-loading responsive assets and clean markup.",
+    "url": "https://jcsorillo.github.io/Tricia/",
+    "linkText": "Visit Site",
+    "tags": ["Web App", "Responsive"]
   }
 ]

@@ -5,7 +5,6 @@ document.documentElement.classList.add("has-js");
 
 const pages = [
   ["index.html", "Home", "home", "house"],
-  ["shop.html", "Shop", "shop", "store"],
   ["portfolio.html", "Portfolio", "portfolio", "briefcase"],
   ["resume.html", "Resume", "resume", "file-text"],
 ];
@@ -45,7 +44,6 @@ function renderHeader() {
 
 function renderFooter() {
   const columns = [
-    ["Shop", "shop.html", "store"],
     ["Portfolio", "portfolio.html", "briefcase"],
     ["Resume", "resume.html", "file-text"],
     ["Contact", "contact.html", "mail"],
@@ -64,12 +62,11 @@ function renderFooter() {
           <a href="https://wa.me/639287328109" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">${iconSvg("whatsapp", 20)}</a>
           <a href="viber://chat?number=%2B639287328109" aria-label="Viber">${iconSvg("viber", 20)}</a>
         </nav>
-        <p class="footer-disclosure">Affiliate disclosure: some links may earn a commission at no extra cost to you. I am not liable for third-party purchases or software provided as is. See <a href="legal.html">Legal Disclaimer</a> for details.</p>
         <nav class="footer-legal-links" aria-label="Legal links">
           <a href="privacy.html">Privacy Policy</a>
           <a href="legal.html">Legal Disclaimer</a>
         </nav>
-        <p class="footer-bottom">© ${new Date().getFullYear()} Larck. Product information and availability are subject to change.</p>
+        <p class="footer-bottom">© ${new Date().getFullYear()} Jolan Clark Sorillo (Larck). All rights reserved.</p>
       </div>
     </footer>`;
 }
@@ -738,13 +735,15 @@ async function loadDynamicProjectsGrid() {
       const tags = (project.tags || []).map((tag) =>
         `<span class="tag">${escapeHtml(tag)}</span>`
       ).join("");
+      const targetUrl = project.url || project.repoUrl || "#";
+      const linkLabel = project.linkText || "Visit Site";
       return `
         <article class="project-card glass-card reveal">
-          <h3>${iconSvg("github", 24)}<span>${escapeHtml(project.title)}</span></h3>
+          <h3>${iconSvg("external-link", 24)}<span>${escapeHtml(project.title)}</span></h3>
           <p>${escapeHtml(project.description)}</p>
           <div class="tags">${tags}</div>
           <div class="card-actions">
-            <a class="button button-secondary" href="${escapeHtml(project.repoUrl)}" target="_blank" rel="noopener noreferrer">${iconSvg("external-link")}View Repository</a>
+            <a class="button button-secondary" href="${escapeHtml(targetUrl)}" target="_blank" rel="noopener noreferrer">${iconSvg("external-link")}${escapeHtml(linkLabel)}</a>
           </div>
         </article>`;
     }).join("");
