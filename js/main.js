@@ -573,7 +573,7 @@ async function loadDynamicProductsGrid() {
   if (!container) return;
 
   try {
-    const res = await fetch("/products.json", { cache: "no-cache" });
+    const res = await fetch("products.json", { cache: "no-cache" });
     if (!res.ok) throw new Error("Failed to fetch products.json");
     const items = await res.json();
 
@@ -730,7 +730,7 @@ async function loadDynamicProjectsGrid() {
   if (!container) return;
 
   try {
-    const res = await fetch("/projects.json", { cache: "no-cache" });
+    const res = await fetch("projects.json", { cache: "no-cache" });
     if (!res.ok) throw new Error("Failed to fetch projects.json");
     const projects = await res.json();
 

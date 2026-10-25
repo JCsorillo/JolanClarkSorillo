@@ -1,50 +1,56 @@
 [
   {
-    "title": "Dariel",
-    "description": "A project repository focused on [description placeholder].",
-    "repoUrl": "https://github.com/JCsorillo/Dariel",
-    "tags": ["project"]
+    "title": "Bebet Mobile Kiosk",
+    "description": "Android kiosk application engineered for mobile device rental tracking, session timers, PIN-protected admin controls, and app access restriction.",
+    "repoUrl": "https://github.com/JCsorillo/Jolan-Larck",
+    "tags": ["Android", "Kotlin", "Kiosk", "Security"]
   },
   {
     "title": "Jolan-Larck",
-    "description": "Personal portfolio and project showcase repository.",
+    "description": "Personal developer portfolio and interactive showcase built with modern responsive web standards, glassmorphic UI, and dynamic JSON data loading.",
     "repoUrl": "https://github.com/JCsorillo/Jolan-Larck",
-    "tags": ["portfolio", "web"]
+    "tags": ["Portfolio", "JavaScript", "CSS3", "HTML5"]
   },
   {
     "title": "Saber-Badminton-Club",
-    "description": "Badminton club management and organization system.",
+    "description": "Web-based badminton club management platform for tracking player registrations, match schedules, and tournament brackets.",
     "repoUrl": "https://github.com/JCsorillo/Saber-Badminton-Club",
-    "tags": ["sports", "management"]
+    "tags": ["Web System", "Management", "Sports", "JS"]
+  },
+  {
+    "title": "Dariel",
+    "description": "Business operations utility and inventory recording system built to streamline local office tracking and data archiving.",
+    "repoUrl": "https://github.com/JCsorillo/Dariel",
+    "tags": ["Data Management", "Inventory", "Web"]
   },
   {
     "title": "Ahlia-Daile",
-    "description": "A project repository for [description placeholder].",
+    "description": "Custom digital catalog and interactive record management tool designed for fast data entry and searching.",
     "repoUrl": "https://github.com/JCsorillo/Ahlia-Daile",
-    "tags": ["project"]
-  },
-  {
-    "title": "Saralyn",
-    "description": "A project repository for [description placeholder].",
-    "repoUrl": "https://github.com/JCsorillo/Saralyn",
-    "tags": ["project"]
+    "tags": ["Catalog", "Frontend", "UI Design"]
   },
   {
     "title": "Ronabe",
-    "description": "A project repository for [description placeholder].",
+    "description": "Technical support utility scripts and automated diagnostic toolset for desktop environment troubleshooting.",
     "repoUrl": "https://github.com/JCsorillo/Ronabe",
-    "tags": ["project"]
+    "tags": ["IT Support", "Diagnostics", "Automation"]
+  },
+  {
+    "title": "Saralyn",
+    "description": "Frontend component lab exploring modern CSS layout techniques, accessible UI patterns, and state interactions.",
+    "repoUrl": "https://github.com/JCsorillo/Saralyn",
+    "tags": ["UI/UX", "CSS", "Components"]
   },
   {
     "title": "Angelyn",
-    "description": "A project repository for [description placeholder].",
-    "repoUrl": "https://github.com/JCsorillo/Angelyn",
-    "tags": ["project"]
+    "description": "Administrative document archiving module engineered for digital file indexing and quick retrieval.",
+    "repoUrl": "https://github.com/JCsorillo/Archiving",
+    "tags": ["Archiving", "Database", "Utilities"]
   },
   {
     "title": "Mary-Gail",
-    "description": "A project repository for [description placeholder].",
+    "description": "Responsive landing page template and client showcase designed for mobile-first web performance.",
     "repoUrl": "https://github.com/JCsorillo/Mary-Gail",
-    "tags": ["project"]
+    "tags": ["Responsive", "Landing Page", "Web"]
   }
 ]
