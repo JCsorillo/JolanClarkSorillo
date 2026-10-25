@@ -181,34 +181,87 @@
       <div class="section-heading reveal">
         <div>
           <p class="eyebrow">FLAGSHIP SOFTWARE SHOWCASE</p>
-          <h2 id="app-showcase-title">Featured Mobile Application</h2>
-          <p>A custom Android kiosk concept implemented through vibe coding for managed device rental tracking, PIN access controls, and session timers.</p>
+          <h2 id="app-showcase-title">Bebet Mobile Kiosk</h2>
+          <p>Custom Android kiosk application engineered for mobile device rental tracking, PIN access controls, First-Time Setup Wizard, and automated session timers.</p>
         </div>
       </div>
 
-      <div class="product-detail reveal">
-        <div class="product-detail-main">
+      <div class="product-detail reveal" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem;">
+        <!-- Left Column: Application Details & Features -->
+        <div class="product-detail-main span-6">
           <div>
             <span class="category-tag">FEATURED ANDROID APPLICATION</span>
-            <h3>Bebet Mobile Kiosk</h3>
-            <p>An Android kiosk app built for mobile device rental tracking, automated session countdown timers, PIN-secured administrator settings, and app access restriction.</p>
+            <h3>Mobile Kiosk System</h3>
+            <p style="color: var(--color-muted); font-size: 0.95rem; margin-top: 0.5rem;">Developed by Jolan Clark. A specialized Android kiosk shell designed for device rental management, automated countdown timers, PIN-secured admin settings, and app access restriction.</p>
           </div>
           <ul class="feature-list" style="margin-top: 1.25rem;">
-            <li><strong>PIN-Protected Admin Lock:</strong> Restrict settings and prevent unauthorized device access.</li>
-            <li><strong>Session Countdown Timers:</strong> Track rental time and notify users when sessions expire.</li>
-            <li><strong>App Allow-List:</strong> Enforce locked application environments for public or rental use.</li>
+            <li><strong>First-Time Setup Wizard:</strong> Initial configuration flow for business name, admin PIN, and system overlay permissions.</li>
+            <li><strong>PIN-Protected Admin Lock:</strong> Restricts settings and prevents unauthorized system exit.</li>
+            <li><strong>Automated Session Countdown:</strong> Displays rental timer and notifies users upon expiration.</li>
+            <li><strong>App Allow-List Control:</strong> Restricts device usage to permitted applications only.</li>
           </ul>
           <div class="card-actions" style="margin-top: 1.75rem;">
             <a class="button" href="contact.html?product=bebet-mobile-kiosk">Inquire About App <span aria-hidden="true">→</span></a>
           </div>
         </div>
-        <div class="product-detail-aside">
-          <p class="filter-label">Official App Logo &amp; Identity</p>
-          <div class="product-screenshots" style="background: var(--color-surface); padding: 1.25rem; border-radius: var(--radius-card); text-align: center; border: 1px solid var(--color-border);">
-            <img class="app-logo-graphic" src="img/bebet-kiosk-logo.svg" alt="Bebet Mobile Kiosk Official Logo" style="width: 100%; max-width: 180px; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));" loading="lazy" decoding="async">
+
+        <!-- Right Column: App Interface Screens (Logo + Welcome Screen + Setup Wizard) -->
+        <div class="product-detail-aside span-6" style="display: flex; flex-direction: column; gap: 1rem;">
+
+          <!-- Official Logo Header Bar -->
+          <div class="glass-card" style="padding: 1rem; text-align: center; display: flex; align-items: center; justify-content: center; gap: 1rem; border-radius: var(--radius-card);">
+            <img class="app-logo-graphic" src="img/bebet-kiosk-logo.svg" alt="Bebet Mobile Kiosk Logo" style="width: 50px; height: 50px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));" loading="lazy" decoding="async">
+            <div style="text-align: left;">
+              <h4 style="margin: 0; font-size: 1.1rem; font-weight: 700;">Mobile Kiosk</h4>
+              <p style="margin: 0; font-size: 0.78rem; color: #5aa9ff; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Developed by Jolan Clark</p>
+            </div>
           </div>
-          <p class="payment-note" style="margin-top: 1rem;"><strong>Platform:</strong> Native Android (Smartphones &amp; Tablets)</p>
-          <p class="terms-note"><strong>Use Cases:</strong> Mobile rental management, device kiosks, public displays</p>
+
+          <!-- Side-by-Side App Interface Screens -->
+          <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0.85rem;">
+
+            <!-- Screen 1: Welcome & Standby -->
+            <div class="glass-card span-6" style="padding: 1rem; border-radius: var(--radius-card); border: 1px solid var(--color-border); background: var(--color-surface);">
+              <div style="text-align: center; margin-bottom: 0.75rem;">
+                <span class="tag" style="background: rgba(74, 174, 88, 0.15); border-color: #4aae58; color: #4aae58; font-size: 0.72rem; font-weight: 600;">✓ KIOSK STANDBY</span>
+              </div>
+              <h4 style="text-align: center; color: #4aae58; font-size: 1.25rem; font-weight: 800; margin-bottom: 0.35rem; letter-spacing: 0.05em;">WELCOME</h4>
+              <p style="font-size: 0.78rem; color: var(--color-muted); text-align: center; margin-bottom: 0.75rem;">Please enter admin PIN to start a new session.</p>
+
+              <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                <div style="background: var(--color-raised); padding: 0.4rem 0.6rem; border-radius: var(--radius-control); font-size: 0.78rem; text-align: center; color: #5aa9ff; font-weight: 600;">⚡ 100% · Charging</div>
+                <div style="background: var(--color-button-bg); color: var(--color-accent-contrast); padding: 0.45rem; border-radius: var(--radius-control); font-size: 0.8rem; text-align: center; font-weight: 600;">🛡️ Admin PIN</div>
+                <div style="background: var(--color-raised); padding: 0.4rem; border-radius: var(--radius-control); font-size: 0.78rem; text-align: center; color: var(--color-text);">📶 Connect to Wi-Fi</div>
+              </div>
+            </div>
+
+            <!-- Screen 2: First-Time Setup Wizard -->
+            <div class="glass-card span-6" style="padding: 1rem; border-radius: var(--radius-card); border: 1px solid var(--color-border); background: var(--color-surface);">
+              <div style="text-align: center; margin-bottom: 0.5rem;">
+                <span style="font-size: 0.72rem; color: var(--color-muted); font-weight: 600;">SETUP WIZARD</span>
+              </div>
+              <h4 style="font-size: 1rem; font-weight: 700; text-align: center; margin-bottom: 0.25rem;">First-Time Setup</h4>
+              <p style="font-size: 0.75rem; color: var(--color-muted); text-align: center; margin-bottom: 0.65rem;">Configure initial settings &amp; permissions.</p>
+
+              <div style="background: var(--color-raised); padding: 0.5rem; border-radius: var(--radius-control); margin-bottom: 0.5rem;">
+                <div style="font-size: 0.72rem; color: var(--color-muted); font-weight: 600;">🏢 Admin Name</div>
+                <div style="font-size: 0.8rem; font-weight: 700; margin-top: 0.2rem;">Mobile Kiosk</div>
+              </div>
+
+              <div style="background: var(--color-raised); padding: 0.5rem; border-radius: var(--radius-control);">
+                <div style="font-size: 0.72rem; color: var(--color-muted); font-weight: 600;">⚙️ System Permissions</div>
+                <div style="font-size: 0.72rem; color: var(--color-text); margin-top: 0.2rem;">• Notifications (Session updates)</div>
+                <div style="font-size: 0.72rem; color: var(--color-text);">• Usage Stats Access</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="font-size: 0.8rem; color: var(--color-muted); display: flex; justify-content: space-between;">
+            <span><strong>Platform:</strong> Native Android (Smartphones &amp; Tablets)</span>
+            <span><strong>Security:</strong> Safe Browser Active</span>
+          </div>
+
         </div>
       </div>
     </section>
