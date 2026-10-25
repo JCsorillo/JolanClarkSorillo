@@ -86,7 +86,6 @@ function renderFooter() {
       </div>
     </footer>`;
 }
-}
 
 function initStaticIcons() {
   const headingIcons = {
