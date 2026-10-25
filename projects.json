@@ -1,80 +1,10 @@
 [
   {
-    "title": "Jolan-Larck",
-    "description": "Personal developer portfolio and interactive showcase built with modern responsive web standards, glassmorphic UI, and dynamic JSON data loading.",
-    "url": "https://jcsorillo.github.io/Jolan-Larck/",
-    "linkText": "Visit Site",
-    "tags": ["Portfolio", "Web"]
-  },
-  {
-    "title": "Jolan-Clark",
-    "description": "Developer profile hub and project index showcasing web solutions, technical software tools, and repository links.",
-    "url": "https://jcsorillo.github.io/Jolan-Clark/",
-    "linkText": "Visit Site",
-    "tags": ["Profile", "Hub"]
-  },
-  {
-    "title": "Dariel",
-    "description": "Business operations utility and inventory recording system built to streamline local office tracking and data archiving.",
-    "url": "https://jcsorillo.github.io/Dariel/",
-    "linkText": "Visit Site",
-    "tags": ["Inventory", "Web System"]
-  },
-  {
     "title": "Ahlia-Daile",
     "description": "Custom digital catalog and interactive record management tool designed for fast data entry and searching.",
     "url": "https://jcsorillo.github.io/Ahlia-Daile/",
     "linkText": "Visit Site",
     "tags": ["Catalog", "Frontend"]
-  },
-  {
-    "title": "Ronabe",
-    "description": "Technical support utility scripts and automated diagnostic toolset for desktop environment troubleshooting.",
-    "url": "https://jcsorillo.github.io/Ronabe/",
-    "linkText": "Visit Site",
-    "tags": ["IT Support", "Automation"]
-  },
-  {
-    "title": "Saralyn",
-    "description": "Frontend component lab exploring modern CSS layout techniques, accessible UI patterns, and state interactions.",
-    "url": "https://jcsorillo.github.io/Saralyn/",
-    "linkText": "Visit Site",
-    "tags": ["Interface", "Design"]
-  },
-  {
-    "title": "Angelyn",
-    "description": "Administrative document archiving module engineered for digital file indexing and quick retrieval.",
-    "url": "https://jcsorillo.github.io/Angelyn/",
-    "linkText": "Visit Site",
-    "tags": ["Archiving", "Module"]
-  },
-  {
-    "title": "Mary-Gail",
-    "description": "Responsive landing page template and client showcase designed for mobile-first web performance.",
-    "url": "https://jcsorillo.github.io/Mary-Gail/",
-    "linkText": "Visit Site",
-    "tags": ["Template", "Landing"]
-  },
-  {
-    "title": "Lory-Ann",
-    "description": "Interactive web application featuring responsive design layouts and dynamic UI interaction modules.",
-    "url": "https://jcsorillo.github.io/Lory-Ann/",
-    "linkText": "Visit Site",
-    "tags": ["Web App", "Frontend"]
-  },
-  {
-    "title": "Eidref",
-    "description": "Data management and record indexing web system tailored for fast queries and mobile viewports.",
-    "url": "https://jcsorillo.github.io/Eidref/",
-    "linkText": "Visit Site",
-    "tags": ["Data System", "Web"]
-  },
-  {
-    "title": "Rolyn",
-    "description": "Lightweight administrative portal interface for tracking local task workflows and records.",
-    "url": "https://jcsorillo.github.io/Rolyn/",
-    "linkText": "Visit Site",
-    "tags": ["Portal", "Utilities"]
   },
   {
     "title": "Angel-Mae",
@@ -89,6 +19,76 @@
     "url": "https://jcsorillo.github.io/Angelie/",
     "linkText": "Visit Site",
     "tags": ["Components", "Forms"]
+  },
+  {
+    "title": "Angelyn",
+    "description": "Administrative document archiving module engineered for digital file indexing and quick retrieval.",
+    "url": "https://jcsorillo.github.io/Angelyn/",
+    "linkText": "Visit Site",
+    "tags": ["Archiving", "Module"]
+  },
+  {
+    "title": "Dariel",
+    "description": "Business operations utility and inventory recording system built to streamline local office tracking and data archiving.",
+    "url": "https://jcsorillo.github.io/Dariel/",
+    "linkText": "Visit Site",
+    "tags": ["Inventory", "Web System"]
+  },
+  {
+    "title": "Eidref",
+    "description": "Data management and record indexing web system tailored for fast queries and mobile viewports.",
+    "url": "https://jcsorillo.github.io/Eidref/",
+    "linkText": "Visit Site",
+    "tags": ["Data System", "Web"]
+  },
+  {
+    "title": "Jolan-Clark",
+    "description": "Developer profile hub and project index showcasing web solutions, technical software tools, and repository links.",
+    "url": "https://jcsorillo.github.io/Jolan-Clark/",
+    "linkText": "Visit Site",
+    "tags": ["Profile", "Hub"]
+  },
+  {
+    "title": "Jolan-Larck",
+    "description": "Personal developer portfolio and interactive showcase built with modern responsive web standards, glassmorphic UI, and dynamic JSON data loading.",
+    "url": "https://jcsorillo.github.io/Jolan-Larck/",
+    "linkText": "Visit Site",
+    "tags": ["Portfolio", "Web"]
+  },
+  {
+    "title": "Lory-Ann",
+    "description": "Interactive web application featuring responsive design layouts and dynamic UI interaction modules.",
+    "url": "https://jcsorillo.github.io/Lory-Ann/",
+    "linkText": "Visit Site",
+    "tags": ["Web App", "Frontend"]
+  },
+  {
+    "title": "Mary-Gail",
+    "description": "Responsive landing page template and client showcase designed for mobile-first web performance.",
+    "url": "https://jcsorillo.github.io/Mary-Gail/",
+    "linkText": "Visit Site",
+    "tags": ["Template", "Landing"]
+  },
+  {
+    "title": "Rolyn",
+    "description": "Lightweight administrative portal interface for tracking local task workflows and records.",
+    "url": "https://jcsorillo.github.io/Rolyn/",
+    "linkText": "Visit Site",
+    "tags": ["Portal", "Utilities"]
+  },
+  {
+    "title": "Ronabe",
+    "description": "Technical support utility scripts and automated diagnostic toolset for desktop environment troubleshooting.",
+    "url": "https://jcsorillo.github.io/Ronabe/",
+    "linkText": "Visit Site",
+    "tags": ["IT Support", "Automation"]
+  },
+  {
+    "title": "Saralyn",
+    "description": "Frontend component lab exploring modern CSS layout techniques, accessible UI patterns, and state interactions.",
+    "url": "https://jcsorillo.github.io/Saralyn/",
+    "linkText": "Visit Site",
+    "tags": ["Interface", "Design"]
   },
   {
     "title": "Tricia",

@@ -723,6 +723,7 @@ async function loadDynamicProjectsGrid() {
     const res = await fetch("projects.json", { cache: "no-cache" });
     if (!res.ok) throw new Error("Failed to fetch projects.json");
     const projects = await res.json();
+    projects.sort((a, b) => String(a.title || "").localeCompare(String(b.title || ""), undefined, { sensitivity: "base" }));
 
     container.innerHTML = projects.map((project) => {
       const tags = (project.tags || []).map((tag) =>
