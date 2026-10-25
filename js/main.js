@@ -42,32 +42,50 @@ function renderHeader() {
 }
 
 function renderFooter() {
-  const columns = [
+  const links = [
     ["Home", "index.html", "house"],
+    ["Portfolio", "portfolio.html", "briefcase"],
+    ["About", "about.html", "file-text"],
     ["Resume", "resume.html", "file-text"],
+    ["Shop", "shop.html", "store"],
+    ["CICS", "cics.html", "sparkles"],
+    ["NISU", "nisu.html", "shield-check"],
     ["Contact", "contact.html", "mail"],
   ];
+
+  const footerNav = links.map(([label, href, icon]) =>
+    `<a class="footer-nav-link" href="${href}">${iconSvg(icon, 16)}<span>${label}</span></a>`
+  ).join("");
+
   return `
     <footer class="site-footer">
       <div class="container">
-        <div class="footer-inner">
-          ${columns.map(([label, href, icon]) => `<section class="footer-column"><h2>${iconSvg(icon)}<span>${label}</span></h2><ul><li><a href="${href}">Open ${label}</a></li></ul></section>`).join("")}
+        <nav class="footer-primary-nav" aria-label="Footer navigation">
+          ${footerNav}
+        </nav>
+
+        <div class="footer-divider" style="height: 1px; background: var(--color-border); margin-block: 1rem;"></div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+          <nav class="footer-socials" aria-label="Social links">
+            <a href="https://www.facebook.com/larck.sorillo/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">${iconSvg("facebook", 18)}</a>
+            <a href="https://www.instagram.com/larck.sorillo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">${iconSvg("instagram", 18)}</a>
+            <a href="https://www.linkedin.com/in/jolan-clark-sorillo-011197256/?originalSubdomain=ph" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">${iconSvg("linkedin", 18)}</a>
+            <a href="https://github.com/JCsorillo" target="_blank" rel="noopener noreferrer" aria-label="GitHub">${iconSvg("github", 18)}</a>
+            <a href="https://wa.me/639287328109" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">${iconSvg("whatsapp", 18)}</a>
+            <a href="viber://chat?number=%2B639287328109" aria-label="Viber">${iconSvg("viber", 18)}</a>
+          </nav>
+
+          <nav class="footer-legal-links" aria-label="Legal links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="legal.html">Legal Disclaimer</a>
+          </nav>
         </div>
-        <nav class="footer-socials" aria-label="Social links">
-          <a href="https://www.facebook.com/larck.sorillo/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">${iconSvg("facebook", 20)}</a>
-          <a href="https://www.instagram.com/larck.sorillo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">${iconSvg("instagram", 20)}</a>
-          <a href="https://www.linkedin.com/in/jolan-clark-sorillo-011197256/?originalSubdomain=ph" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">${iconSvg("linkedin", 20)}</a>
-          <a href="https://github.com/JCsorillo" target="_blank" rel="noopener noreferrer" aria-label="GitHub">${iconSvg("github", 20)}</a>
-          <a href="https://wa.me/639287328109" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">${iconSvg("whatsapp", 20)}</a>
-          <a href="viber://chat?number=%2B639287328109" aria-label="Viber">${iconSvg("viber", 20)}</a>
-        </nav>
-        <nav class="footer-legal-links" aria-label="Legal links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="legal.html">Legal Disclaimer</a>
-        </nav>
-        <p class="footer-bottom">© ${new Date().getFullYear()} Jolan Clark Sorillo (Larck). All rights reserved.</p>
+
+        <p class="footer-bottom" style="margin-top: 0.75rem; border-top: none; padding: 0;">© ${new Date().getFullYear()} Jolan Clark Sorillo (Larck). All rights reserved.</p>
       </div>
     </footer>`;
+}
 }
 
 function initStaticIcons() {
