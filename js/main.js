@@ -5,7 +5,6 @@ document.documentElement.classList.add("has-js");
 
 const pages = [
   ["index.html", "Home", "home", "house"],
-  ["portfolio.html", "Portfolio", "portfolio", "briefcase"],
   ["resume.html", "Resume", "resume", "file-text"],
 ];
 
@@ -44,7 +43,7 @@ function renderHeader() {
 
 function renderFooter() {
   const columns = [
-    ["Portfolio", "portfolio.html", "briefcase"],
+    ["Home", "index.html", "house"],
     ["Resume", "resume.html", "file-text"],
     ["Contact", "contact.html", "mail"],
   ];

@@ -69,11 +69,11 @@
     <span class="aurora-blob aurora-blob-peach"></span>
   </div>
   <div id="site-header"></div>
-  <noscript><nav aria-label="Main navigation"><a href="index.html">Home</a> · <a href="portfolio.html">Portfolio</a> · <a href="resume.html">Resume</a> · <a href="contact.html">Contact</a></nav></noscript>
+  <noscript><nav aria-label="Main navigation"><a href="index.html">Home</a> · <a href="resume.html">Resume</a> · <a href="contact.html">Contact</a></nav></noscript>
 
   <main id="main-content" class="page-main resume-wrap">
     <article class="container">
-      <header class="resume-head glass-card reveal">
+      <header class="resume-head glass-card reveal" style="margin-bottom: 1.25rem;">
         <div>
           <p class="eyebrow">Resume</p>
           <h1>Jolan Clark A. Sorillo</h1>
@@ -86,93 +86,101 @@
         </div>
         <button class="button print-button" type="button" onclick="window.print()">Print / Save PDF</button>
       </header>
-      <div class="resume-grid">
-        <aside class="resume-column">
-          <section class="resume-section glass-card reveal">
-            <h2>Profile</h2>
-            <p>Information Technology graduate, Virtual Assistant, and Vibe Coder with hands-on experience in telecommunications customer service, data encoding, inventory tracking, and frontend web development. Equipped with a 24GB RAM Ryzen workstation and 120+ Mbps fiber internet for remote VA, support, and technical roles.</p>
-          </section>
-          <section class="resume-section glass-card reveal">
-            <h2>Remote Workstation Specs</h2>
-            <ul class="resume-list">
-              <li><strong>Device:</strong> Dell Vostro 5515 Workstation</li>
-              <li><strong>Processor:</strong> AMD Ryzen 5 5500U (6 Cores / 12 Threads @ 2.10–4.0 GHz)</li>
-              <li><strong>RAM:</strong> 24 GB DDR4 (3200 MT/s) for high-load CRM multitasking &amp; parallel sessions</li>
-              <li><strong>Storage:</strong> 1.38 TB High-Speed SSD Storage</li>
-              <li><strong>Connectivity:</strong> 120+ Mbps High-Speed Fiber (Smart Communications, 18 Mbps Upload, 26ms Ping)</li>
-              <li><strong>OS:</strong> Windows 11 Home 64-bit</li>
-            </ul>
-          </section>
-          <section class="resume-section glass-card reveal">
-            <h2>Skills</h2>
-            <ul class="resume-list">
-              <li><strong>Vibe coding &amp; AI:</strong> Rapid AI-driven app implementation, prompt engineering, and feature iteration.</li>
-              <li><strong>Frontend web:</strong> HTML5, CSS3, JavaScript, GitHub Pages deployment, Search Console, and Analytics monitoring.</li>
-              <li><strong>Customer service:</strong> Inbound customer support, telecommunications account &amp; billing inquiries, CRM tools, and clear customer technical guidance at Transcom.</li>
-              <li><strong>IT support &amp; data:</strong> PC, laptop, and mobile troubleshooting; broadband network optimization; inventory tracking; and digital document archiving.</li>
-              <li><strong>Tools:</strong> Visual Studio Code, Git/GitHub, Microsoft Office, Canva, CapCut.</li>
-            </ul>
-          </section>
-          <section class="resume-section glass-card reveal">
-            <h2>Education</h2>
-            <h3>B.S. in Information Technology</h3>
-            <p>Northern Iloilo State University<br>2025</p>
-            <h3>Earlier education</h3>
-            <p>Balasan National High School, Senior High School Diploma (2021); Cawayan National High School, Junior High School Diploma (2019).</p>
-          </section>
-          <section class="resume-section glass-card reveal">
-            <h2>Recognition</h2>
-            <ul class="resume-list">
-              <li>Student Researcher of the Year Award, Northern Iloilo State University (2025).</li>
-              <li>Third Year Dean’s Lister, Northern Iloilo State University.</li>
-              <li>Graduate with Honors, HUMSS, Balasan National High School (2021).</li>
-            </ul>
-          </section>
-        </aside>
-        <div class="resume-column">
-          <section class="resume-section glass-card reveal">
-            <h2>Professional experience</h2>
-            <div class="job-entry">
-              <div class="job-row"><h3>Customer Service Representative · Transcom</h3><span class="job-dates">Oct 2025 – Apr 2026</span></div>
-              <p class="job-meta">Iloilo City, Philippines · Telecommunications account</p>
+
+      <!-- BALANCED BENTO GRID LAYOUT -->
+      <div class="resume-bento-grid">
+
+        <!-- ROW 1: PROFILE & WORKSTATION SPECS (Equal Split 6 / 6) -->
+        <section class="resume-section glass-card reveal span-6">
+          <h2>Profile</h2>
+          <p>Information Technology graduate, Virtual Assistant, and Vibe Coder with hands-on experience in telecommunications customer service, data encoding, inventory tracking, and frontend web development. Equipped with a 24GB RAM Ryzen workstation and 120+ Mbps fiber internet for remote VA, support, and technical roles.</p>
+        </section>
+
+        <section class="resume-section glass-card reveal span-6">
+          <h2>Remote Workstation Specs</h2>
+          <ul class="resume-list">
+            <li><strong>Device:</strong> Dell Vostro 5515 Workstation</li>
+            <li><strong>Processor:</strong> AMD Ryzen 5 5500U (6 Cores / 12 Threads @ 2.10–4.0 GHz)</li>
+            <li><strong>RAM:</strong> 24 GB DDR4 (3200 MT/s) for high-load CRM multitasking &amp; parallel sessions</li>
+            <li><strong>Storage:</strong> 1.38 TB High-Speed SSD Storage</li>
+            <li><strong>Connectivity:</strong> 120+ Mbps High-Speed Fiber (Smart Communications, 18 Mbps Upload, 26ms Ping)</li>
+            <li><strong>OS:</strong> Windows 11 Home 64-bit</li>
+          </ul>
+        </section>
+
+        <!-- ROW 2: PROFESSIONAL EXPERIENCE (Full Width 12 Cols - 3 Column Job Split) -->
+        <section class="resume-section glass-card reveal span-12">
+          <h2>Professional Experience</h2>
+          <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem; margin-top: 0.75rem;">
+            <div class="job-entry span-4">
+              <div class="job-row"><h3>CSR · Transcom</h3><span class="job-dates">Oct 2025 – Apr 2026</span></div>
+              <p class="job-meta">Iloilo City · Telecom Account</p>
               <ul class="resume-list">
-                <li>Handled inbound customer communications and account, billing, and technical enquiries.</li>
-                <li>Used internal CRM tools and documented detailed customer interaction notes.</li>
-                <li>Guided users through connectivity, account settings, and broadband troubleshooting.</li>
+                <li>Inbound technical support, account, and billing enquiries.</li>
+                <li>Used internal CRM tools and logged customer notes.</li>
+                <li>Guided users through account and connectivity troubleshooting.</li>
               </ul>
             </div>
-            <div class="job-entry">
-              <div class="job-row"><h3>Office Assistant / Data Encoder · NISU Supply Office</h3><span class="job-dates">Jan 20 – May 9, 2025</span></div>
-              <p class="job-meta">Iloilo, Philippines · OJT, 478 hours</p>
+            <div class="job-entry span-4">
+              <div class="job-row"><h3>Data Encoder · NISU</h3><span class="job-dates">Jan – May 2025</span></div>
+              <p class="job-meta">OJT, 478 Hours · Supply Office</p>
               <ul class="resume-list">
-                <li>Tracked inventory, checked stock levels, and maintained supply records.</li>
-                <li>Encoded, digitized, and archived documents and supported record retrieval.</li>
-                <li>Assisted with routine supply office operations.</li>
+                <li>Tracked inventory stock levels and supply records.</li>
+                <li>Encoded, digitized, and archived office records.</li>
+                <li>Supported daily administrative office operations.</li>
               </ul>
             </div>
-            <div class="job-entry">
-              <div class="job-row"><h3>Freelance IT &amp; Technical Support</h3><span class="job-dates">2023 – Present</span></div>
-              <p class="job-meta">Remote / Onsite · IT support and web work</p>
+            <div class="job-entry span-4">
+              <div class="job-row"><h3>Freelance IT &amp; Support</h3><span class="job-dates">2023 – Present</span></div>
+              <p class="job-meta">Remote / Onsite · Technical Support</p>
               <ul class="resume-list">
-                <li>Troubleshoot PCs, laptops, and smartphones for hardware and software issues.</li>
-                <li>Optimize broadband connections and troubleshoot signal and connection settings.</li>
-                <li>Monitor website search performance with Google Search Console and Google Analytics.</li>
-                <li>Build and update websites using HTML, CSS, JavaScript, and vibe coding techniques.</li>
+                <li>Troubleshoot PC, laptop, and smartphone hardware &amp; OS.</li>
+                <li>Broadband signal &amp; connection optimization.</li>
+                <li>Google Search Console, Analytics, &amp; Web development.</li>
               </ul>
             </div>
-          </section>
-          <section class="resume-section glass-card reveal">
-            <h2>Featured projects &amp; showcases</h2>
-            <ul class="resume-list">
-              <li><strong>Bebet Mobile Kiosk:</strong> Android kiosk app concept built with PIN-protected admin controls, session countdown timers, and an app allow-list.</li>
-              <li><strong>14+ Deployed Web Applications:</strong> Alphabetically organized directory of live web tools, templates, and systems deployed on GitHub Pages.</li>
-            </ul>
-          </section>
-          <section class="resume-section glass-card reveal">
-            <h2>Additional information</h2>
-            <p>Languages: Tagalog, Hiligaynon, Bisaya, and conversational English.</p>
-          </section>
-        </div>
+          </div>
+        </section>
+
+        <!-- ROW 3: SKILLS & EDUCATION (Equal Split 6 / 6) -->
+        <section class="resume-section glass-card reveal span-6">
+          <h2>Skills &amp; Technical Competencies</h2>
+          <ul class="resume-list">
+            <li><strong>Vibe coding &amp; AI:</strong> Rapid AI-driven app implementation, prompt engineering, and feature iteration.</li>
+            <li><strong>Frontend web:</strong> HTML5, CSS3, JavaScript, GitHub Pages deployment, Search Console, and Analytics monitoring.</li>
+            <li><strong>Customer service:</strong> Inbound customer support, telecommunications account &amp; billing inquiries, CRM tools, and clear technical guidance at Transcom.</li>
+            <li><strong>IT support &amp; data:</strong> PC/mobile hardware diagnostics, broadband network optimization, inventory tracking, and digital archiving.</li>
+            <li><strong>Tools:</strong> Visual Studio Code, Git/GitHub, Microsoft Office, Canva, CapCut.</li>
+          </ul>
+        </section>
+
+        <section class="resume-section glass-card reveal span-6">
+          <h2>Education</h2>
+          <h3>B.S. in Information Technology</h3>
+          <p>Northern Iloilo State University (NISU) · Graduated 2025<br>College of Information and Computing Studies (CICS)</p>
+          <h3 style="margin-top: 1rem;">Secondary Education</h3>
+          <p>Balasan National High School · Senior High School Diploma (2021)<br>Cawayan National High School · Junior High School Diploma (2019)</p>
+        </section>
+
+        <!-- ROW 4: RECOGNITION & SHOWCASES/LANGUAGES (Equal Split 6 / 6) -->
+        <section class="resume-section glass-card reveal span-6">
+          <h2>Academic Recognition &amp; Awards</h2>
+          <ul class="resume-list">
+            <li><strong>Student Researcher of the Year Award</strong>, Northern Iloilo State University (2025).</li>
+            <li><strong>Third Year Dean’s Lister</strong>, Northern Iloilo State University.</li>
+            <li><strong>Graduate with Honors</strong>, HUMSS, Balasan National High School (2021).</li>
+          </ul>
+        </section>
+
+        <section class="resume-section glass-card reveal span-6">
+          <h2>Featured Showcases &amp; Languages</h2>
+          <ul class="resume-list">
+            <li><strong>Bebet Mobile Kiosk:</strong> Android kiosk app concept with PIN-protected admin controls and session timers.</li>
+            <li><strong>14+ Deployed Web Applications:</strong> Alphabetically organized directory of live web tools on GitHub Pages.</li>
+            <li><strong>Languages Spoken:</strong> Tagalog, Hiligaynon, Bisaya, and conversational English.</li>
+          </ul>
+        </section>
+
       </div>
     </article>
   </main>

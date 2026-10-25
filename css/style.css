@@ -1508,9 +1508,10 @@ h4 {
   gap: 0.5rem 1rem;
 }
 
-.resume-grid {
-  display: flex;
-  flex-direction: column;
+.resume-grid,
+.resume-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 1.25rem;
   width: 100%;
 }
@@ -1522,20 +1523,11 @@ h4 {
   width: 100%;
 }
 
-@media (min-width: 900px) {
-  .resume-grid {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 1.25rem;
-    align-items: start;
-  }
-
-  .resume-column {
-    grid-column: span 5;
-  }
-
-  .resume-column:last-child {
-    grid-column: span 7;
+@media (max-width: 900px) {
+  .resume-bento-grid .span-6,
+  .resume-bento-grid .span-4,
+  .resume-bento-grid .span-12 {
+    grid-column: span 12;
   }
 }
 

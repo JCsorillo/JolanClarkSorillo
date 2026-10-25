@@ -249,7 +249,7 @@
       </div>
     </section>
 
-    <!-- 5. CURATED PORTFOLIO COLLECTION TEASER -->
+    <!-- 5. CURATED PORTFOLIO COLLECTION -->
     <section class="container section" id="portfolio-section" aria-labelledby="portfolio-title">
       <div class="section-heading reveal">
         <div>
@@ -257,7 +257,21 @@
           <h2 id="portfolio-title">Web Applications &amp; Work Samples</h2>
           <p>A curated collection of 14+ live web applications, templates, and software utilities built for specific business and technical goals.</p>
         </div>
-        <a class="button button-secondary" href="portfolio.html">Explore Curated Portfolio Collection (A–Z) <span aria-hidden="true">→</span></a>
+      </div>
+
+      <!-- INTERACTIVE INSTANT SEARCH & CATEGORY FILTER BAR -->
+      <div class="portfolio-filter-shell glass-card reveal">
+        <div style="position: relative;">
+          <label class="visually-hidden" for="project-search">Search projects</label>
+          <input class="portfolio-search-input" id="project-search" type="search" placeholder="🔍 Instant Search: type project title, keyword, or tech stack..." autocomplete="off">
+        </div>
+        <div class="portfolio-filter-chips" id="category-filter-chips">
+          <button class="filter-chip is-active" type="button" data-filter="All">All Projects (14)</button>
+          <button class="filter-chip" type="button" data-filter="Web">Web Systems &amp; Portfolios</button>
+          <button class="filter-chip" type="button" data-filter="Frontend">Frontend Applications</button>
+          <button class="filter-chip" type="button" data-filter="Inventory">Data &amp; Inventory Tools</button>
+          <button class="filter-chip" type="button" data-filter="UI">UI &amp; Component Labs</button>
+        </div>
       </div>
       <div id="dynamic-projects-grid" class="project-grid" aria-live="polite"></div>
       <noscript><p class="noscript-panel card">Projects load from projects.json when JavaScript is enabled.</p></noscript>
