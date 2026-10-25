@@ -715,6 +715,41 @@ function initDynamicShopAndDemo() {
 
 /* --- Dynamic projects.json loader for portfolio showcase --- */
 
+function renderProjectCard(project) {
+  const categoryTag = project.category || (project.tags && project.tags[0]) || "Project";
+  const year = project.year || "2025";
+  const status = project.status || "Live Deployment";
+
+  const features = (project.features || []).map((f) =>
+    `<li>${escapeHtml(f)}</li>`
+  ).join("");
+
+  const techList = (project.techStack || project.tags || []).map((tech) =>
+    `<span class="tag">${escapeHtml(tech)}</span>`
+  ).join("");
+
+  const targetUrl = project.url || project.repoUrl || "#";
+  const linkLabel = project.linkText || "Visit Live Site";
+
+  return `
+    <article class="project-card glass-card reveal is-visible" style="display: flex; flex-direction: column;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; gap: 0.5rem;">
+        <span class="category-tag">${iconSvg("package", 16)} ${escapeHtml(categoryTag)}</span>
+        <span style="font-size: 0.78rem; color: var(--color-muted); font-weight: 500;">${escapeHtml(year)} · <span style="color: #4aae58;">● ${escapeHtml(status)}</span></span>
+      </div>
+      <h3 style="font-size: 1.2rem; margin-block: 0.35rem 0.5rem;">${iconSvg("external-link", 20)}<span>${escapeHtml(project.title)}</span></h3>
+      <p style="color: var(--color-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 0.75rem;">${escapeHtml(project.description)}</p>
+
+      ${features ? `<ul class="project-features-list" style="padding-left: 1.1rem; margin: 0 0 0.85rem; font-size: 0.82rem; color: var(--color-muted);">${features}</ul>` : ""}
+
+      <div class="tags" style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; margin-top: auto;">${techList}</div>
+
+      <div class="card-actions" style="margin-top: 0.5rem; padding-top: 0.75rem; border-top: 1px solid var(--color-border);">
+        <a class="button button-secondary" href="${escapeHtml(targetUrl)}" target="_blank" rel="noopener noreferrer">${iconSvg("external-link")}${escapeHtml(linkLabel)}</a>
+      </div>
+    </article>`;
+}
+
 async function loadDynamicProjectsGrid() {
   const container = document.getElementById("dynamic-projects-grid");
   if (!container) return;
@@ -725,22 +760,7 @@ async function loadDynamicProjectsGrid() {
     const projects = await res.json();
     projects.sort((a, b) => String(a.title || "").localeCompare(String(b.title || ""), undefined, { sensitivity: "base" }));
 
-    container.innerHTML = projects.map((project) => {
-      const tags = (project.tags || []).map((tag) =>
-        `<span class="tag">${escapeHtml(tag)}</span>`
-      ).join("");
-      const targetUrl = project.url || project.repoUrl || "#";
-      const linkLabel = project.linkText || "Visit Site";
-      return `
-        <article class="project-card glass-card reveal">
-          <h3>${iconSvg("external-link", 24)}<span>${escapeHtml(project.title)}</span></h3>
-          <p>${escapeHtml(project.description)}</p>
-          <div class="tags">${tags}</div>
-          <div class="card-actions">
-            <a class="button button-secondary" href="${escapeHtml(targetUrl)}" target="_blank" rel="noopener noreferrer">${iconSvg("external-link")}${escapeHtml(linkLabel)}</a>
-          </div>
-        </article>`;
-    }).join("");
+    container.innerHTML = projects.map(renderProjectCard).join("");
 
     initReveals();
     initCursorSpotlightAndTilt();
@@ -857,22 +877,7 @@ function initInteractiveProjectFilters(projectsData = []) {
       return;
     }
 
-    gridContainer.innerHTML = filtered.map((project) => {
-      const tags = (project.tags || []).map((tag) =>
-        `<span class="tag">${escapeHtml(tag)}</span>`
-      ).join("");
-      const targetUrl = project.url || project.repoUrl || "#";
-      const linkLabel = project.linkText || "Visit Site";
-      return `
-        <article class="project-card glass-card reveal is-visible">
-          <h3>${iconSvg("external-link", 24)}<span>${escapeHtml(project.title)}</span></h3>
-          <p>${escapeHtml(project.description)}</p>
-          <div class="tags">${tags}</div>
-          <div class="card-actions">
-            <a class="button button-secondary" href="${escapeHtml(targetUrl)}" target="_blank" rel="noopener noreferrer">${iconSvg("external-link")}${escapeHtml(linkLabel)}</a>
-          </div>
-        </article>`;
-    }).join("");
+    gridContainer.innerHTML = filtered.map(renderProjectCard).join("");
 
     initReveals();
     initCursorSpotlightAndTilt();

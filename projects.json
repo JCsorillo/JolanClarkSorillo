@@ -1,100 +1,226 @@
 [
   {
     "title": "Ahlia-Daile",
-    "description": "Custom digital catalog and interactive record management tool designed for fast data entry and searching.",
+    "category": "Digital Catalog & Records",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Custom digital catalog and interactive record management tool engineered for high-speed data entry, indexing, and live search.",
+    "features": [
+      "Interactive client-side record search & filtering",
+      "Optimized data indexing for low-latency queries",
+      "Mobile-first responsive glassmorphic UI"
+    ],
+    "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Data", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Ahlia-Daile/",
-    "linkText": "Visit Site",
-    "tags": ["Catalog", "Frontend"]
+    "linkText": "Visit Live Site",
+    "tags": ["Catalog", "Frontend", "Data System"]
   },
   {
     "title": "Angel-Mae",
-    "description": "Custom digital layout template showcasing modern web typography, themes, and micro-interactions.",
+    "category": "UI/UX & Design Showcase",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Custom digital layout template showcasing modern web typography, dark/light themes, micro-interactions, and adaptive flex layouts.",
+    "features": [
+      "Fluid typography & custom CSS design tokens",
+      "Interactive theme switcher and micro-animations",
+      "Accessible component markup standards"
+    ],
+    "techStack": ["HTML5", "CSS3 Tokens", "JavaScript ES6", "Responsive Design"],
     "url": "https://jcsorillo.github.io/Angel-Mae/",
-    "linkText": "Visit Site",
-    "tags": ["UI Showcase", "CSS"]
+    "linkText": "Visit Live Site",
+    "tags": ["UI Showcase", "CSS", "Frontend"]
   },
   {
     "title": "Angelie",
-    "description": "Web component showcase exploring accessible form design, data inputs, and client validation.",
+    "category": "Web Components & Forms",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Web component showcase exploring accessible form design, real-time input validation, interactive state management, and user feedback.",
+    "features": [
+      "Real-time client-side form validation",
+      "Accessible ARIA landmarks and focus states",
+      "Reusable modular UI components"
+    ],
+    "techStack": ["JavaScript", "HTML5 Forms", "CSS Variables", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Angelie/",
-    "linkText": "Visit Site",
-    "tags": ["Components", "Forms"]
+    "linkText": "Visit Live Site",
+    "tags": ["Components", "Forms", "UI Lab"]
   },
   {
     "title": "Angelyn",
-    "description": "Administrative document archiving module engineered for digital file indexing and quick retrieval.",
+    "category": "Document Archiving Module",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Administrative document archiving system engineered for digital record indexing, category classification, and instant file retrieval.",
+    "features": [
+      "Categorized document indexing & archive views",
+      "Fast client-side search across record metadata",
+      "Clean glassmorphic administrative interface"
+    ],
+    "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Indexing"],
     "url": "https://jcsorillo.github.io/Angelyn/",
-    "linkText": "Visit Site",
-    "tags": ["Archiving", "Module"]
+    "linkText": "Visit Live Site",
+    "tags": ["Archiving", "Module", "Data System"]
   },
   {
     "title": "Dariel",
-    "description": "Business operations utility and inventory recording system built to streamline local office tracking and data archiving.",
+    "category": "Inventory & Operations System",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Business operations utility and inventory recording system built to streamline local office tracking, supply logs, and data archiving.",
+    "features": [
+      "Supply inventory tracking & stock level logs",
+      "Digital document archiving & record search",
+      "Lightweight responsive dashboard interface"
+    ],
+    "techStack": ["JavaScript", "HTML5", "CSS3", "JSON API", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Dariel/",
-    "linkText": "Visit Site",
-    "tags": ["Inventory", "Web System"]
+    "linkText": "Visit Live Site",
+    "tags": ["Inventory", "Web System", "Operations"]
   },
   {
     "title": "Eidref",
-    "description": "Data management and record indexing web system tailored for fast queries and mobile viewports.",
+    "category": "Data Management & Query Tool",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Data management and record indexing web system tailored for fast queries, mobile viewports, and clean data visualization.",
+    "features": [
+      "Optimized query performance for large dataset views",
+      "Mobile-first responsive table and list layouts",
+      "Dynamic data fetching & state handling"
+    ],
+    "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Data"],
     "url": "https://jcsorillo.github.io/Eidref/",
-    "linkText": "Visit Site",
-    "tags": ["Data System", "Web"]
+    "linkText": "Visit Live Site",
+    "tags": ["Data System", "Web", "Queries"]
   },
   {
     "title": "Jolan-Clark",
-    "description": "Developer profile hub and project index showcasing web solutions, technical software tools, and repository links.",
+    "category": "Developer Profile & Hub",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Developer profile hub and project index showcasing web solutions, technical software tools, repository links, and career highlights.",
+    "features": [
+      "Centralized developer profile & repository directory",
+      "Responsive glassmorphism UI & theme switcher",
+      "Fast static site deployment on GitHub Pages"
+    ],
+    "techStack": ["HTML5", "CSS3", "JavaScript ES6", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Jolan-Clark/",
-    "linkText": "Visit Site",
-    "tags": ["Profile", "Hub"]
+    "linkText": "Visit Live Site",
+    "tags": ["Profile", "Hub", "Portfolio"]
   },
   {
     "title": "Jolan-Larck",
+    "category": "Interactive Developer Showcase",
+    "year": "2025",
+    "status": "Live Deployment",
     "description": "Personal developer portfolio and interactive showcase built with modern responsive web standards, glassmorphic UI, and dynamic JSON data loading.",
+    "features": [
+      "Dynamic JSON data loading for live projects",
+      "Awwwards-style mouse spotlight & 3D tilt effects",
+      "Instant search & category filtering system"
+    ],
+    "techStack": ["HTML5", "CSS3 Tokens", "JavaScript ES6+", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Jolan-Larck/",
-    "linkText": "Visit Site",
-    "tags": ["Portfolio", "Web"]
+    "linkText": "Visit Live Site",
+    "tags": ["Portfolio", "Web", "Interactive"]
   },
   {
     "title": "Lory-Ann",
-    "description": "Interactive web application featuring responsive design layouts and dynamic UI interaction modules.",
+    "category": "Interactive Web Application",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Interactive web application featuring responsive design layouts, dynamic UI interaction modules, and smooth visual transitions.",
+    "features": [
+      "Dynamic user interaction modules & state feedback",
+      "Smooth CSS animations & responsive layout grids",
+      "Lightweight zero-dependency architecture"
+    ],
+    "techStack": ["JavaScript", "HTML5", "CSS3", "Git"],
     "url": "https://jcsorillo.github.io/Lory-Ann/",
-    "linkText": "Visit Site",
-    "tags": ["Web App", "Frontend"]
+    "linkText": "Visit Live Site",
+    "tags": ["Web App", "Frontend", "Interactive"]
   },
   {
     "title": "Mary-Gail",
-    "description": "Responsive landing page template and client showcase designed for mobile-first web performance.",
+    "category": "Landing Page Template",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Responsive landing page template and client showcase designed for mobile-first web performance, fast loading, and conversion clarity.",
+    "features": [
+      "Mobile-first responsive hero & call-to-action flow",
+      "Optimized asset loading & fast rendering speeds",
+      "Clean semantic HTML structure"
+    ],
+    "techStack": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Mary-Gail/",
-    "linkText": "Visit Site",
-    "tags": ["Template", "Landing"]
+    "linkText": "Visit Live Site",
+    "tags": ["Template", "Landing", "Responsive"]
   },
   {
     "title": "Rolyn",
-    "description": "Lightweight administrative portal interface for tracking local task workflows and records.",
+    "category": "Administrative Portal",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Lightweight administrative portal interface for tracking local task workflows, office records, and team activity logs.",
+    "features": [
+      "Workflow task logging & record tracking interface",
+      "Clean administrative layout with dark mode support",
+      "Responsive navigation & quick filter controls"
+    ],
+    "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Data"],
     "url": "https://jcsorillo.github.io/Rolyn/",
-    "linkText": "Visit Site",
-    "tags": ["Portal", "Utilities"]
+    "linkText": "Visit Live Site",
+    "tags": ["Portal", "Utilities", "Admin"]
   },
   {
     "title": "Ronabe",
-    "description": "Technical support utility scripts and automated diagnostic toolset for desktop environment troubleshooting.",
+    "category": "IT Diagnostics & Support",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Technical support utility scripts and automated diagnostic toolset for desktop environment troubleshooting and network checks.",
+    "features": [
+      "Desktop & network troubleshooting utility tools",
+      "System diagnostic guides & automated checklists",
+      "Clean technical documentation layout"
+    ],
+    "techStack": ["JavaScript", "HTML5", "CSS3", "IT Utilities"],
     "url": "https://jcsorillo.github.io/Ronabe/",
-    "linkText": "Visit Site",
-    "tags": ["IT Support", "Automation"]
+    "linkText": "Visit Live Site",
+    "tags": ["IT Support", "Automation", "Utilities"]
   },
   {
     "title": "Saralyn",
-    "description": "Frontend component lab exploring modern CSS layout techniques, accessible UI patterns, and state interactions.",
+    "category": "Frontend Component Lab",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Frontend component lab exploring modern CSS layout techniques, accessible UI patterns, theme tokens, and micro-interactions.",
+    "features": [
+      "Modern CSS flexbox & CSS grid experimentations",
+      "Accessible button, card, and modal UI patterns",
+      "Theme token customization lab"
+    ],
+    "techStack": ["CSS3", "HTML5", "JavaScript ES6", "UI Design"],
     "url": "https://jcsorillo.github.io/Saralyn/",
-    "linkText": "Visit Site",
-    "tags": ["Interface", "Design"]
+    "linkText": "Visit Live Site",
+    "tags": ["Interface", "Design", "Lab"]
   },
   {
     "title": "Tricia",
-    "description": "Modern web showcase application built with fast-loading responsive assets and clean markup.",
+    "category": "Responsive Web Application",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "Modern web showcase application built with fast-loading responsive assets, clean markup, and glassmorphic card layouts.",
+    "features": [
+      "Responsive layout optimized for all device sizes",
+      "Glassmorphic visual styling & subtle hover states",
+      "Zero external dependency web architecture"
+    ],
+    "techStack": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Tricia/",
-    "linkText": "Visit Site",
-    "tags": ["Web App", "Responsive"]
+    "linkText": "Visit Live Site",
+    "tags": ["Web App", "Responsive", "UI"]
   }
 ]

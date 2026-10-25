@@ -52,12 +52,33 @@
   <main id="main-content" class="page-main">
     <!-- PORTFOLIO HEADER / DIRECTORY INTRO -->
     <section class="container page-intro page-intro-tile glass-card reveal" id="portfolio">
-      <p class="eyebrow">Alphabetical Project Directory (A – Z)</p>
+      <p class="eyebrow">Curated Collection of Work Samples &amp; Projects</p>
       <h1>Portfolio &amp; Deployed Works</h1>
-      <p class="lead">Explore an organized collection of 14+ live web applications, digital systems, templates, and software utilities built and maintained by Jolan Clark A. Sorillo.</p>
-      <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+      <p class="lead">A curated collection of 14+ live web applications, digital systems, templates, and software utilities built for specific business, organizational, and technical goals.</p>
+
+      <!-- Portfolio Summary Stats Bar -->
+      <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1rem; margin-top: 1.25rem;">
+        <div class="glass-card span-3" style="padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
+          <div style="font-size: 1.35rem; font-weight: 700; color: var(--color-text);">14+ Deployed</div>
+          <div style="font-size: 0.78rem; color: var(--color-muted);">Live Web Projects</div>
+        </div>
+        <div class="glass-card span-3" style="padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
+          <div style="font-size: 1.35rem; font-weight: 700; color: #4aae58;">● 100% Active</div>
+          <div style="font-size: 0.78rem; color: var(--color-muted);">GitHub Pages Deployment</div>
+        </div>
+        <div class="glass-card span-3" style="padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
+          <div style="font-size: 1.35rem; font-weight: 700; color: var(--color-text);">Vibe Coded</div>
+          <div style="font-size: 0.78rem; color: var(--color-muted);">Rapid Execution &amp; Custom Logic</div>
+        </div>
+        <div class="glass-card span-3" style="padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
+          <div style="font-size: 1.35rem; font-weight: 700; color: var(--color-text);">A – Z Directory</div>
+          <div style="font-size: 0.78rem; color: var(--color-muted);">Alphabetical Directory</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
         <a class="button button-secondary" href="index.html#featured-app">View Flagship App Showcase →</a>
-        <a class="button button-secondary" href="resume.html">View Technical Resume →</a>
+        <a class="button button-secondary" href="resume.html">View Workstation &amp; Resume →</a>
       </div>
     </section>
 
@@ -67,7 +88,7 @@
         <div>
           <p class="eyebrow">Organized Directory</p>
           <h2 id="directory-title">All Deployed Projects (Sorted A – Z)</h2>
-          <p>Click "Visit Site" on any project card to open the live deployed site directly.</p>
+          <p>Click "Visit Live Site" on any project card to open the live deployed site directly.</p>
         </div>
       </div>
 
@@ -75,7 +96,7 @@
       <div class="portfolio-filter-shell glass-card reveal">
         <div style="position: relative;">
           <label class="visually-hidden" for="project-search">Search projects</label>
-          <input class="portfolio-search-input" id="project-search" type="search" placeholder="🔍 Instant Search: type project title, keyword, or tag..." autocomplete="off">
+          <input class="portfolio-search-input" id="project-search" type="search" placeholder="🔍 Instant Search: type project title, keyword, or tech stack..." autocomplete="off">
         </div>
         <div class="portfolio-filter-chips" id="category-filter-chips">
           <button class="filter-chip is-active" type="button" data-filter="All">All Projects (14)</button>
@@ -85,6 +106,7 @@
           <button class="filter-chip" type="button" data-filter="UI">UI &amp; Component Labs</button>
         </div>
       </div>
+
       <div id="dynamic-projects-grid" class="project-grid" aria-live="polite"></div>
       <noscript><p class="noscript-panel card">Projects load from projects.json when JavaScript is enabled.</p></noscript>
     </section>
