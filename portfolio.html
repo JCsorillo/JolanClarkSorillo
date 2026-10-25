@@ -70,6 +70,21 @@
           <p>Click "Visit Site" on any project card to open the live deployed site directly.</p>
         </div>
       </div>
+
+      <!-- INTERACTIVE INSTANT SEARCH & CATEGORY FILTER BAR -->
+      <div class="portfolio-filter-shell glass-card reveal">
+        <div style="position: relative;">
+          <label class="visually-hidden" for="project-search">Search projects</label>
+          <input class="portfolio-search-input" id="project-search" type="search" placeholder="🔍 Instant Search: type project title, keyword, or tag..." autocomplete="off">
+        </div>
+        <div class="portfolio-filter-chips" id="category-filter-chips">
+          <button class="filter-chip is-active" type="button" data-filter="All">All Projects (14)</button>
+          <button class="filter-chip" type="button" data-filter="Web">Web Systems &amp; Portfolios</button>
+          <button class="filter-chip" type="button" data-filter="Frontend">Frontend Applications</button>
+          <button class="filter-chip" type="button" data-filter="Inventory">Data &amp; Inventory Tools</button>
+          <button class="filter-chip" type="button" data-filter="UI">UI &amp; Component Labs</button>
+        </div>
+      </div>
       <div id="dynamic-projects-grid" class="project-grid" aria-live="polite"></div>
       <noscript><p class="noscript-panel card">Projects load from projects.json when JavaScript is enabled.</p></noscript>
     </section>

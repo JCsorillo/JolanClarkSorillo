@@ -743,19 +743,206 @@ async function loadDynamicProjectsGrid() {
     }).join("");
 
     initReveals();
+    initCursorSpotlightAndTilt();
+    initInteractiveProjectFilters(projects);
   } catch (err) {
     container.innerHTML = `<p class="empty-results">Could not load projects.</p>`;
     console.warn("loadDynamicProjectsGrid:", err);
   }
 }
 
+/* --- AWWWARDS INTERACTIVE & DYNAMIC UI EFFECTS --- */
+
+function initCursorSpotlightAndTilt() {
+  const cards = document.querySelectorAll(".glass-card, .project-card, .skill-card, .hero-tile");
+
+  cards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
+  });
+}
+
+function initLiveClockAndStatus() {
+  const statusEl = document.querySelector("#live-clock-text");
+  if (!statusEl) return;
+
+  const updateClock = () => {
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString("en-US", {
+      timeZone: "Asia/Manila",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true
+    });
+    statusEl.textContent = `📍 Iloilo City, PH (PST) · ${timeStr}`;
+  };
+
+  updateClock();
+  setInterval(updateClock, 1000);
+}
+
+function initAnimatedCounters() {
+  const counters = document.querySelectorAll("[data-counter-target]");
+  if (!counters.length) return;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.counterTarget, 10);
+        const suffix = el.dataset.counterSuffix || "";
+        let current = 0;
+        const increment = Math.max(1, Math.ceil(target / 25));
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = `${current}${suffix}`;
+        }, 30);
+        obs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach((counter) => observer.observe(counter));
+}
+
+function initInteractiveProjectFilters(projectsData = []) {
+  const searchInput = document.getElementById("project-search");
+  const filterChipsContainer = document.getElementById("category-filter-chips");
+  const gridContainer = document.getElementById("dynamic-projects-grid");
+
+  if (!gridContainer || !projectsData.length) return;
+
+  let currentCategory = "All";
+  let searchQuery = "";
+
+  const renderFilteredProjects = () => {
+    const query = searchQuery.toLowerCase().trim();
+
+    const filtered = projectsData.filter((project) => {
+      const matchCategory = currentCategory === "All" ||
+        (project.tags || []).some((tag) => tag.toLowerCase().includes(currentCategory.toLowerCase())) ||
+        project.title.toLowerCase().includes(currentCategory.toLowerCase()) ||
+        project.description.toLowerCase().includes(currentCategory.toLowerCase());
+
+      const searchableText = `${project.title} ${project.description} ${(project.tags || []).join(" ")}`.toLowerCase();
+      const matchSearch = !query || searchableText.includes(query);
+
+      return matchCategory && matchSearch;
+    });
+
+    if (!filtered.length) {
+      gridContainer.innerHTML = `<p class="empty-results card" style="grid-column: 1 / -1; padding: 2rem; text-align: center;">No matching projects found for "${escapeHtml(searchQuery)}".</p>`;
+      return;
+    }
+
+    gridContainer.innerHTML = filtered.map((project) => {
+      const tags = (project.tags || []).map((tag) =>
+        `<span class="tag">${escapeHtml(tag)}</span>`
+      ).join("");
+      const targetUrl = project.url || project.repoUrl || "#";
+      const linkLabel = project.linkText || "Visit Site";
+      return `
+        <article class="project-card glass-card reveal is-visible">
+          <h3>${iconSvg("external-link", 24)}<span>${escapeHtml(project.title)}</span></h3>
+          <p>${escapeHtml(project.description)}</p>
+          <div class="tags">${tags}</div>
+          <div class="card-actions">
+            <a class="button button-secondary" href="${escapeHtml(targetUrl)}" target="_blank" rel="noopener noreferrer">${iconSvg("external-link")}${escapeHtml(linkLabel)}</a>
+          </div>
+        </article>`;
+    }).join("");
+
+    initReveals();
+    initCursorSpotlightAndTilt();
+  };
+
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value;
+      renderFilteredProjects();
+    });
+  }
+
+  if (filterChipsContainer) {
+    filterChipsContainer.addEventListener("click", (e) => {
+      const chip = e.target.closest(".filter-chip");
+      if (!chip) return;
+
+      filterChipsContainer.querySelectorAll(".filter-chip").forEach((c) => c.classList.remove("is-active"));
+      chip.classList.add("is-active");
+
+      currentCategory = chip.dataset.filter || "All";
+      renderFilteredProjects();
+    });
+  }
+}
+
+function initFloatingDock() {
+  if (document.querySelector(".floating-dock")) return;
+
+  const dockHtml = `
+    <aside class="floating-dock" aria-label="Quick action dock">
+      <button class="dock-item" type="button" onclick="document.querySelector('#command-palette')?.showModal()">${iconSvg("search", 18)} <span>Cmd + K</span></button>
+      <span class="dock-item" id="live-clock-text" style="cursor: default;">📍 Iloilo City, PH</span>
+      <a class="dock-item" href="contact.html">${iconSvg("mail", 18)} <span>Contact</span></a>
+    </aside>
+  `;
+  document.body.insertAdjacentHTML("beforeend", dockHtml);
+  initLiveClockAndStatus();
+}
+
+function initCursorGlow() {
+  if (document.querySelector(".cursor-glow") || window.innerWidth < 900) return;
+  const glow = document.createElement("div");
+  glow.className = "cursor-glow";
+  document.body.appendChild(glow);
+
+  let mouseX = 0, mouseY = 0;
+  let glowX = 0, glowY = 0;
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  const animateGlow = () => {
+    glowX += (mouseX - glowX) * 0.1;
+    glowY += (mouseY - glowY) * 0.1;
+    glow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0)`;
+    requestAnimationFrame(animateGlow);
+  };
+  requestAnimationFrame(animateGlow);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initShell();
-  initProducts();
-  initStoreCatalog();
-  renderCollections();
   initContactForm();
   initReveals();
-  initDynamicShopAndDemo();
   loadDynamicProjectsGrid();
+  initCursorSpotlightAndTilt();
+  initAnimatedCounters();
+  initFloatingDock();
+  initCursorGlow();
 });
