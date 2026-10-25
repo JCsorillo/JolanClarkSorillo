@@ -1509,18 +1509,34 @@ h4 {
 }
 
 .resume-grid {
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
 }
 
 .resume-column {
-  display: grid;
-  grid-column: span 4;
-  align-content: start;
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
 }
 
-.resume-column:last-child {
-  grid-column: span 8;
+@media (min-width: 900px) {
+  .resume-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .resume-column {
+    grid-column: span 5;
+  }
+
+  .resume-column:last-child {
+    grid-column: span 7;
+  }
 }
 
 .resume-section {
