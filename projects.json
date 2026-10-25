@@ -1,12 +1,5 @@
 [
   {
-    "title": "Bebet Mobile Kiosk",
-    "description": "Android kiosk application engineered for mobile device rental tracking, session timers, PIN-protected admin controls, and app access restriction.",
-    "url": "https://jcsorillo.github.io/Jolan-Larck/#featured-app-showcase",
-    "linkText": "Launch Demo",
-    "tags": ["Android", "Kiosk"]
-  },
-  {
     "title": "Jolan-Larck",
     "description": "Personal developer portfolio and interactive showcase built with modern responsive web standards, glassmorphic UI, and dynamic JSON data loading.",
     "url": "https://jcsorillo.github.io/Jolan-Larck/",
