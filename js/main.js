@@ -205,16 +205,9 @@ function initCommandPalette() {
   const commands = [
     ...pages.map(([href, label]) => ({ label, description: "Page", href })),
     { label: "Contact", description: "Page", href: "contact.html" },
-    ...products.map((product) => ({
-      label: product.name,
-      description: "App",
-      href: "shop.html#my-apps",
-    })),
-    ...collections.map((collection) => ({
-      label: collection.name,
-      description: "Collection",
-      href: "shop.html#collections",
-    })),
+    { label: "Bebet Mobile Kiosk", description: "Featured App Showcase", href: "index.html#featured-app" },
+    { label: "Portfolio & Deployed Work", description: "Portfolio", href: "portfolio.html" },
+    { label: "Resume & Background", description: "Resume", href: "resume.html" },
   ];
   const renderCommands = (query = "") => {
     const normalizedQuery = query.toLowerCase().trim();
