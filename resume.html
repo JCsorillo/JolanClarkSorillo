@@ -75,16 +75,22 @@
     <article class="container">
       <header class="resume-head glass-card reveal" style="margin-bottom: 1.25rem;">
         <div>
-          <p class="eyebrow">Resume</p>
+          <p class="eyebrow">Resume &amp; Professional Profile</p>
           <h1>Jolan Clark A. Sorillo</h1>
           <p class="resume-role">Virtual Assistant · Vibe Coder · Customer Service &amp; IT Specialist</p>
           <div class="resume-contact">
             <span>Iloilo City, Philippines</span>
-            <a href="tel:+639287328109">+63 928 732 8109</a>
+            <span class="masked-phone">+63 9<span class="phone-asterisks" style="color: var(--color-accent); font-weight: 700;">** *** ****</span></span>
             <a href="mailto:sorillojolanclark@gmail.com">sorillojolanclark@gmail.com</a>
           </div>
+          <p class="resume-privacy-note" style="font-size: 0.78rem; color: var(--color-muted); margin-top: 0.4rem;">
+            🔒 To access complete contact details, download the full <a href="resume.pdf" download style="color: var(--color-accent); font-weight: 600; text-decoration: underline;">Resume / PDF</a>.
+          </p>
         </div>
-        <button class="button print-button" type="button" onclick="window.print()">Print / Save PDF</button>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+          <a class="button download-button" href="resume.pdf" download>Download Resume (PDF)</a>
+          <button class="button button-secondary print-button" type="button" onclick="window.print()">Print / Save PDF</button>
+        </div>
       </header>
 
       <!-- BALANCED BENTO GRID LAYOUT -->
