@@ -392,7 +392,7 @@ img {
   position: relative;
   z-index: 1;
   min-height: 70vh;
-  padding-top: calc(var(--nav-h) + clamp(1rem, 3vw, 2rem));
+  padding-top: calc(var(--nav-h) + 0.5rem);
 }
 
 .section {
@@ -400,12 +400,12 @@ img {
 }
 
 .page-intro {
-  padding-block: clamp(2.5rem, 6vw, 4rem) 1rem;
+  padding-block: clamp(0.75rem, 2vw, 1.25rem) 0.5rem;
 }
 
 .page-intro-tile {
-  margin-bottom: 1rem;
-  padding-inline: clamp(1.25rem, 3vw, 2rem);
+  margin-bottom: 0.75rem;
+  padding-inline: clamp(1rem, 2.5vw, 1.75rem);
 }
 
 .eyebrow,
@@ -418,7 +418,7 @@ img {
 }
 
 .eyebrow {
-  margin: 0 0 1rem;
+  margin: 0 0 0.5rem;
   letter-spacing: 0;
 }
 
@@ -452,26 +452,26 @@ h4 {
 
 h1 {
   max-width: 20ch;
-  margin-bottom: 1rem;
-  font-size: clamp(2.25rem, 5vw, 4rem);
+  margin-bottom: 0.75rem;
+  font-size: clamp(2rem, 4vw, 3.25rem);
   font-weight: 680;
 }
 
 h2 {
-  margin-bottom: 0.75rem;
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
   font-weight: 650;
 }
 
 h3 {
-  margin-bottom: 0.5rem;
-  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  margin-bottom: 0.4rem;
+  font-size: clamp(1.1rem, 1.6vw, 1.28rem);
   font-weight: 650;
 }
 
 h4 {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.98rem;
   font-weight: 650;
 }
 
@@ -479,7 +479,7 @@ h4 {
 .hero-intro {
   max-width: 42rem;
   color: var(--color-muted);
-  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
 }
 
 .hero {
@@ -487,12 +487,12 @@ h4 {
   min-height: 0;
   align-items: center;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 2rem;
-  padding-block: clamp(2.5rem, 5vw, 4rem);
+  gap: 1.25rem;
+  padding-block: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 .hero-bento {
-  grid-auto-rows: minmax(22rem, auto);
+  grid-auto-rows: auto;
   align-items: stretch;
   gap: 1.25rem;
 }
@@ -500,7 +500,7 @@ h4 {
 .hero-tile,
 .hero-note-tile {
   min-height: 100%;
-  padding: clamp(1.25rem, 3vw, 2.25rem);
+  padding: clamp(1rem, 2.5vw, 1.75rem);
 }
 
 .hero-tile {
@@ -673,8 +673,8 @@ h4 {
   display: flex;
   align-items: end;
   justify-content: space-between;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .section-heading .inline-link {
