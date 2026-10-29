@@ -27,11 +27,6 @@ function renderHeader() {
     <header class="site-header">
       <div class="nav-shell">
         <a class="brand" href="index.html#home" aria-label="Larck home"><span class="brand-mark" aria-hidden="true">L</span><span>Larck.</span></a>
-        <nav class="nav-links" aria-label="Main navigation">
-          <a href="index.html#portfolio-section">${iconSvg("briefcase")}<span>Projects</span></a>
-          <a href="index.html#workstation-specs">${iconSvg("shield-check")}<span>Workstation</span></a>
-          <a href="index.html#faq-section">${iconSvg("message-circle")}<span>FAQ</span></a>
-        </nav>
         <div class="nav-actions">
           <a class="button button-secondary nav-resume" href="resume.html">${iconSvg("file-text")}<span>View Resume ↗</span></a>
           <button class="theme-toggle" type="button" aria-pressed="${currentTheme === "dark"}" aria-label="Switch to ${currentTheme === "dark" ? "light" : "dark"} theme">${themeIcon(currentTheme)}
@@ -40,6 +35,7 @@ function renderHeader() {
         </div>
       </div>
     </header>`;
+}
 }
 
 function renderFooter() {
@@ -928,7 +924,6 @@ function initFloatingDock() {
     <aside class="floating-dock" aria-label="Quick action dock">
       <button class="dock-item" type="button" onclick="document.querySelector('#command-palette')?.showModal()">${iconSvg("search", 18)} <span>Cmd + K</span></button>
       <span class="dock-item" id="live-clock-text" style="cursor: default;">📍 Iloilo City, PH</span>
-      <a class="dock-item" href="contact.html">${iconSvg("mail", 18)} <span>Contact</span></a>
     </aside>
   `;
   document.body.insertAdjacentHTML("beforeend", dockHtml);
