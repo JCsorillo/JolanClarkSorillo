@@ -2902,8 +2902,8 @@ h4 {
   padding: 0;
 }
 
-/* Top item (Dot of the "i"): Circular Search Icon Button */
-.dock-search-btn {
+/* Top item (Dot of the "i"): Circular Theme Switcher Button */
+.dock-dot-btn {
   display: grid;
   place-items: center;
   width: 2.75rem;
@@ -2919,11 +2919,17 @@ h4 {
   transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
 }
 
-.dock-search-btn:hover {
+.dock-dot-btn:hover {
   background: var(--color-accent);
   color: var(--color-accent-contrast);
   border-color: var(--color-accent);
-  transform: scale(1.08);
+  transform: scale(1.1);
+}
+
+.dock-dot-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 /* Bottom item (Line of the "i"): Live PST Clock Pill */

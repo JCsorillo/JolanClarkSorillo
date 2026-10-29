@@ -22,19 +22,17 @@ const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
 const themeIcon = (theme) => iconSvg(theme === "dark" ? "sun" : "moon");
 
 function renderHeader() {
-  const currentTheme = document.documentElement.dataset.theme || "light";
   return `
     <header class="site-header">
       <div class="nav-shell">
         <a class="brand" href="index.html#home" aria-label="Larck home"><span class="brand-mark" aria-hidden="true">L</span><span>Larck.</span></a>
         <div class="nav-actions">
           <a class="button button-secondary nav-home" href="index.html#home">${iconSvg("house")}<span>Home</span></a>
-          <button class="theme-toggle" type="button" aria-pressed="${currentTheme === "dark"}" aria-label="Switch to ${currentTheme === "dark" ? "light" : "dark"} theme">${themeIcon(currentTheme)}
-          </button>
           <a class="button nav-contact" href="contact.html">${iconSvg("mail")}<span>Contact</span></a>
         </div>
       </div>
     </header>`;
+}
 }
 
 function renderFooter() {
@@ -264,18 +262,18 @@ function initShell() {
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
 
-  document.querySelector(".theme-toggle")?.addEventListener("click", (event) => {
+  document.addEventListener("click", (event) => {
+    const toggle = event.target.closest(".theme-toggle");
+    if (!toggle) return;
     const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = nextTheme;
     try { localStorage.setItem("theme", nextTheme); } catch {}
     setThemeColor();
-    const toggle = event.currentTarget;
-    toggle.setAttribute("aria-pressed", String(nextTheme === "dark"));
-    toggle.setAttribute("aria-label", `Switch to ${nextTheme === "dark" ? "light" : "dark"} theme`);
-    toggle.innerHTML = themeIcon(nextTheme);
-    const icon = toggle.querySelector(".icon");
-    void icon.offsetWidth;
-    icon.classList.add("is-swapping");
+    document.querySelectorAll(".theme-toggle").forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(nextTheme === "dark"));
+      btn.setAttribute("aria-label", `Switch to ${nextTheme === "dark" ? "light" : "dark"} theme`);
+      btn.innerHTML = themeIcon(nextTheme);
+    });
   });
 
   initStaticIcons();
@@ -927,11 +925,14 @@ function initInteractiveProjectFilters(projectsData = []) {
 
 function initFloatingDock() {
   if (document.querySelector(".floating-dock")) return;
+  const currentTheme = document.documentElement.dataset.theme || "light";
 
   const dockHtml = `
-    <aside class="floating-dock" aria-label="Quick action dock">
-      <button class="dock-item dock-search-btn" type="button" onclick="document.querySelector('#command-palette')?.showModal()" aria-label="Quick search" title="Quick search (Cmd + K)">${iconSvg("search", 20)}</button>
-      <div class="dock-item dock-clock-pill" id="live-clock-text">📍 Iloilo City, PH</div>
+    <aside class="floating-dock" aria-label="Theme toggle and live clock">
+      <button class="theme-toggle dock-dot-btn" type="button" aria-pressed="${currentTheme === "dark"}" aria-label="Switch to ${currentTheme === "dark" ? "light" : "dark"} theme" title="Toggle dark/light mode">
+        ${themeIcon(currentTheme)}
+      </button>
+      <div class="dock-clock-pill" id="live-clock-text">📍 Iloilo City, PH</div>
     </aside>
   `;
   document.body.insertAdjacentHTML("beforeend", dockHtml);
