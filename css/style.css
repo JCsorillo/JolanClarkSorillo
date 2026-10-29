@@ -2887,46 +2887,60 @@ h4 {
 
 .floating-dock {
   position: fixed;
-  bottom: 1.75rem;
-  right: 1.75rem;
+  bottom: 2rem;
+  right: 2rem;
   left: auto;
   transform: none;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.5rem;
-  padding: 0.65rem 0.85rem;
-  border-radius: var(--radius-card);
+  gap: 0.6rem;
+  z-index: 99;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Top item (Dot of the "i"): Circular Search Icon Button */
+.dock-search-btn {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
   background: var(--color-surface);
   border: 1px solid var(--color-border-strong);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  color: var(--color-text);
+  box-shadow: 0 8px 24px var(--color-shadow);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  z-index: 99;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.dock-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.45rem 0.85rem;
-  border-radius: var(--radius-control);
-  color: var(--color-text);
-  font-size: 0.82rem;
-  font-weight: 500;
-  text-decoration: none;
   cursor: pointer;
-  background: var(--color-raised);
-  border: 1px solid var(--color-border);
-  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
 }
 
-.dock-item:hover {
+.dock-search-btn:hover {
   background: var(--color-accent);
   color: var(--color-accent-contrast);
   border-color: var(--color-accent);
-  transform: translateX(-2px);
+  transform: scale(1.08);
+}
+
+/* Bottom item (Line of the "i"): Live PST Clock Pill */
+.dock-clock-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text);
+  font-size: 0.82rem;
+  font-weight: 500;
+  box-shadow: 0 8px 24px var(--color-shadow);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {

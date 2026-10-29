@@ -930,8 +930,8 @@ function initFloatingDock() {
 
   const dockHtml = `
     <aside class="floating-dock" aria-label="Quick action dock">
-      <button class="dock-item" type="button" onclick="document.querySelector('#command-palette')?.showModal()">${iconSvg("search", 18)} <span>Cmd + K</span></button>
-      <span class="dock-item" id="live-clock-text" style="cursor: default;">📍 Iloilo City, PH</span>
+      <button class="dock-item dock-search-btn" type="button" onclick="document.querySelector('#command-palette')?.showModal()" aria-label="Quick search" title="Quick search (Cmd + K)">${iconSvg("search", 20)}</button>
+      <div class="dock-item dock-clock-pill" id="live-clock-text">📍 Iloilo City, PH</div>
     </aside>
   `;
   document.body.insertAdjacentHTML("beforeend", dockHtml);
