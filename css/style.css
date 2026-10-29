@@ -20,8 +20,8 @@
 
 html {
   overflow-x: clip;
-  scroll-behavior: auto;
-  scroll-padding-top: calc(var(--nav-h) + 1rem);
+  scroll-behavior: smooth;
+  scroll-padding-top: clamp(5.5rem, 8vw, 7.5rem);
   background: var(--color-bg);
 }
 

@@ -33,7 +33,6 @@ function renderHeader() {
       </div>
     </header>`;
 }
-}
 
 function renderFooter() {
   const links = [
