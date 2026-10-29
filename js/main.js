@@ -171,6 +171,7 @@ function initStaticIcons() {
     if (button.querySelector(".icon")) return;
     const label = button.textContent.trim();
     const icon = label.startsWith("Download") ? "download"
+      : label.startsWith("View Resume") || label.startsWith("Resume") ? "file-text"
       : label.startsWith("View on") ? "external-link"
         : label.startsWith("Search") ? "search"
           : label.startsWith("Go to Shop") ? "store"
