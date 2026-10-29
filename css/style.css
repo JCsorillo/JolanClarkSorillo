@@ -2086,7 +2086,8 @@ h4 {
   }
 
   .nav-links > a > span,
-  .nav-contact > span {
+  .nav-contact > span,
+  .nav-resume > span {
     position: static !important;
     width: auto !important;
     height: auto !important;

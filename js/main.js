@@ -22,23 +22,25 @@ const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
 const themeIcon = (theme) => iconSvg(theme === "dark" ? "sun" : "moon");
 
 function renderHeader() {
-  const currentPage = document.body.dataset.page;
   const currentTheme = document.documentElement.dataset.theme || "light";
-  const navigation = pages.map(([href, label, key, icon]) =>
-    `<a href="${href}"${currentPage === key ? ' aria-current="page"' : ""}>${iconSvg(icon)}<span>${label}</span></a>`,
-  ).join("");
   return `
     <header class="site-header">
       <div class="nav-shell">
-        <a class="brand" href="index.html" aria-label="Larck home"><span class="brand-mark" aria-hidden="true">L</span><span>Larck.</span></a>
-        <nav class="nav-links" aria-label="Main navigation">${navigation}</nav>
+        <a class="brand" href="index.html#home" aria-label="Larck home"><span class="brand-mark" aria-hidden="true">L</span><span>Larck.</span></a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html#portfolio-section">${iconSvg("briefcase")}<span>Projects</span></a>
+          <a href="index.html#workstation-specs">${iconSvg("shield-check")}<span>Workstation</span></a>
+          <a href="index.html#faq-section">${iconSvg("message-circle")}<span>FAQ</span></a>
+        </nav>
         <div class="nav-actions">
+          <a class="button button-secondary nav-resume" href="resume.html">${iconSvg("file-text")}<span>View Resume ↗</span></a>
           <button class="theme-toggle" type="button" aria-pressed="${currentTheme === "dark"}" aria-label="Switch to ${currentTheme === "dark" ? "light" : "dark"} theme">${themeIcon(currentTheme)}
           </button>
-          <a class="button nav-contact" href="contact.html"${currentPage === "contact" ? ' aria-current="page"' : ""}>${iconSvg("mail")}<span>Contact</span></a>
+          <a class="button nav-contact" href="contact.html">${iconSvg("mail")}<span>Contact</span></a>
         </div>
       </div>
     </header>`;
+}
 }
 
 function renderFooter() {
