@@ -2135,17 +2135,48 @@ h4 {
     gap: 0.4rem;
   }
 
-  .nav-contact {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.4rem 0.75rem;
-    font-size: 0.82rem;
-    min-height: 2.2rem;
+  .brand > span:not(.brand-mark) {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hide text labels inside header navigation buttons on mobile */
+  .nav-home > span,
+  .nav-contact > span,
+  .nav-resume > span,
+  .nav-links > a > span {
+    display: none !important;
+  }
+
+  /* Style Home, Contact, and Theme Toggle as compact, icon-only pill buttons on mobile */
+  .nav-home,
+  .nav-contact,
+  .theme-toggle {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 2.35rem !important;
+    height: 2.35rem !important;
+    padding: 0 !important;
+    border-radius: var(--radius-pill) !important;
+    min-height: 2.35rem !important;
+  }
+
+  .nav-home svg,
+  .nav-contact svg,
+  .theme-toggle svg {
+    margin: 0 !important;
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .nav-actions {
+    gap: 0.4rem !important;
   }
 
   .brand > span:not(.brand-mark) {
-    display: inline-block;
+    display: none !important;
   }
 }
 
