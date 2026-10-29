@@ -194,27 +194,36 @@ img {
 .site-header {
   position: fixed;
   z-index: 100;
-  inset: 0 0 auto;
-  min-height: var(--nav-h);
-  border-bottom: 1px solid transparent;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(calc(100% - 2rem), 68rem);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
   background: var(--color-nav);
-  -webkit-backdrop-filter: blur(var(--blur-nav));
-  backdrop-filter: blur(var(--blur-nav));
+  box-shadow: 0 10px 30px var(--color-shadow);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  transition: top var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .site-header.is-condensed {
-  border-bottom-color: var(--color-border);
+  top: 0.85rem;
+  border-color: var(--color-border-strong);
   background: var(--color-nav-scrolled);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
 }
 
 .nav-shell {
   display: flex;
-  width: min(calc(100% - var(--page-gutter) * 2), var(--content-width));
-  min-height: var(--nav-h);
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.4rem 1.25rem;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-inline: auto;
+  border-radius: var(--radius-pill);
 }
 
 .brand {
@@ -2067,11 +2076,18 @@ h4 {
     width: 100% !important;
   }
 
+  .site-header {
+    top: 0.65rem;
+    width: calc(100% - 1.25rem);
+    border-radius: var(--radius-pill);
+  }
+
   .nav-shell,
   .site-header .nav-shell {
-    width: min(calc(100% - 1.25rem), 75rem);
+    width: 100%;
     margin-inline: auto;
-    padding: 0.4rem 0.75rem;
+    padding: 0.35rem 0.85rem;
+    min-height: 3.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
