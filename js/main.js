@@ -28,13 +28,14 @@ function renderHeader() {
       <div class="nav-shell">
         <a class="brand" href="index.html#home" aria-label="Larck home"><span class="brand-mark" aria-hidden="true">L</span><span>Larck.</span></a>
         <div class="nav-actions">
-          <a class="button button-secondary nav-resume" href="resume.html">${iconSvg("file-text")}<span>View Resume ↗</span></a>
+          <a class="button button-secondary nav-home" href="index.html#home">${iconSvg("house")}<span>Home</span></a>
           <button class="theme-toggle" type="button" aria-pressed="${currentTheme === "dark"}" aria-label="Switch to ${currentTheme === "dark" ? "light" : "dark"} theme">${themeIcon(currentTheme)}
           </button>
           <a class="button nav-contact" href="contact.html">${iconSvg("mail")}<span>Contact</span></a>
         </div>
       </div>
     </header>`;
+}
 }
 
 function renderFooter() {
