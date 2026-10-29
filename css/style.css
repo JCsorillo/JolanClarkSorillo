@@ -397,6 +397,21 @@ img {
   padding: 0.6rem 1rem;
 }
 
+.nav-home {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: var(--color-text) !important;
+  padding: 0.4rem 0.65rem !important;
+}
+
+.nav-home:hover {
+  background: transparent !important;
+  border: none !important;
+  color: var(--color-accent) !important;
+  box-shadow: none !important;
+}
+
 .page-main {
   position: relative;
   z-index: 1;
@@ -2888,12 +2903,12 @@ h4 {
 .floating-dock {
   position: fixed;
   bottom: 2rem;
-  right: 2rem;
+  right: 1.75rem;
   left: auto;
   transform: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   gap: 0.6rem;
   z-index: 99;
   background: transparent;
@@ -2906,8 +2921,8 @@ h4 {
 .dock-dot-btn {
   display: grid;
   place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.85rem;
+  height: 2.85rem;
   border-radius: 50%;
   background: var(--color-surface);
   border: 1px solid var(--color-border-strong);
@@ -2923,7 +2938,7 @@ h4 {
   background: var(--color-accent);
   color: var(--color-accent-contrast);
   border-color: var(--color-accent);
-  transform: scale(1.1);
+  transform: scale(1.12);
 }
 
 .dock-dot-btn svg {
@@ -2932,25 +2947,67 @@ h4 {
   fill: currentColor;
 }
 
-/* Bottom item (Line of the "i"): Live PST Clock Pill */
-.dock-clock-pill {
-  display: inline-flex;
+/* Bottom item (Line/Stem of the "i"): Narrow Vertical Live PST Clock Pill */
+.dock-clock-pill-vertical {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 0.55rem 1rem;
-  border-radius: var(--radius-pill);
+  justify-content: center;
+  width: 2.85rem;
+  padding: 0.85rem 0.2rem;
+  border-radius: 1.5rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border-strong);
   color: var(--color-text);
-  font-size: 0.82rem;
-  font-weight: 500;
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
   box-shadow: 0 8px 24px var(--color-shadow);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  white-space: nowrap;
+  user-select: none;
+}
+
+.dock-pin {
+  font-size: 0.88rem;
+  margin-bottom: 0.35rem;
+}
+
+.dock-city {
+  font-size: 0.62rem;
+  color: var(--color-text);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.45rem;
+}
+
+.dock-time-val {
+  font-size: 0.68rem;
+  color: var(--color-accent);
+  font-weight: 800;
+  border-top: 1px solid var(--color-border);
+  padding-top: 0.45rem;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .floating-dock {
-    display: none;
+    display: flex !important;
+    bottom: 1.25rem !important;
+    right: 1.25rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .dock-dot-btn {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+
+  .dock-clock-pill-vertical {
+    width: 2.5rem !important;
+    padding: 0.65rem 0.15rem !important;
+    font-size: 0.62rem !important;
   }
 }

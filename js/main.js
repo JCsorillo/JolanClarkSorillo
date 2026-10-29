@@ -810,19 +810,20 @@ function initCursorSpotlightAndTilt() {
 }
 
 function initLiveClockAndStatus() {
-  const statusEl = document.querySelector("#live-clock-text");
-  if (!statusEl) return;
+  const timeEl = document.querySelector("#dock-live-time");
+  if (!timeEl) return;
 
   const updateClock = () => {
     const now = new Date();
-    const timeStr = now.toLocaleTimeString("en-US", {
+    const timeParts = now.toLocaleTimeString("en-US", {
       timeZone: "Asia/Manila",
       hour: "2-digit",
       minute: "2-digit",
-      second: "2-digit",
       hour12: true
-    });
-    statusEl.textContent = `📍 Iloilo City, PH (PST) · ${timeStr}`;
+    }).split(" ");
+    if (timeParts.length === 2) {
+      timeEl.innerHTML = `${timeParts[0]}<br>${timeParts[1]}`;
+    }
   };
 
   updateClock();
@@ -931,7 +932,11 @@ function initFloatingDock() {
       <button class="theme-toggle dock-dot-btn" type="button" aria-pressed="${currentTheme === "dark"}" aria-label="Switch to ${currentTheme === "dark" ? "light" : "dark"} theme" title="Toggle dark/light mode">
         ${themeIcon(currentTheme)}
       </button>
-      <div class="dock-clock-pill" id="live-clock-text">📍 Iloilo City, PH</div>
+      <div class="dock-clock-pill-vertical">
+        <span class="dock-pin">📍</span>
+        <span class="dock-city">Ilo<br>ilo<br><br>Ci<br>ty<br>-<br>PH</span>
+        <span class="dock-time-val" id="dock-live-time">07:25<br>PM</span>
+      </div>
     </aside>
   `;
   document.body.insertAdjacentHTML("beforeend", dockHtml);
