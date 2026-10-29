@@ -73,23 +73,113 @@
         </div>
       </div>
 
-      <!-- Portfolio Summary Stats Bar -->
-      <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0.85rem; margin-top: 1.25rem;">
-        <div class="glass-card span-3" style="padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
-          <div style="font-size: 1.2rem; font-weight: 700; color: var(--color-text);">14+ Deployed</div>
+      <!-- Portfolio Summary Stats Bar (Flexible Flex Container to prevent text wrapping) -->
+      <div style="display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.25rem;">
+        <div class="glass-card" style="flex: 1 1 180px; padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
+          <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text);">14+ Deployed</div>
           <div style="font-size: 0.78rem; color: var(--color-muted);">Live Web Projects</div>
         </div>
-        <div class="glass-card span-3" style="padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
-          <div style="font-size: 1.2rem; font-weight: 700; color: #4aae58;">● 100% Active</div>
+        <div class="glass-card" style="flex: 1 1 180px; padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
+          <div style="font-size: 1.25rem; font-weight: 700; color: #4aae58;">● 100% Active</div>
           <div style="font-size: 0.78rem; color: var(--color-muted);">GitHub Pages Hosting</div>
         </div>
-        <div class="glass-card span-3" style="padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
-          <div style="font-size: 1.2rem; font-weight: 700; color: var(--color-text);">Vibe Coded</div>
-          <div style="font-size: 0.78rem; color: var(--color-muted);">Rapid Execution</div>
+        <div class="glass-card" style="flex: 1 1 180px; padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
+          <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text);">Vibe Coded</div>
+          <div style="font-size: 0.78rem; color: var(--color-muted);">Rapid Execution &amp; Custom Logic</div>
         </div>
-        <div class="glass-card span-3" style="padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
-          <div style="font-size: 1.2rem; font-weight: 700; color: var(--color-text);">A – Z Directory</div>
-          <div style="font-size: 0.78rem; color: var(--color-muted);">Alphabetical Order</div>
+        <div class="glass-card" style="flex: 1 1 180px; padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
+          <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text);">A – Z Directory</div>
+          <div style="font-size: 0.78rem; color: var(--color-muted);">Alphabetically Organized</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLAGSHIP ANDROID APPLICATION SHOWCASE -->
+    <section class="container section" id="featured-app" aria-labelledby="app-showcase-title">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">FLAGSHIP SOFTWARE SHOWCASE</p>
+          <h2 id="app-showcase-title">Bebet Mobile Kiosk</h2>
+          <p>Custom Android kiosk application engineered for mobile device rental tracking, PIN access controls, First-Time Setup Wizard, and automated session timers.</p>
+        </div>
+      </div>
+
+      <div class="product-detail reveal" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem;">
+        <!-- Left Column: Application Details & Features -->
+        <div class="product-detail-main span-6">
+          <div>
+            <span class="category-tag">FEATURED ANDROID APPLICATION</span>
+            <h3>Mobile Kiosk System</h3>
+            <p style="color: var(--color-muted); font-size: 0.95rem; margin-top: 0.5rem;">Developed by Jolan Clark. A specialized Android kiosk shell designed for device rental management, automated countdown timers, PIN-secured admin settings, and app access restriction.</p>
+          </div>
+          <ul class="feature-list" style="margin-top: 1.25rem;">
+            <li><strong>First-Time Setup Wizard:</strong> Initial configuration flow for business name, admin PIN, and system overlay permissions.</li>
+            <li><strong>PIN-Protected Admin Lock:</strong> Restricts settings and prevents unauthorized system exit.</li>
+            <li><strong>Automated Session Countdown:</strong> Displays rental timer and notifies users upon expiration.</li>
+            <li><strong>App Allow-List Control:</strong> Restricts device usage to permitted applications only.</li>
+          </ul>
+          <div class="card-actions" style="margin-top: 1.75rem;">
+            <a class="button" href="contact.html?product=bebet-mobile-kiosk">Inquire About App <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <!-- Right Column: App Interface Screens (Logo + Welcome Screen + Setup Wizard) -->
+        <div class="product-detail-aside span-6" style="display: flex; flex-direction: column; gap: 1rem;">
+
+          <!-- Official Logo Header Bar -->
+          <div class="glass-card" style="padding: 1rem; text-align: center; display: flex; align-items: center; justify-content: center; gap: 1rem; border-radius: var(--radius-card);">
+            <img class="app-logo-graphic" src="img/bebet-kiosk-logo.svg" alt="Bebet Mobile Kiosk Logo" style="width: 50px; height: 50px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));" loading="lazy" decoding="async">
+            <div style="text-align: left;">
+              <h4 style="margin: 0; font-size: 1.1rem; font-weight: 700;">Mobile Kiosk</h4>
+              <p style="margin: 0; font-size: 0.78rem; color: #5aa9ff; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Developed by Jolan Clark</p>
+            </div>
+          </div>
+
+          <!-- Side-by-Side App Interface Screens -->
+          <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 0.85rem;">
+
+            <!-- Screen 1: Welcome & Standby -->
+            <div class="glass-card span-6" style="padding: 1rem; border-radius: var(--radius-card); border: 1px solid var(--color-border); background: var(--color-surface);">
+              <div style="text-align: center; margin-bottom: 0.75rem;">
+                <span class="tag" style="background: rgba(74, 174, 88, 0.15); border-color: #4aae58; color: #4aae58; font-size: 0.72rem; font-weight: 600;">✓ KIOSK STANDBY</span>
+              </div>
+              <h4 style="text-align: center; color: #4aae58; font-size: 1.25rem; font-weight: 800; margin-bottom: 0.35rem; letter-spacing: 0.05em;">WELCOME</h4>
+              <p style="font-size: 0.78rem; color: var(--color-muted); text-align: center; margin-bottom: 0.75rem;">Please enter admin PIN to start a new session.</p>
+
+              <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                <div style="background: var(--color-raised); padding: 0.4rem 0.6rem; border-radius: var(--radius-control); font-size: 0.78rem; text-align: center; color: #5aa9ff; font-weight: 600;">⚡ 100% · Charging</div>
+                <div style="background: var(--color-button-bg); color: var(--color-accent-contrast); padding: 0.45rem; border-radius: var(--radius-control); font-size: 0.8rem; text-align: center; font-weight: 600;">🛡️ Admin PIN</div>
+                <div style="background: var(--color-raised); padding: 0.4rem; border-radius: var(--radius-control); font-size: 0.78rem; text-align: center; color: var(--color-text);">📶 Connect to Wi-Fi</div>
+              </div>
+            </div>
+
+            <!-- Screen 2: First-Time Setup Wizard -->
+            <div class="glass-card span-6" style="padding: 1rem; border-radius: var(--radius-card); border: 1px solid var(--color-border); background: var(--color-surface);">
+              <div style="text-align: center; margin-bottom: 0.5rem;">
+                <span style="font-size: 0.72rem; color: var(--color-muted); font-weight: 600;">SETUP WIZARD</span>
+              </div>
+              <h4 style="font-size: 1rem; font-weight: 700; text-align: center; margin-bottom: 0.25rem;">First-Time Setup</h4>
+              <p style="font-size: 0.75rem; color: var(--color-muted); text-align: center; margin-bottom: 0.65rem;">Configure initial settings &amp; permissions.</p>
+
+              <div style="background: var(--color-raised); padding: 0.5rem; border-radius: var(--radius-control); margin-bottom: 0.5rem;">
+                <div style="font-size: 0.72rem; color: var(--color-muted); font-weight: 600;">🏢 Admin Name</div>
+                <div style="font-size: 0.8rem; font-weight: 700; margin-top: 0.2rem;">Mobile Kiosk</div>
+              </div>
+
+              <div style="background: var(--color-raised); padding: 0.5rem; border-radius: var(--radius-control);">
+                <div style="font-size: 0.72rem; color: var(--color-muted); font-weight: 600;">⚙️ System Permissions</div>
+                <div style="font-size: 0.72rem; color: var(--color-text); margin-top: 0.2rem;">• Notifications (Session updates)</div>
+                <div style="font-size: 0.72rem; color: var(--color-text);">• Usage Stats Access</div>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="font-size: 0.8rem; color: var(--color-muted); display: flex; justify-content: space-between;">
+            <span><strong>Platform:</strong> Native Android (Smartphones &amp; Tablets)</span>
+            <span><strong>Security:</strong> Safe Browser Active</span>
+          </div>
+
         </div>
       </div>
     </section>
@@ -121,22 +211,6 @@
 
       <div id="dynamic-projects-grid" class="project-grid" aria-live="polite"></div>
       <noscript><p class="noscript-panel card">Projects load from projects.json when JavaScript is enabled.</p></noscript>
-    </section>
-
-    <!-- FLAGSHIP APP BANNER -->
-    <section class="container section" id="flagship-callout">
-      <div class="card glass-card reveal" style="padding: 2rem; border-radius: var(--radius-card);">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Flagship Android Application</p>
-            <h2>Bebet Mobile Kiosk</h2>
-            <p>Android kiosk app engineered for mobile device rental tracking, session countdown timers, PIN-protected administrator controls, and app access restriction.</p>
-          </div>
-        </div>
-        <div style="margin-top: 1.25rem;">
-          <a class="button" href="contact.html?product=bebet-mobile-kiosk">Inquire About App <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
     </section>
   </main>
 
