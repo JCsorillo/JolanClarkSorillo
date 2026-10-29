@@ -836,26 +836,34 @@ function initAnimatedCounters() {
   const counters = document.querySelectorAll("[data-counter-target]");
   if (!counters.length) return;
 
+  const animateCounter = (el) => {
+    const target = parseInt(el.dataset.counterTarget, 10) || 0;
+    const suffix = el.dataset.counterSuffix || "";
+    let current = 0;
+    const increment = Math.max(1, Math.ceil(target / 20));
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = `${current}${suffix}`;
+    }, 30);
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    counters.forEach(animateCounter);
+    return;
+  }
+
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.counterTarget, 10);
-        const suffix = el.dataset.counterSuffix || "";
-        let current = 0;
-        const increment = Math.max(1, Math.ceil(target / 25));
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          el.textContent = `${current}${suffix}`;
-        }, 30);
-        obs.unobserve(el);
+        animateCounter(entry.target);
+        obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.1 });
 
   counters.forEach((counter) => observer.observe(counter));
 }
@@ -953,13 +961,19 @@ function initCursorGlow() {
   requestAnimationFrame(animateGlow);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  initShell();
-  initContactForm();
-  initReveals();
-  loadDynamicProjectsGrid();
-  initCursorSpotlightAndTilt();
-  initAnimatedCounters();
-  initFloatingDock();
-  initCursorGlow();
-});
+const runModule = () => {
+  try { initShell(); } catch (e) { console.error("initShell error:", e); }
+  try { initContactForm(); } catch (e) { console.error("initContactForm error:", e); }
+  try { initReveals(); } catch (e) { console.error("initReveals error:", e); }
+  try { loadDynamicProjectsGrid(); } catch (e) { console.error("loadDynamicProjectsGrid error:", e); }
+  try { initCursorSpotlightAndTilt(); } catch (e) { console.error("initCursorSpotlightAndTilt error:", e); }
+  try { initAnimatedCounters(); } catch (e) { console.error("initAnimatedCounters error:", e); }
+  try { initFloatingDock(); } catch (e) { console.error("initFloatingDock error:", e); }
+  try { initCursorGlow(); } catch (e) { console.error("initCursorGlow error:", e); }
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", runModule);
+} else {
+  runModule();
+}
