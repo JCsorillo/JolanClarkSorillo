@@ -401,7 +401,7 @@ img {
   position: relative;
   z-index: 1;
   min-height: 70vh;
-  padding-top: calc(var(--nav-h) + 0.5rem);
+  padding-top: clamp(5.5rem, 8vw, 7.5rem);
 }
 
 .section {
