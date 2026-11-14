@@ -78,79 +78,42 @@
   <noscript><nav aria-label="Main navigation"><a href="index.html">Home</a> · <a href="resume.html">Resume</a> · <a href="contact.html">Contact</a></nav></noscript>
 
   <main id="main-content" class="page-main">
-    <!-- 1. PERSONAL DEVELOPER HERO SECTION (Photo + Profile) -->
-    <section class="container hero hero-bento" id="home">
-      <!-- Jolan's Portrait Photo Card -->
-      <figure class="portfolio-photo portfolio-image-card glass-card reveal span-4">
-        <img src="img/intro-bg.webp" alt="Portrait of Jolan Clark A. Sorillo" width="600" height="750" loading="eager" decoding="async">
-        <figcaption class="portrait-caption">
-          <strong>Jolan Clark A. Sorillo</strong>
-          <span>Iloilo City, PH</span>
-        </figcaption>
-      </figure>
-
-      <!-- Personal Bio & Developer Headline -->
-      <div class="hero-tile glass-card reveal span-8">
-        <div class="live-status-pill">
-          <span class="pulse-dot"></span>
-          <span>Available for Remote Technical Support &amp; VA Roles</span>
+    <section class="container hero hero-bento home-hero" id="home" aria-labelledby="home-title">
+      <div class="home-hero-copy reveal">
+        <p class="home-hero-name">Jolan Clark Sorillo</p>
+        <h1 id="home-title">IT Support<br>Web Developer</h1>
+        <p class="home-hero-summary">I make technology easier to use — from helping people solve everyday IT problems to building useful digital tools.</p>
+        <div class="home-hero-links">
+          <a class="home-text-link" href="#portfolio-section">Explore my work <span aria-hidden="true">↘</span></a>
+          <a class="home-text-link is-muted" href="contact.html">Let's talk <span aria-hidden="true">↗</span></a>
         </div>
-        <p class="eyebrow">IT Graduate · Technical Support, Data Management &amp; SEO Monitoring</p>
-        <h1>Hi, I'm Jolan Clark Sorillo.</h1>
-        <p class="hero-intro">An Information Technology graduate based in Iloilo City, Philippines. I specialize in desktop and technical support, data management, and SEO monitoring (Google Analytics), using AI vibe coding to rapidly build web systems and technical tools.</p>
-
-        <!-- Live Animated Stats Bar -->
-        <div class="stats-counter-bar">
-          <div class="counter-tile glass-card">
-            <div class="counter-number" data-counter-target="14" data-counter-suffix="+">0</div>
-            <div class="counter-label">Deployed Projects</div>
-          </div>
-          <div class="counter-tile glass-card">
-            <div class="counter-number" data-counter-target="120" data-counter-suffix="+">0</div>
-            <div class="counter-label">Mbps Fiber Internet</div>
-          </div>
-          <div class="counter-tile glass-card">
-            <div class="counter-number" data-counter-target="24" data-counter-suffix=" GB">0</div>
-            <div class="counter-label">DDR4 Workstation RAM</div>
-          </div>
-          <div class="counter-tile glass-card">
-            <div class="counter-number" data-counter-target="100" data-counter-suffix="%">0</div>
-            <div class="counter-label">Remote Work Ready</div>
-          </div>
-        </div>
-
-        <div class="hero-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-block: 0.75rem 1.25rem;">
-          <span class="tag">Vibe Coder &amp; AI Implementation</span>
-          <span class="tag">Frontend Web (HTML/CSS/JS)</span>
-          <span class="tag">SEO &amp; Google Analytics</span>
-          <span class="tag">Customer Service &amp; CRM</span>
-          <span class="tag">IT Support &amp; Diagnostics</span>
-          <span class="tag">24GB RAM · 120Mbps Fiber</span>
-        </div>
-        <div class="hero-cta-buttons">
-          <a class="button" href="resume.html"><svg class="icon icon-20 icon-file-text" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="img/icons.svg#file-text"></use></svg> <span>View Resume</span> <span aria-hidden="true">→</span></a>
-          <a class="button button-secondary" href="#workstation-specs">Workstation Specs <span aria-hidden="true">↓</span></a>
-          <a class="button button-secondary" href="#featured-app">Highlight App <span aria-hidden="true">↓</span></a>
-          <a class="button button-secondary" href="contact.html">Contact Me <span aria-hidden="true">→</span></a>
+        <div class="home-hero-meta">
+          <span><i aria-hidden="true"></i> Based in Iloilo City, Philippines</span>
+          <span>IT graduate · Available for remote roles</span>
         </div>
       </div>
+      <figure class="home-hero-portrait reveal">
+        <img src="img/intro-bg.webp" alt="Portrait of Jolan Clark A. Sorillo" width="600" height="750" loading="eager" decoding="async">
+        <figcaption>Jolan Clark A. Sorillo <span>· Iloilo City, PH</span></figcaption>
+      </figure>
+      <div class="home-hero-watermark" aria-hidden="true">SUPPORT · BUILD · IMPROVE ·</div>
     </section>
 
     <!-- 2. VA & REMOTE WORKSTATION SPECS -->
     <section class="container section" id="workstation-specs" aria-labelledby="specs-title">
-      <div class="card glass-card reveal" style="padding: clamp(1.25rem, 3vw, 2.25rem); border-radius: var(--radius-card);">
+      <div class="card glass-card home-gear-panel reveal" style="padding: clamp(1.25rem, 3vw, 2.25rem); border-radius: var(--radius-card);">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Remote Infrastructure &amp; VA Setup</p>
-            <h2 id="specs-title">Workstation Specs &amp; High-Speed Connectivity</h2>
+            <p class="eyebrow">GEAR &amp; WORKSPACE</p>
+            <h2 id="specs-title">A reliable setup for remote work.</h2>
             <p>100% verified hardware and high-speed fiber internet setup for Virtual Assistant, Customer Support, and Remote Technical roles.</p>
           </div>
           <span class="tag" style="background: rgba(74, 174, 88, 0.15); border-color: #4aae58; color: var(--color-text); font-weight: 600;">✓ REMOTE WORK VERIFIED</span>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+        <div class="home-gear-grid" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem;">
           <!-- Spec 1: Laptop / System -->
-          <div class="glass-card span-4" style="padding: 1.25rem; border-radius: var(--radius-card);">
+          <div class="glass-card home-gear-card span-4" style="padding: 1.25rem; border-radius: var(--radius-card);">
             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
               <span style="font-size: 1.25rem;">💻</span>
               <h3 style="font-size: 1.05rem; margin: 0;">Dell Vostro 5515</h3>
@@ -160,7 +123,7 @@
           </div>
 
           <!-- Spec 2: RAM & Memory -->
-          <div class="glass-card span-4" style="padding: 1.25rem; border-radius: var(--radius-card);">
+          <div class="glass-card home-gear-card span-4" style="padding: 1.25rem; border-radius: var(--radius-card);">
             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
               <span style="font-size: 1.25rem;">🧠</span>
               <h3 style="font-size: 1.05rem; margin: 0;">24 GB DDR4 RAM</h3>
@@ -170,7 +133,7 @@
           </div>
 
           <!-- Spec 3: Internet Connectivity -->
-          <div class="glass-card span-4" style="padding: 1.25rem; border-radius: var(--radius-card);">
+          <div class="glass-card home-gear-card span-4" style="padding: 1.25rem; border-radius: var(--radius-card);">
             <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
               <span style="font-size: 1.25rem;">⚡</span>
               <h3 style="font-size: 1.05rem; margin: 0;">120+ Mbps Internet</h3>
@@ -329,9 +292,9 @@
     <section class="container section" id="portfolio-section" aria-labelledby="portfolio-title">
       <div class="section-heading reveal">
         <div>
-          <p class="eyebrow">Curated Collection of Work Samples (A – Z)</p>
-          <h2 id="portfolio-title">Web Applications &amp; Work Samples</h2>
-          <p>A curated collection of 14+ live web applications, templates, and software utilities built for specific business and technical goals.</p>
+          <p class="eyebrow">SELECTED WORK</p>
+          <h2 id="portfolio-title">Digital tools built to solve real problems.</h2>
+          <p>A selection of web applications, practical tools, and experiments shaped around real needs.</p>
         </div>
       </div>
 
@@ -354,13 +317,12 @@
       <noscript><p class="noscript-panel card">Projects load from projects.json when JavaScript is enabled.</p></noscript>
     </section>
 
-    <!-- 6. ABOUT ME & TECHNICAL BACKGROUND -->
-    <section class="container section" id="about-section" aria-labelledby="about-title">
+    <section class="container section home-about" id="about-section" aria-labelledby="about-title">
       <div class="section-heading reveal">
         <div>
-          <p class="eyebrow">About Jolan Clark Sorillo</p>
-          <h2 id="about-title">Technical Background &amp; Expertise</h2>
-          <p>BS Information Technology graduate from Northern Iloilo State University (NISU) combining IT knowledge, customer service experience, SEO analytics, and AI vibe coding.</p>
+          <p class="eyebrow">ABOUT</p>
+          <h2 id="about-title">A practical mind for people and technology.</h2>
+          <p>I'm an Information Technology graduate from Northern Iloilo State University. My experience spans technical support, customer service, data work, web development, and SEO analytics.</p>
         </div>
         <a class="inline-link" href="resume.html">Read Complete Resume <span aria-hidden="true">→</span></a>
       </div>
@@ -386,6 +348,12 @@
           <p>PC &amp; mobile hardware troubleshooting, broadband network optimization, digital document archiving, and supply inventory tracking.</p>
         </article>
       </div>
+      <div class="home-experience" id="experience-section">
+        <div class="home-experience-heading">
+          <p class="eyebrow">EXPERIENCE</p>
+          <h2>Where I've worked so far.</h2>
+          <p>From my first office role to customer support and independent projects.</p>
+        </div>
       <div class="timeline" style="margin-top: 2rem;">
         <article class="timeline-entry glass-card reveal">
           <time>Oct 2025 – Apr 2026</time>
@@ -403,6 +371,7 @@
           <p>Desktop/mobile hardware diagnostics, broadband network optimization, Search Console &amp; Google Analytics monitoring, and web development.</p>
         </article>
       </div>
+      </div>
     </section>
 
     <!-- 7. FREQUENTLY ASKED QUESTIONS (FAQ) -->
@@ -410,7 +379,7 @@
       <div class="section-heading reveal">
         <div>
           <p class="eyebrow">Frequently Asked Questions</p>
-          <h2 id="faq-title">Questions &amp; Insights</h2>
+          <h2 id="faq-title">Questions I often get asked.</h2>
           <p>Common questions about Jolan Clark Sorillo, education, background, Vibe Coding, and remote setup.</p>
         </div>
       </div>
@@ -461,12 +430,12 @@
     </section>
 
     <!-- 7. CONTACT & GET IN TOUCH -->
-    <section class="container section" id="contact-section" aria-labelledby="contact-heading">
+    <section class="container section home-contact" id="contact-section" aria-labelledby="contact-heading">
       <div class="card contact-form-panel reveal">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Get In Touch</p>
-            <h2 id="contact-heading">Connect with Jolan Clark Sorillo</h2>
+            <p class="eyebrow">AVAILABLE FOR REMOTE WORK</p>
+            <h2 id="contact-heading">Have a problem to solve?</h2>
             <p>Need assistance with web development, vibe coding project execution, IT support, SEO analytics monitoring, or virtual assistant operations?</p>
           </div>
         </div>

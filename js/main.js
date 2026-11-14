@@ -22,15 +22,39 @@ const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
 const themeIcon = (theme) => iconSvg(theme === "dark" ? "sun" : "moon");
 
 function renderHeader() {
+  const currentTheme = document.documentElement.dataset.theme;
+  if (!document.body.classList.contains("page-home")) {
+    return `
+      <header class="site-header">
+        <div class="nav-shell">
+          <a class="brand" href="index.html#home" aria-label="Larck home"><span class="brand-mark" aria-hidden="true">L</span><span>Larck.</span></a>
+          <div class="nav-actions">
+            <a class="button button-secondary nav-home" href="index.html#home">${iconSvg("house")}<span>Home</span></a>
+            <a class="button nav-contact" href="contact.html">${iconSvg("mail")}<span>Contact</span></a>
+          </div>
+        </div>
+      </header>`;
+  }
   return `
     <header class="site-header">
       <div class="nav-shell">
-        <a class="brand" href="index.html#home" aria-label="Larck home"><span class="brand-mark" aria-hidden="true">L</span><span>Larck.</span></a>
+        <a class="brand" href="index.html#home" aria-label="Jolan Clark Sorillo home"><span>Jolan</span></a>
         <div class="nav-actions">
-          <a class="button button-secondary nav-home" href="index.html#home">${iconSvg("house")}<span>Home</span></a>
-          <a class="button nav-contact" href="contact.html">${iconSvg("mail")}<span>Contact</span></a>
+          <button class="theme-toggle" type="button" aria-label="Switch to ${currentTheme === "dark" ? "light" : "dark"} theme" aria-pressed="${currentTheme === "dark"}">${themeIcon(currentTheme)}</button>
+          <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+            <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+          </button>
         </div>
       </div>
+      <nav class="nav-menu" id="primary-navigation" aria-label="Main navigation" inert>
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about-section">About</a>
+        <a href="index.html#experience-section">Experience</a>
+        <a href="index.html#workstation-specs">Gear</a>
+        <a href="index.html#portfolio-section">Work</a>
+        <a href="resume.html">Resume</a>
+        <a class="nav-menu-contact" href="contact.html">Contact</a>
+      </nav>
     </header>`;
 }
 
@@ -254,12 +278,31 @@ function initShell() {
   const siteHeader = document.querySelector(".site-header");
   const setThemeColor = () => {
     const themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.content = getComputedStyle(document.documentElement).getPropertyValue("--color-bg").trim();
+    if (themeColor) themeColor.content = getComputedStyle(document.body).getPropertyValue("--color-bg").trim();
   };
   setThemeColor();
   const updateHeader = () => siteHeader?.classList.toggle("is-condensed", window.scrollY > 24);
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
+
+  const menuToggle = siteHeader?.querySelector(".menu-toggle");
+  const menu = siteHeader?.querySelector(".nav-menu");
+  const setMenuOpen = (isOpen) => {
+    if (!menuToggle || !menu) return;
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+    menu.inert = !isOpen;
+    siteHeader.classList.toggle("menu-open", isOpen);
+  };
+  menuToggle?.addEventListener("click", () => {
+    setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+  });
+  menu?.addEventListener("click", (event) => {
+    if (event.target.closest("a")) setMenuOpen(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenuOpen(false);
+  });
 
   document.addEventListener("click", (event) => {
     const toggle = event.target.closest(".theme-toggle");
