@@ -37,6 +37,7 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/showcase.css">
 </head>
 <body data-page="portfolio">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -225,12 +226,13 @@
         </div>
       </div>
 
-      <div id="dynamic-projects-grid" class="project-grid" aria-live="polite"></div>
+      <div id="dynamic-projects-grid" class="project-grid"></div>
       <noscript><p class="noscript-panel card">Projects load from projects.json when JavaScript is enabled.</p></noscript>
     </section>
   </main>
 
   <div id="site-footer"></div>
   <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/showcase.js" defer></script>
 </body>
 </html>

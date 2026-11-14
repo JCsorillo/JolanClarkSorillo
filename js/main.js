@@ -1,5 +1,6 @@
 import { products } from "./products.js";
 import { collections, stores } from "./stores.js";
+import { createProjectCarousel } from "./showcase.js";
 
 document.documentElement.classList.add("has-js");
 
@@ -768,41 +769,6 @@ function initDynamicShopAndDemo() {
 
 /* --- Dynamic projects.json loader for portfolio showcase --- */
 
-function renderProjectCard(project) {
-  const categoryTag = project.category || (project.tags && project.tags[0]) || "Project";
-  const year = project.year || "2025";
-  const status = project.status || "Live Deployment";
-
-  const features = (project.features || []).map((f) =>
-    `<li>${escapeHtml(f)}</li>`
-  ).join("");
-
-  const techList = (project.techStack || project.tags || []).map((tech) =>
-    `<span class="tag">${escapeHtml(tech)}</span>`
-  ).join("");
-
-  const targetUrl = project.url || project.repoUrl || "#";
-  const linkLabel = project.linkText || "Visit Live Site";
-
-  return `
-    <article class="project-card glass-card reveal is-visible" style="display: flex; flex-direction: column;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; gap: 0.5rem;">
-        <span class="category-tag">${iconSvg("package", 16)} ${escapeHtml(categoryTag)}</span>
-        <span style="font-size: 0.78rem; color: var(--color-muted); font-weight: 500;">${escapeHtml(year)} · <span style="color: #4aae58;">● ${escapeHtml(status)}</span></span>
-      </div>
-      <h3 style="font-size: 1.2rem; margin-block: 0.35rem 0.5rem;">${iconSvg("external-link", 20)}<span>${escapeHtml(project.title)}</span></h3>
-      <p style="color: var(--color-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 0.75rem;">${escapeHtml(project.description)}</p>
-
-      ${features ? `<ul class="project-features-list" style="padding-left: 1.1rem; margin: 0 0 0.85rem; font-size: 0.82rem; color: var(--color-muted);">${features}</ul>` : ""}
-
-      <div class="tags" style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; margin-top: auto;">${techList}</div>
-
-      <div class="card-actions" style="margin-top: 0.5rem; padding-top: 0.75rem; border-top: 1px solid var(--color-border);">
-        <a class="button button-secondary" href="${escapeHtml(targetUrl)}" target="_blank" rel="noopener noreferrer">${iconSvg("external-link")}${escapeHtml(linkLabel)}</a>
-      </div>
-    </article>`;
-}
-
 async function loadDynamicProjectsGrid() {
   const container = document.getElementById("dynamic-projects-grid");
   if (!container) return;
@@ -813,11 +779,8 @@ async function loadDynamicProjectsGrid() {
     const projects = await res.json();
     projects.sort((a, b) => String(a.title || "").localeCompare(String(b.title || ""), undefined, { sensitivity: "base" }));
 
-    container.innerHTML = projects.map(renderProjectCard).join("");
-
-    initReveals();
-    initCursorSpotlightAndTilt();
-    initInteractiveProjectFilters(projects);
+    const carousel = createProjectCarousel(container);
+    initInteractiveProjectFilters(projects, carousel.setProjects);
   } catch (err) {
     container.innerHTML = `<p class="empty-results">Could not load projects.</p>`;
     console.warn("loadDynamicProjectsGrid:", err);
@@ -909,7 +872,7 @@ function initAnimatedCounters() {
   counters.forEach((counter) => observer.observe(counter));
 }
 
-function initInteractiveProjectFilters(projectsData = []) {
+function initInteractiveProjectFilters(projectsData = [], setProjects = () => {}) {
   const searchInput = document.getElementById("project-search");
   const filterChipsContainer = document.getElementById("category-filter-chips");
   const gridContainer = document.getElementById("dynamic-projects-grid");
@@ -918,31 +881,30 @@ function initInteractiveProjectFilters(projectsData = []) {
 
   let currentCategory = "All";
   let searchQuery = "";
+  const allProjectsChip = filterChipsContainer?.querySelector('[data-filter="All"]');
+  if (allProjectsChip) allProjectsChip.textContent = `All Projects (${projectsData.length})`;
 
   const renderFilteredProjects = () => {
     const query = searchQuery.toLowerCase().trim();
 
     const filtered = projectsData.filter((project) => {
+      const tags = Array.isArray(project.tags) ? project.tags : [];
+      const techStack = Array.isArray(project.techStack) ? project.techStack : [];
+      const title = String(project.title || "");
+      const description = String(project.description || "");
       const matchCategory = currentCategory === "All" ||
-        (project.tags || []).some((tag) => tag.toLowerCase().includes(currentCategory.toLowerCase())) ||
-        project.title.toLowerCase().includes(currentCategory.toLowerCase()) ||
-        project.description.toLowerCase().includes(currentCategory.toLowerCase());
+        [...tags, ...techStack].some((tag) => String(tag).toLowerCase().includes(currentCategory.toLowerCase())) ||
+        title.toLowerCase().includes(currentCategory.toLowerCase()) ||
+        description.toLowerCase().includes(currentCategory.toLowerCase());
 
-      const searchableText = `${project.title} ${project.description} ${(project.tags || []).join(" ")}`.toLowerCase();
+      const searchableText = `${title} ${description} ${tags.join(" ")} ${techStack.join(" ")}`.toLowerCase();
       const matchSearch = !query || searchableText.includes(query);
 
       return matchCategory && matchSearch;
     });
 
-    if (!filtered.length) {
-      gridContainer.innerHTML = `<p class="empty-results card" style="grid-column: 1 / -1; padding: 2rem; text-align: center;">No matching projects found for "${escapeHtml(searchQuery)}".</p>`;
-      return;
-    }
-
-    gridContainer.innerHTML = filtered.map(renderProjectCard).join("");
-
-    initReveals();
-    initCursorSpotlightAndTilt();
+    const emptyMessage = `No matching projects found${searchQuery.trim() ? ` for "${searchQuery.trim()}"` : ""}.`;
+    setProjects(filtered, emptyMessage);
   };
 
   if (searchInput) {
@@ -961,9 +923,11 @@ function initInteractiveProjectFilters(projectsData = []) {
       chip.classList.add("is-active");
 
       currentCategory = chip.dataset.filter || "All";
+      if (allProjectsChip) allProjectsChip.textContent = `All Projects (${projectsData.length})`;
       renderFilteredProjects();
     });
   }
+  renderFilteredProjects();
 }
 
 function initFloatingDock() {

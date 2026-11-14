@@ -1,0 +1,669 @@
+/* v2.1.0 */
+
+#dynamic-projects-grid.project-carousel {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+  --project-phone-width: clamp(15rem, 22vw, 19rem);
+}
+
+.project-carousel-region {
+  position: relative;
+  width: 100%;
+  height: clamp(30rem, 44vw, 40rem);
+  overflow: hidden;
+  outline: none;
+}
+
+.project-carousel-region:focus-visible,
+.project-carousel-arrow:focus-visible,
+.project-carousel-dot:focus-visible,
+.project-preview-link:focus-visible,
+.contact-stack-card-header:focus-visible,
+.contact-stack-card-action:focus-visible {
+  outline: 3px solid var(--color-focus, #7569e8);
+  outline-offset: 3px;
+}
+
+.project-carousel-track {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.project-preview-slide {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--project-phone-width);
+  aspect-ratio: 9 / 18;
+  transform-origin: center;
+  transition: transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1), opacity 450ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.project-preview-slide.is-active {
+  filter: drop-shadow(0 1rem 1.5rem rgba(10, 10, 15, 0.18));
+}
+
+.project-preview-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  overflow: hidden;
+  border: 2px solid rgba(160, 160, 170, 0.42);
+  border-radius: 2rem;
+  background: #101013;
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-preview-slide.is-active .project-preview-link {
+  border-color: transparent;
+  background: linear-gradient(135deg, #f5a524, #ef4a8b 52%, #8b5cf6);
+  box-shadow: 0 0.8rem 2.4rem rgba(239, 74, 139, 0.2);
+}
+
+.project-preview-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: calc(2rem - 2px);
+  background: #101013;
+}
+
+.project-preview-frame iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 390px;
+  height: 780px;
+  max-width: none;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: top left;
+  transition: opacity 220ms ease;
+}
+
+.project-preview-slide.is-loaded .project-preview-frame iframe {
+  opacity: 1;
+}
+
+.project-preview-skeleton {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  background: linear-gradient(155deg, #17171b, #09090b 68%, #17171c);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.project-preview-skeleton::after {
+  position: absolute;
+  inset: -70% -40%;
+  background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.07) 50%, transparent 58%);
+  content: "";
+  animation: project-preview-shimmer 1.8s linear infinite;
+}
+
+.project-preview-skeleton > span {
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 750;
+  letter-spacing: -0.08em;
+}
+
+@keyframes project-preview-shimmer {
+  to { transform: translateX(50%); }
+}
+
+.project-preview-unavailable {
+  position: absolute;
+  z-index: 2;
+  inset: auto 0 0;
+  padding: 2.5rem 1rem 1.2rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.5;
+  text-align: center;
+  pointer-events: none;
+}
+
+.project-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+.project-carousel-arrow {
+  display: grid;
+  width: 2.8rem;
+  height: 2.8rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid var(--color-border, #dedee2);
+  border-radius: 50%;
+  background: var(--color-surface, #f5f4f6);
+  color: var(--color-text, #111);
+  cursor: pointer;
+}
+
+.project-carousel-arrow .icon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.project-carousel-prev .icon {
+  transform: rotate(180deg);
+}
+
+.project-carousel-arrow:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.project-carousel-pagination {
+  min-width: 9rem;
+  display: grid;
+  place-items: center;
+}
+
+.project-carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.48rem;
+}
+
+.project-carousel-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-text, #111) 20%, transparent);
+  cursor: pointer;
+}
+
+.project-carousel-dot.is-active {
+  width: 1.45rem;
+  border-radius: 1rem;
+  background: var(--color-text, #111);
+}
+
+.project-carousel-count {
+  display: none;
+  color: var(--color-muted, #76767b);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
+.project-carousel-info {
+  max-width: 48rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  margin: 2rem auto 0;
+  border: 1px solid var(--color-border, #dedee2);
+  border-radius: 1.4rem;
+  background: var(--color-surface, #f5f4f6);
+  color: var(--color-text, #111);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.project-carousel-info.is-swapping {
+  opacity: 0;
+  transform: translateY(0.5rem);
+}
+
+.project-preview-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+  color: var(--color-muted, #76767b);
+  font-size: 0.78rem;
+}
+
+.project-preview-category {
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--color-border, #dedee2);
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.project-carousel-info h3 {
+  margin-bottom: 0.55rem;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  letter-spacing: -0.06em;
+  overflow-wrap: anywhere;
+}
+
+.project-preview-description {
+  margin-bottom: 0.9rem;
+  color: var(--color-muted, #76767b);
+  line-height: 1.65;
+}
+
+.project-preview-features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem 1.4rem;
+  padding-left: 1.1rem;
+  margin: 0.75rem 0 1rem;
+  color: var(--color-muted, #76767b);
+  font-size: 0.82rem;
+}
+
+.project-preview-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-block: 1rem 1.25rem;
+}
+
+.project-preview-chip {
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--color-border, #dedee2);
+  border-radius: 999px;
+  color: var(--color-muted, #76767b);
+  font-size: 0.76rem;
+}
+
+.project-preview-open,
+.contact-stack-card-action {
+  display: inline-flex;
+  min-height: 2.8rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+  background: #09090a;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.project-preview-open:hover,
+.contact-stack-card-action:hover {
+  background: #252529;
+  color: #fff;
+}
+
+.project-carousel-empty {
+  padding: 2rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.project-preview-error {
+  padding: 0.8rem 1rem;
+  text-align: center;
+}
+
+.contact-stack-mount {
+  width: min(100%, 32rem);
+  min-width: 0;
+  margin-inline: auto;
+}
+
+.contact-stack-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.75rem 0.9rem 1.1rem;
+}
+
+.contact-stack-profile img {
+  width: 56px;
+  height: 56px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.contact-stack-profile-copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.08rem;
+}
+
+.contact-stack-profile-copy strong {
+  color: var(--color-text);
+  font-size: 0.96rem;
+}
+
+.contact-stack-profile-copy > span,
+.contact-local-time {
+  color: var(--color-muted);
+  font-size: 0.78rem;
+}
+
+.contact-stack {
+  position: relative;
+  width: 100%;
+  height: var(--stack-height, 424px);
+}
+
+.contact-stack-card {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 256px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1.6rem;
+  color: #fff;
+  transform: translateY(var(--stack-y, 0));
+  transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.contact-stack-card.is-whatsapp {
+  background: linear-gradient(135deg, #35c96b, #168a45);
+  color: #fff;
+}
+
+.contact-stack-card.is-gmail {
+  border-color: #e3e1e7;
+  background: #f5f4f6;
+  color: #121214;
+}
+
+.contact-stack-card.is-linkedin {
+  background: #0a66c2;
+  color: #fff;
+}
+
+.contact-stack-card.is-viber {
+  background: #7360f2;
+  color: #fff;
+}
+
+.contact-stack-card-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 56px;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0 1.15rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+}
+
+.contact-stack-card-header[hidden] {
+  display: none;
+}
+
+.contact-stack-card-header .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.contact-stack-card-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.2rem 1.3rem;
+}
+
+.contact-stack-card-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+.contact-stack-card-brand .icon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.contact-stack-card-detail {
+  flex: 1;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.contact-stack-card-detail p {
+  margin: 0.35rem 0;
+}
+
+.contact-card-number {
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.contact-card-person {
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.contact-stack-card-action {
+  min-height: 2.55rem;
+  align-self: flex-end;
+  padding: 0.55rem 1rem;
+}
+
+.gmail-compose {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #e1dfe5;
+  border-radius: 0.85rem;
+  background: #fff;
+  font-size: 0.8rem;
+}
+
+.gmail-compose p {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #eeeef0;
+}
+
+.gmail-compose p:last-child {
+  border-bottom: 0;
+}
+
+.gmail-compose p:first-child span {
+  color: #8b8990;
+}
+
+.gmail-caret {
+  display: inline-block;
+  width: 1px;
+  height: 0.9em;
+  margin-left: 2px;
+  background: #3574ec;
+  vertical-align: -0.1em;
+  animation: gmail-caret-blink 1s steps(2, start) infinite;
+}
+
+@keyframes gmail-caret-blink {
+  to { visibility: hidden; }
+}
+
+.contact-typing {
+  display: flex;
+  width: fit-content;
+  gap: 0.25rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.contact-typing i {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: #92929a;
+  animation: contact-dot-bounce 1s ease-in-out infinite;
+}
+
+.contact-typing i:nth-child(2) { animation-delay: 120ms; }
+.contact-typing i:nth-child(3) { animation-delay: 240ms; }
+
+.contact-typing-copy {
+  color: rgba(0, 0, 0, 0.67);
+  font-size: 0.8rem;
+}
+
+@keyframes contact-dot-bounce {
+  50% { transform: translateY(-3px); }
+}
+
+.page-home .home-contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr);
+  align-items: center;
+  gap: clamp(2rem, 7vw, 6rem);
+}
+
+.page-home .home-contact-copy .section-heading {
+  margin-bottom: 1rem;
+}
+
+.page-home .contact-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid rgba(35, 198, 126, 0.55);
+  border-radius: 999px;
+  color: #27c884;
+  font-size: 0.8rem;
+}
+
+.page-home .contact-availability::before {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: currentColor;
+  content: "";
+}
+
+.page-home .home-contact .contact-stack-profile-copy strong,
+.page-home .home-contact .contact-stack-profile-copy > span,
+.page-home .home-contact .contact-local-time {
+  color: #f7f6f8;
+}
+
+.page-home .home-contact .contact-local-time {
+  opacity: 0.58;
+}
+
+.page-home .home-contact .contact-stack-profile {
+  padding-inline: 0.35rem;
+}
+
+.page-home .home-contact .contact-stack-card {
+  box-shadow: 0 1rem 2.8rem rgba(0, 0, 0, 0.24);
+}
+
+.page-home .home-contact .contact-stack-card.is-gmail .contact-stack-card-header {
+  color: #121214;
+}
+
+@media (max-width: 880px) {
+  #dynamic-projects-grid.project-carousel {
+    --project-phone-width: min(70vw, 18rem);
+  }
+
+  .project-carousel-region {
+    height: min(140vw, 36rem);
+  }
+
+  .project-preview-features {
+    grid-template-columns: 1fr;
+  }
+
+  .page-home .home-contact-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  #dynamic-projects-grid.project-carousel {
+    --project-phone-width: min(70vw, 18rem);
+  }
+
+  .project-carousel-dots {
+    display: none;
+  }
+
+  .project-carousel-count {
+    display: inline;
+  }
+
+  .project-carousel-region {
+    height: min(140vw, 36rem);
+  }
+
+  .project-carousel-info {
+    padding: 1.1rem;
+    margin-top: 1.25rem;
+  }
+
+  .project-carousel-controls {
+    gap: 0.8rem;
+  }
+
+  .project-carousel-pagination {
+    min-width: 5rem;
+  }
+
+  .project-carousel-arrow {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  .project-preview-meta {
+    align-items: flex-start;
+  }
+
+  .contact-stack-mount {
+    width: 100%;
+  }
+
+  .contact-stack-card {
+    height: 246px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-preview-slide,
+  .project-preview-frame iframe,
+  .project-carousel-info,
+  .contact-stack-card {
+    transition: none;
+  }
+
+  .project-preview-skeleton::after,
+  .gmail-caret,
+  .contact-typing i {
+    animation: none;
+  }
+}

@@ -39,6 +39,7 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/showcase.css">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -313,7 +314,7 @@
         </div>
       </div>
 
-      <div id="dynamic-projects-grid" class="project-grid" aria-live="polite"></div>
+      <div id="dynamic-projects-grid" class="project-grid"></div>
       <noscript><p class="noscript-panel card">Projects load from projects.json when JavaScript is enabled.</p></noscript>
     </section>
 
@@ -432,18 +433,18 @@
     <!-- 7. CONTACT & GET IN TOUCH -->
     <section class="container section home-contact" id="contact-section" aria-labelledby="contact-heading">
       <div class="card contact-form-panel reveal">
-        <div class="section-heading">
-          <div>
+        <div class="home-contact-layout">
+          <div class="home-contact-copy">
+            <div class="section-heading">
+              <div>
             <p class="eyebrow">AVAILABLE FOR REMOTE WORK</p>
             <h2 id="contact-heading">Have a problem to solve?</h2>
             <p>Need assistance with web development, vibe coding project execution, IT support, SEO analytics monitoring, or virtual assistant operations?</p>
+              </div>
+            </div>
+            <span class="contact-availability">Available for remote work</span>
           </div>
-        </div>
-        <div class="button-row" style="margin-top: 1.5rem;">
-          <a class="button" href="https://wa.me/639287328109" target="_blank" rel="noopener noreferrer">WhatsApp Direct</a>
-          <a class="button button-secondary" href="viber://chat?number=%2B639287328109">Viber Direct</a>
-          <a class="button button-secondary" href="mailto:sorillojolanclark@gmail.com">Email Me</a>
-          <a class="button button-secondary" href="contact.html">Contact Form</a>
+          <div class="contact-stack-mount"></div>
         </div>
       </div>
     </section>
@@ -451,5 +452,6 @@
 
   <div id="site-footer"></div>
   <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/showcase.js" defer></script>
 </body>
 </html>
