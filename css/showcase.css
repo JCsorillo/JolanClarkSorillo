@@ -430,6 +430,10 @@
   padding: 1.2rem 1.3rem;
 }
 
+.contact-stack-card:not(.is-front) .contact-stack-card-content {
+  visibility: hidden;
+}
+
 .contact-stack-card-brand {
   display: flex;
   align-items: center;

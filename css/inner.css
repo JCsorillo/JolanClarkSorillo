@@ -1,0 +1,348 @@
+html:has(body:not(.page-home)) {
+  --inner-bg: #fcfbfc;
+  --inner-text: #0a0a0b;
+  --inner-muted: #77777c;
+  --inner-line: #e4e3e6;
+  --inner-card: #f5f4f6;
+  --color-bg: var(--inner-bg);
+  --color-text: var(--inner-text);
+  --color-muted: var(--inner-muted);
+  --color-link: var(--inner-text);
+  --color-accent: var(--inner-text);
+  --color-button-bg: var(--inner-text);
+  --color-accent-contrast: var(--inner-bg);
+  --color-focus: #8276ed;
+  --color-surface: var(--inner-card);
+  --color-raised: var(--inner-card);
+  --color-surface-fallback: #fff;
+  --color-border: var(--inner-line);
+  --color-border-strong: var(--inner-line);
+  --color-card-top: transparent;
+  --color-nav: color-mix(in srgb, var(--inner-bg) 92%, transparent);
+  --color-nav-scrolled: color-mix(in srgb, var(--inner-bg) 97%, transparent);
+  --color-footer: var(--inner-bg);
+  --color-shadow: rgba(15, 15, 20, 0.04);
+  --shadow-card: none;
+  background: var(--inner-bg);
+}
+
+html:has(body:not(.page-home))[data-theme="dark"] {
+  --inner-bg: #0b0b0d;
+  --inner-text: #f6f5f7;
+  --inner-muted: #a4a2a8;
+  --inner-line: #303034;
+  --inner-card: #17171a;
+  --color-surface-fallback: #17171a;
+  --color-nav: color-mix(in srgb, var(--inner-bg) 92%, transparent);
+  --color-nav-scrolled: color-mix(in srgb, var(--inner-bg) 97%, transparent);
+  --color-shadow: rgba(0, 0, 0, 0.18);
+}
+
+body:not(.page-home) {
+  min-height: 100vh;
+  background: var(--inner-bg);
+  color: var(--inner-text);
+  --inner-bg: #fcfbfc;
+  --inner-text: #0a0a0b;
+  --inner-muted: #77777c;
+  --inner-line: #e4e3e6;
+  --inner-card: #f5f4f6;
+  --color-bg: var(--inner-bg);
+  --color-text: var(--inner-text);
+  --color-muted: var(--inner-muted);
+  --color-link: var(--inner-text);
+  --color-accent: var(--inner-text);
+  --color-button-bg: var(--inner-text);
+  --color-accent-contrast: var(--inner-bg);
+  --color-surface: var(--inner-card);
+  --color-raised: var(--inner-card);
+  --color-border: var(--inner-line);
+  --color-border-strong: var(--inner-line);
+  --color-card-top: transparent;
+  --color-shadow: rgba(15, 15, 20, 0.04);
+  --shadow-card: none;
+}
+
+html[data-theme="dark"] body:not(.page-home) {
+  --inner-bg: #0b0b0d;
+  --inner-text: #f6f5f7;
+  --inner-muted: #a4a2a8;
+  --inner-line: #303034;
+  --inner-card: #17171a;
+  --color-shadow: rgba(0, 0, 0, 0.18);
+}
+
+body:not(.page-home) .aurora-background,
+body:not(.page-home) .floating-dock,
+body:not(.page-home) .cursor-glow {
+  display: none !important;
+}
+
+body:not(.page-home) .site-header {
+  top: 1rem;
+  width: min(calc(100% - 2rem), 74rem);
+  border-color: transparent;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--inner-bg) 88%, transparent);
+  box-shadow: 0 8px 26px rgba(10, 10, 12, 0.05);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+}
+
+body:not(.page-home) .site-header.is-condensed {
+  top: 0.65rem;
+  border-color: var(--inner-line);
+  background: color-mix(in srgb, var(--inner-bg) 96%, transparent);
+}
+
+body:not(.page-home) .nav-shell {
+  min-height: 4rem;
+  padding: 0.35rem 1.15rem;
+}
+
+body:not(.page-home) .brand {
+  gap: 0;
+  color: var(--inner-text);
+  font-size: 1.12rem;
+}
+
+body:not(.page-home) .brand-mark {
+  display: none;
+}
+
+body:not(.page-home) .nav-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+body:not(.page-home) .theme-toggle,
+body:not(.page-home) .menu-toggle {
+  position: relative;
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--inner-text);
+  cursor: pointer;
+}
+
+body:not(.page-home) .theme-toggle:hover,
+body:not(.page-home) .menu-toggle:hover {
+  background: var(--inner-card);
+}
+
+body:not(.page-home) .nav-menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  left: 0;
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.7rem;
+  border: 1px solid var(--inner-line);
+  border-radius: 1.5rem;
+  background: color-mix(in srgb, var(--inner-bg) 96%, transparent);
+  box-shadow: 0 20px 55px rgba(10, 10, 12, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-0.4rem);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+body:not(.page-home) .site-header.menu-open .nav-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+body:not(.page-home) .nav-menu a {
+  display: flex;
+  min-height: 2.9rem;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.8rem;
+  color: var(--inner-muted);
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+body:not(.page-home) .nav-menu a:hover,
+body:not(.page-home) .nav-menu a:focus-visible {
+  background: var(--inner-card);
+  color: var(--inner-text);
+}
+
+body:not(.page-home) .nav-menu .nav-menu-contact {
+  justify-content: center;
+  margin-top: 0.35rem;
+  background: var(--inner-text);
+  color: var(--inner-bg);
+}
+
+body:not(.page-home) .menu-open .menu-toggle svg {
+  opacity: 0;
+}
+
+body:not(.page-home) .menu-open .menu-toggle::after {
+  position: absolute;
+  content: "×";
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+body:not(.page-home) .page-main {
+  padding-top: clamp(6.5rem, 10vw, 8rem);
+}
+
+body:not(.page-home) .page-main h1,
+body:not(.page-home) .page-main h2,
+body:not(.page-home) .page-main h3 {
+  color: var(--inner-text);
+  font-weight: 680;
+  letter-spacing: -0.06em;
+}
+
+body:not(.page-home) .page-main h1 {
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  line-height: 1.02;
+}
+
+body:not(.page-home) .page-main h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.08;
+}
+
+body:not(.page-home) .page-main p,
+body:not(.page-home) .page-main li {
+  color: var(--inner-muted);
+}
+
+body:not(.page-home) .page-main .eyebrow {
+  color: var(--inner-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+body:not(.page-home) .glass-card,
+body:not(.page-home) .card,
+body:not(.page-home) .hero-tile,
+body:not(.page-home) .page-intro-tile,
+body:not(.page-home) .contact-form-panel,
+body:not(.page-home) .resume-section,
+body:not(.page-home) .product-detail,
+body:not(.page-home) .contact-card,
+body:not(.page-home) .feature-card,
+body:not(.page-home) .store-card,
+body:not(.page-home) .collection-card {
+  border: 1px solid var(--inner-line);
+  border-radius: 1.25rem;
+  background: var(--inner-card);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+body:not(.page-home) .glass-card::before,
+body:not(.page-home) .glass-card::after {
+  display: none;
+}
+
+body:not(.page-home) .button {
+  border-color: var(--inner-text);
+  border-radius: 999px;
+  background: var(--inner-text);
+  color: var(--inner-bg);
+}
+
+body:not(.page-home) .button:hover {
+  border-color: var(--inner-text);
+  background: var(--inner-text);
+  color: var(--inner-bg);
+}
+
+body:not(.page-home) .button-secondary {
+  border-color: var(--inner-line);
+  background: transparent;
+  color: var(--inner-text);
+}
+
+body:not(.page-home) .button-secondary:hover {
+  border-color: var(--inner-text);
+  background: var(--inner-text);
+  color: var(--inner-bg);
+}
+
+body:not(.page-home) .tag,
+body:not(.page-home) .category-tag,
+body:not(.page-home) .category-chip {
+  border-color: var(--inner-line);
+  background: transparent;
+  color: var(--inner-muted);
+}
+
+body:not(.page-home) .site-footer {
+  border-top: 1px solid var(--inner-line);
+  background: var(--inner-bg);
+  background-image: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+body:not(.page-home) .footer-primary-nav {
+  justify-content: flex-start;
+  gap: 0.5rem 1.5rem;
+}
+
+body:not(.page-home) .footer-nav-link,
+body:not(.page-home) .footer-socials a {
+  width: auto;
+  height: auto;
+  padding: 0.25rem 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--inner-muted);
+}
+
+body:not(.page-home) .footer-nav-link:hover,
+body:not(.page-home) .footer-socials a:hover,
+body:not(.page-home) .footer-legal-links a:hover {
+  background: transparent;
+  color: var(--inner-text);
+  text-decoration: underline;
+  transform: none;
+  box-shadow: none;
+}
+
+body:not(.page-home) .footer-socials {
+  gap: 0.75rem;
+}
+
+body:not(.page-home) .footer-legal-links a {
+  color: var(--inner-muted);
+}
+
+body:not(.page-home) .contact-stack-card:not(.is-front) .contact-stack-card-content {
+  visibility: hidden;
+}
+
+@media (max-width: 700px) {
+  body:not(.page-home) .site-header {
+    width: calc(100% - 1.25rem);
+  }
+
+  body:not(.page-home) .page-main {
+    padding-top: 6rem;
+  }
+
+  body:not(.page-home) .footer-primary-nav {
+    gap: 0.35rem 1rem;
+  }
+}

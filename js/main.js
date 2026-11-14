@@ -24,18 +24,6 @@ const themeIcon = (theme) => iconSvg(theme === "dark" ? "sun" : "moon");
 
 function renderHeader() {
   const currentTheme = document.documentElement.dataset.theme;
-  if (!document.body.classList.contains("page-home")) {
-    return `
-      <header class="site-header">
-        <div class="nav-shell">
-          <a class="brand" href="index.html#home" aria-label="Larck home"><span class="brand-mark" aria-hidden="true">L</span><span>Larck.</span></a>
-          <div class="nav-actions">
-            <a class="button button-secondary nav-home" href="index.html#home">${iconSvg("house")}<span>Home</span></a>
-            <a class="button nav-contact" href="contact.html">${iconSvg("mail")}<span>Contact</span></a>
-          </div>
-        </div>
-      </header>`;
-  }
   return `
     <header class="site-header">
       <div class="nav-shell">
@@ -779,8 +767,7 @@ async function loadDynamicProjectsGrid() {
     const projects = await res.json();
     projects.sort((a, b) => String(a.title || "").localeCompare(String(b.title || ""), undefined, { sensitivity: "base" }));
 
-    const carousel = createProjectCarousel(container);
-    initInteractiveProjectFilters(projects, carousel.setProjects);
+    createProjectCarousel(container).setProjects(projects);
   } catch (err) {
     container.innerHTML = `<p class="empty-results">Could not load projects.</p>`;
     console.warn("loadDynamicProjectsGrid:", err);
@@ -978,10 +965,13 @@ const runModule = () => {
   try { initContactForm(); } catch (e) { console.error("initContactForm error:", e); }
   try { initReveals(); } catch (e) { console.error("initReveals error:", e); }
   try { loadDynamicProjectsGrid(); } catch (e) { console.error("loadDynamicProjectsGrid error:", e); }
-  try { initCursorSpotlightAndTilt(); } catch (e) { console.error("initCursorSpotlightAndTilt error:", e); }
+  if (document.body.classList.contains("page-home")) {
+    try { initCursorSpotlightAndTilt(); } catch (e) { console.error("initCursorSpotlightAndTilt error:", e); }
+  }
   try { initAnimatedCounters(); } catch (e) { console.error("initAnimatedCounters error:", e); }
-  try { initFloatingDock(); } catch (e) { console.error("initFloatingDock error:", e); }
-  try { initCursorGlow(); } catch (e) { console.error("initCursorGlow error:", e); }
+  if (document.body.classList.contains("page-home")) {
+    try { initCursorGlow(); } catch (e) { console.error("initCursorGlow error:", e); }
+  }
 };
 
 if (document.readyState === "loading") {

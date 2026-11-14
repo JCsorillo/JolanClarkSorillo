@@ -124,7 +124,9 @@ export function createProjectCarousel(container) {
     const step = (activeFrame?.clientWidth || 0) * (mobile ? 1 : 0.92);
     const maxVisibleDistance = mobile ? 1 : 2;
     slides.forEach((slide, index) => {
-      const offset = index - activeIndex;
+      let offset = index - activeIndex;
+      if (offset > projects.length / 2) offset -= projects.length;
+      if (offset < -projects.length / 2) offset += projects.length;
       const distance = Math.abs(offset);
       const scale = distance === 0 ? 1 : distance === 1 ? 0.84 : distance === 2 ? 0.7 : 0.6;
       slide.style.transform = `translate(-50%, -50%) translateX(${offset * step}px) scale(${scale})`;

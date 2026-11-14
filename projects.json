@@ -1,14 +1,14 @@
 [
   {
     "title": "Ahlia-Daile",
-    "category": "Digital Catalog & Records",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Custom digital catalog and interactive record management tool engineered for high-speed data entry, indexing, and live search.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Interactive client-side record search & filtering",
-      "Optimized data indexing for low-latency queries",
-      "Mobile-first responsive glassmorphic UI"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Data", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Ahlia-Daile/",
@@ -17,14 +17,14 @@
   },
   {
     "title": "Angel-Mae",
-    "category": "UI/UX & Design Showcase",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Custom digital layout template showcasing modern web typography, dark/light themes, micro-interactions, and adaptive flex layouts.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Fluid typography & custom CSS design tokens",
-      "Interactive theme switcher and micro-animations",
-      "Accessible component markup standards"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["HTML5", "CSS3 Tokens", "JavaScript ES6", "Responsive Design"],
     "url": "https://jcsorillo.github.io/Angel-Mae/",
@@ -33,14 +33,14 @@
   },
   {
     "title": "Angelie",
-    "category": "Web Components & Forms",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Web component showcase exploring accessible form design, real-time input validation, interactive state management, and user feedback.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Real-time client-side form validation",
-      "Accessible ARIA landmarks and focus states",
-      "Reusable modular UI components"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["JavaScript", "HTML5 Forms", "CSS Variables", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Angelie/",
@@ -49,14 +49,14 @@
   },
   {
     "title": "Angelyn",
-    "category": "Document Archiving Module",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Administrative document archiving system engineered for digital record indexing, category classification, and instant file retrieval.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Categorized document indexing & archive views",
-      "Fast client-side search across record metadata",
-      "Clean glassmorphic administrative interface"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Indexing"],
     "url": "https://jcsorillo.github.io/Angelyn/",
@@ -65,14 +65,14 @@
   },
   {
     "title": "Dariel",
-    "category": "Inventory & Operations System",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Business operations utility and inventory recording system built to streamline local office tracking, supply logs, and data archiving.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Supply inventory tracking & stock level logs",
-      "Digital document archiving & record search",
-      "Lightweight responsive dashboard interface"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["JavaScript", "HTML5", "CSS3", "JSON API", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Dariel/",
@@ -81,14 +81,14 @@
   },
   {
     "title": "Eidref",
-    "category": "Data Management & Query Tool",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Data management and record indexing web system tailored for fast queries, mobile viewports, and clean data visualization.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Optimized query performance for large dataset views",
-      "Mobile-first responsive table and list layouts",
-      "Dynamic data fetching & state handling"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Data"],
     "url": "https://jcsorillo.github.io/Eidref/",
@@ -97,14 +97,14 @@
   },
   {
     "title": "Jolan-Clark",
-    "category": "Developer Profile & Hub",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Developer profile hub and project index showcasing web solutions, technical software tools, repository links, and career highlights.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Centralized developer profile & repository directory",
-      "Responsive glassmorphism UI & theme switcher",
-      "Fast static site deployment on GitHub Pages"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript ES6", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Jolan-Clark/",
@@ -113,14 +113,14 @@
   },
   {
     "title": "Jolan-Larck",
-    "category": "Interactive Developer Showcase",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Personal developer portfolio and interactive showcase built with modern responsive web standards, glassmorphic UI, and dynamic JSON data loading.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Dynamic JSON data loading for live projects",
-      "Awwwards-style mouse spotlight & 3D tilt effects",
-      "Instant search & category filtering system"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["HTML5", "CSS3 Tokens", "JavaScript ES6+", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Jolan-Larck/",
@@ -129,14 +129,14 @@
   },
   {
     "title": "Lory-Ann",
-    "category": "Interactive Web Application",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Interactive web application featuring responsive design layouts, dynamic UI interaction modules, and smooth visual transitions.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Dynamic user interaction modules & state feedback",
-      "Smooth CSS animations & responsive layout grids",
-      "Lightweight zero-dependency architecture"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["JavaScript", "HTML5", "CSS3", "Git"],
     "url": "https://jcsorillo.github.io/Lory-Ann/",
@@ -145,14 +145,14 @@
   },
   {
     "title": "Mary-Gail",
-    "category": "Landing Page Template",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Responsive landing page template and client showcase designed for mobile-first web performance, fast loading, and conversion clarity.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Mobile-first responsive hero & call-to-action flow",
-      "Optimized asset loading & fast rendering speeds",
-      "Clean semantic HTML structure"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Mary-Gail/",
@@ -161,14 +161,14 @@
   },
   {
     "title": "Rolyn",
-    "category": "Administrative Portal",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Lightweight administrative portal interface for tracking local task workflows, office records, and team activity logs.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Workflow task logging & record tracking interface",
-      "Clean administrative layout with dark mode support",
-      "Responsive navigation & quick filter controls"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Data"],
     "url": "https://jcsorillo.github.io/Rolyn/",
@@ -177,14 +177,14 @@
   },
   {
     "title": "Ronabe",
-    "category": "IT Diagnostics & Support",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Technical support utility scripts and automated diagnostic toolset for desktop environment troubleshooting and network checks.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Desktop & network troubleshooting utility tools",
-      "System diagnostic guides & automated checklists",
-      "Clean technical documentation layout"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["JavaScript", "HTML5", "CSS3", "IT Utilities"],
     "url": "https://jcsorillo.github.io/Ronabe/",
@@ -193,14 +193,14 @@
   },
   {
     "title": "Saralyn",
-    "category": "Frontend Component Lab",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Frontend component lab exploring modern CSS layout techniques, accessible UI patterns, theme tokens, and micro-interactions.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Modern CSS flexbox & CSS grid experimentations",
-      "Accessible button, card, and modal UI patterns",
-      "Theme token customization lab"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["CSS3", "HTML5", "JavaScript ES6", "UI Design"],
     "url": "https://jcsorillo.github.io/Saralyn/",
@@ -209,14 +209,14 @@
   },
   {
     "title": "Tricia",
-    "category": "Responsive Web Application",
+    "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
-    "description": "Modern web showcase application built with fast-loading responsive assets, clean markup, and glassmorphic card layouts.",
+    "description": "A commissioned website with a responsive, content-first front end tailored to its subject and audience.",
     "features": [
-      "Responsive layout optimized for all device sizes",
-      "Glassmorphic visual styling & subtle hover states",
-      "Zero external dependency web architecture"
+      "Responsive front-end layout",
+      "Content-focused presentation",
+      "Designed for its intended audience"
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Tricia/",
