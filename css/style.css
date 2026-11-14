@@ -3358,17 +3358,42 @@ html:has(body.page-home) {
 
 .page-home .home-hero-watermark {
   position: absolute;
-  top: 43%;
-  left: 24%;
+  inset: 0;
   z-index: 0;
-  color: color-mix(in srgb, var(--home-text) 4%, transparent);
-  font-size: clamp(3rem, 9vw, 9rem);
+  display: grid;
+  align-content: center;
+  gap: 0.04em;
+  color: color-mix(in srgb, var(--home-text) 5%, transparent);
+  font-size: clamp(4rem, 17vw, 12rem);
   font-weight: 800;
-  letter-spacing: -0.08em;
-  line-height: 0.9;
-  pointer-events: none;
-  transform: translateY(-50%) rotate(-5deg);
+  letter-spacing: -0.06em;
+  line-height: 0.88;
+  text-transform: uppercase;
   white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+  mask-image: linear-gradient(#000 55%, transparent);
+}
+
+.page-home .home-hero-watermark span {
+  display: block;
+}
+
+.page-home .home-hero-watermark span:nth-child(2) {
+  margin-left: 14%;
+}
+
+.page-home .home-hero-watermark span:nth-child(3) {
+  margin-left: 4%;
+}
+
+@media (max-width: 880px) {
+  .page-home .home-hero-watermark {
+    align-content: start;
+    padding-top: 7rem;
+    font-size: clamp(3.6rem, 19vw, 8rem);
+  }
 }
 
 .page-home .section-heading {
@@ -3793,12 +3818,6 @@ html:has(body.page-home) {
     width: min(100%, 28rem);
     justify-self: center;
     aspect-ratio: 1.05;
-  }
-
-  .page-home .home-hero-watermark {
-    top: 36%;
-    left: -8%;
-    font-size: 16vw;
   }
 
   .page-home .home-about .feature-grid,
