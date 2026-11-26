@@ -168,39 +168,6 @@
   z-index: 2;
 }
 
-.proof-strip {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.proof-stat {
-  min-height: 6.8rem;
-  display: grid;
-  align-content: center;
-  padding: 1rem;
-  border: 1px solid var(--home-line);
-  border-radius: 1rem;
-  background: var(--home-card);
-}
-
-.proof-stat strong {
-  font-size: clamp(1.35rem, 3vw, 2rem);
-  font-variant-numeric: tabular-nums;
-}
-
-.proof-stat strong + span {
-  color: var(--home-muted);
-  font-size: 0.82rem;
-}
-
-.proof-stat p {
-  margin: 0.35rem 0 0;
-  color: var(--home-muted);
-  font-size: 0.78rem;
-}
-
 .spotify-player-facade {
   min-height: 352px;
   display: grid;
@@ -264,10 +231,6 @@
 }
 
 @media (max-width: 700px) {
-  .proof-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .cookie-consent-banner {
     right: 0.75rem;
     bottom: 0.75rem;

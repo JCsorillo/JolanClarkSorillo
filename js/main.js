@@ -937,9 +937,14 @@ function initConsent(forceOpen = false) {
     try { localStorage.setItem("jcs_cookie_consent", value); } catch {}
     document.querySelector(".cookie-consent-banner")?.remove();
     if (value === "all") {
+      loadSpotifyEmbeds();
       import("./counter.js").catch(() => {});
     } else {
-      document.querySelectorAll("[data-spotify-facade iframe").forEach((frame) => frame.remove());
+      document.querySelectorAll("[data-spotify-facade] iframe").forEach((frame) => {
+        const facade = frame.parentElement;
+        frame.remove();
+        facade.textContent = "Spotify players appear automatically after you accept media cookies.";
+      });
     }
   };
 
@@ -957,34 +962,28 @@ function initConsent(forceOpen = false) {
   });
 }
 
-function initSpotifyFacades() {
-  document.querySelectorAll("[data-load-spotify]").forEach((button) => {
-    button.addEventListener("click", () => {
-      let consent = "essential";
-      try { consent = localStorage.getItem("jcs_cookie_consent") || "essential"; } catch {}
-      if (consent !== "all") {
-        const preferences = document.querySelector(".cookie-consent-banner");
-        if (preferences) preferences.querySelector("[data-cookie-choice=\"all\"]")?.focus();
-        else document.querySelector("[data-open-cookie-preferences]")?.click();
-        return;
-      }
-      const facade = button.closest("[data-spotify-facade]");
-      const src = facade?.dataset.spotifySrc;
-      if (!facade || !src) return;
-      const index = [...facade.parentElement.parentElement.querySelectorAll("[data-spotify-facade]")].indexOf(facade) + 1;
-      facade.replaceChildren();
-      const iframe = document.createElement("iframe");
-      iframe.className = "spotify-player";
-      iframe.title = `Spotify Playlist ${index}`;
-      iframe.width = "100%";
-      iframe.height = "352";
-      iframe.loading = "lazy";
-      iframe.setAttribute("allow", "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture");
-      iframe.setAttribute("allowfullscreen", "");
-      iframe.src = src;
-      facade.append(iframe);
-    });
+function loadSpotifyEmbeds() {
+  document.querySelectorAll("[data-spotify-facade]").forEach((facade, index) => {
+    if (facade.querySelector("iframe")) return;
+    const src = facade.dataset.spotifySrc;
+    if (!src) return;
+    const iframe = document.createElement("iframe");
+    iframe.className = "spotify-player";
+    iframe.title = `Spotify Playlist ${index + 1}`;
+    iframe.width = "100%";
+    iframe.height = "352";
+    iframe.loading = "lazy";
+    iframe.setAttribute("allow", "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture");
+    iframe.setAttribute("allowfullscreen", "");
+    iframe.src = src;
+    facade.replaceChildren(iframe);
   });
+}
+
+function initSpotifyFacades() {
+  let consent = "essential";
+  try { consent = localStorage.getItem("jcs_cookie_consent") || "essential"; } catch {}
+  if (consent === "all") loadSpotifyEmbeds();
 }
 
 const runModule = () => {
