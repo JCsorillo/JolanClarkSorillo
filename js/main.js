@@ -328,13 +328,21 @@ function initShell() {
     root.style.setProperty("--theme-transition-y", `${originY}px`);
     root.style.setProperty("--theme-transition-radius", `${radius}px`);
     themeTransitionRunning = true;
-    const transition = document.startViewTransition(() => applyTheme(nextTheme));
     const clearTransitionState = () => {
       themeTransitionRunning = false;
       root.style.removeProperty("--theme-transition-x");
       root.style.removeProperty("--theme-transition-y");
       root.style.removeProperty("--theme-transition-radius");
     };
+    let transition;
+    try {
+      transition = document.startViewTransition(() => applyTheme(nextTheme));
+    } catch (error) {
+      clearTransitionState();
+      applyTheme(nextTheme);
+      console.warn("Theme view transition failed; applying the theme without animation.", error);
+      return;
+    }
     transition.finished.then(clearTransitionState, clearTransitionState);
   });
 
@@ -352,13 +360,9 @@ function initAuroraEffects() {
 }
 
 function initReveals() {
-  const revealTargets = [...new Set([
-    ...document.querySelectorAll(".reveal"),
-    ...document.querySelectorAll(".page-home .page-main > section.container"),
-  ])];
+  const revealTargets = [...document.querySelectorAll(".reveal")];
   const sectionCounts = new Map();
   revealTargets.forEach((element) => {
-    element.classList.add("reveal");
     element.classList.add("reveal-tile");
     const section = element.closest("section") || document.body;
     const count = sectionCounts.get(section) || 0;
