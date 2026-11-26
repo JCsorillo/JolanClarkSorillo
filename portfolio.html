@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Commissioned front-end websites by Jolan Clark A. Sorillo, including personal portfolios, informational pages, and book and novel projects.">
+  <meta name="description" content="Explore commissioned websites, SK Bangkal, and the Mobile Kiosk project by Jolan Clark A. Sorillo, an Iloilo City front-end developer.">
   <meta name="author" content="Jolan Clark A. Sorillo">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#EDF1FA">
@@ -13,12 +13,12 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jolanclarksorillo.site/portfolio.html">
   <meta property="og:image" content="https://jolanclarksorillo.site/img/intro-bg.webp">
-  <meta property="og:description" content="Browse commissioned front-end websites by Jolan Clark A. Sorillo, from personal portfolios and informational pages to book and novel projects.">
+  <meta property="og:description" content="Explore commissioned websites, the SK Bangkal public-facing project, and the Mobile Kiosk application showcase.">
   <meta property="og:site_name" content="Jolan Clark A. Sorillo">
   <meta property="og:locale" content="en_PH">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Commissioned Website Portfolio — Jolan Clark A. Sorillo">
-  <meta name="twitter:description" content="Browse commissioned front-end websites by Jolan Clark A. Sorillo, from personal portfolios and informational pages to book and novel projects.">
+  <meta name="twitter:description" content="Explore commissioned websites, the SK Bangkal public-facing project, and the Mobile Kiosk application showcase.">
   <meta name="twitter:image" content="https://jolanclarksorillo.site/img/intro-bg.webp">
   <script>
     (() => {
@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/showcase.css">
-  <link rel="stylesheet" href="css/inner.css">
+  <link rel="stylesheet" href="css/inner.css?v=1.1.0">
 </head>
 <body data-page="portfolio">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -57,8 +57,8 @@
       <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem;">
         <div class="span-8">
           <p class="eyebrow">Selected front-end work</p>
-          <h1>Commissioned websites and creative projects</h1>
-          <p class="lead">A collection of websites I have built for commissions: personal portfolios, informational pages, and projects centered on books and novels. Each project focuses on its content, audience, and visual design.</p>
+          <h1>Web projects made for real people and communities.</h1>
+          <p class="lead">A look at commissioned front-end websites, the SK Bangkal community project, and a custom Android kiosk showcase. I focus on clear content, responsive layouts, and practical details that help each project serve its audience.</p>
           <div class="hero-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
             <span class="tag">Commissioned work</span>
             <span class="tag">Front-end websites</span>
@@ -69,9 +69,9 @@
         </div>
 
         <div class="span-4 glass-card" style="padding: 1.25rem; border-radius: var(--radius-card); display: flex; flex-direction: column; justify-content: center;">
-          <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">About Jolan Clark A. Sorillo</h3>
-          <p style="font-size: 0.88rem; color: var(--color-muted); line-height: 1.5; margin-bottom: 0.75rem;">BS IT graduate from Northern Iloilo State University (NISU) combining IT knowledge, telecommunications customer service (Transcom CSR), and AI vibe coding.</p>
-          <a class="inline-link" href="resume.html" style="font-size: 0.85rem;">View Full Resume &amp; Workstation Specs →</a>
+          <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Built by Jolan Clark A. Sorillo</h3>
+          <p style="font-size: 0.88rem; color: var(--color-muted); line-height: 1.5; margin-bottom: 0.75rem;">An Iloilo City IT graduate combining customer support experience with hands-on front-end development and practical IT work.</p>
+          <a class="inline-link" href="resume.html" style="font-size: 0.85rem;">View experience and skills →</a>
         </div>
       </div>
 
@@ -96,6 +96,30 @@
       </div>
     </section>
 
+    <section class="container section" aria-labelledby="featured-community-title">
+      <article class="inner-project-feature reveal">
+        <div>
+          <p class="eyebrow">Featured community website · Barangay SK Website</p>
+          <h2 id="featured-community-title">SK Bangkal</h2>
+          <p>A responsive barangay Sangguniang Kabataan website with a clear public-facing content structure. It presents community information in a direct, approachable way.</p>
+          <div class="inner-project-tech" aria-label="Technology used">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">GitHub Pages</span>
+          </div>
+          <div class="inner-project-actions">
+            <a class="button" href="https://jcsorillo.github.io/Bancal-SK-WebApp/" target="_blank" rel="noopener noreferrer">Visit the live site <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#project-directory">Browse all projects <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="inner-project-art" aria-hidden="true">
+          <strong>SK</strong>
+          <span>Community information · Bancal, Carles</span>
+        </div>
+      </article>
+    </section>
+
     <!-- FLAGSHIP ANDROID APPLICATION SHOWCASE -->
     <section class="container section" id="featured-app" aria-labelledby="app-showcase-title">
       <div class="section-heading reveal">
@@ -112,7 +136,7 @@
           <div>
             <span class="category-tag">FEATURED ANDROID APPLICATION</span>
             <h3>Mobile Kiosk System</h3>
-            <p style="color: var(--color-muted); font-size: 0.95rem; margin-top: 0.5rem;">Developed by Jolan Clark. A specialized Android kiosk shell designed for device rental management, automated countdown timers, PIN-secured admin settings, and app access restriction.</p>
+            <p style="color: var(--color-muted); font-size: 0.95rem; margin-top: 0.5rem;">Developed by Jolan Clark A. Sorillo. A specialized Android kiosk shell designed for device rental management, automated countdown timers, PIN-secured admin settings, and app access restriction.</p>
           </div>
           <ul class="feature-list" style="margin-top: 1.25rem;">
             <li><strong>First-Time Setup Wizard:</strong> Initial configuration flow for business name, admin PIN, and system overlay permissions.</li>
@@ -133,7 +157,7 @@
             <img class="app-logo-graphic" src="img/bebet-kiosk-logo.svg" alt="Mobile Kiosk Logo" style="width: 50px; height: 50px; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));" loading="lazy" decoding="async">
             <div style="text-align: left;">
               <h4 style="margin: 0; font-size: 1.1rem; font-weight: 700;">Mobile Kiosk</h4>
-              <p style="margin: 0; font-size: 0.78rem; color: #5aa9ff; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Developed by Jolan Clark</p>
+              <p style="margin: 0; font-size: 0.78rem; color: #5aa9ff; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Developed by Jolan Clark A. Sorillo</p>
             </div>
           </div>
 
@@ -203,12 +227,12 @@
     </section>
 
     <!-- ALPHABETICALLY SORTED DIRECTORY GRID -->
-    <section class="container section" aria-labelledby="directory-title">
+    <section class="container section" id="project-directory" aria-labelledby="directory-title">
       <div class="section-heading reveal">
         <div>
-          <p class="eyebrow">The website carousel</p>
-          <h2 id="directory-title">Browse the commissioned websites</h2>
-          <p>Swipe, drag, or use the arrows to move through the projects. Select a preview to open its live website.</p>
+          <p class="eyebrow">Project directory</p>
+          <h2 id="directory-title">A closer look at the work.</h2>
+          <p>Explore the live project previews. Swipe, drag, or use the arrows to move through the collection, then open a project to see it in full.</p>
         </div>
       </div>
 
@@ -219,6 +243,5 @@
 
   <div id="site-footer"></div>
   <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/showcase.js" defer></script>
 </body>
 </html>
