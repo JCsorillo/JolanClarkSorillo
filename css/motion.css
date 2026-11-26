@@ -130,16 +130,20 @@
   }
 
   :root {
-    --marquee-ink: rgba(11, 11, 13, 0.12);
+    --marquee-ink: rgba(11, 11, 13, 0.08);
   }
 
   [data-theme="dark"] {
-    --marquee-ink: rgba(255, 255, 255, 0.10);
+    --marquee-ink: rgba(255, 255, 255, 0.08);
   }
 
   .home-hero-watermark {
     z-index: 0;
     pointer-events: none;
+  }
+
+  .home-hero-watermark.is-paused .home-hero-watermark-track {
+    animation-play-state: paused;
   }
 
   .home-hero-watermark-track,

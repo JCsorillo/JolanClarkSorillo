@@ -70,6 +70,29 @@ function initLocalTime() {
   window.setInterval(update, 30000);
 }
 
+function initHeroMarquee() {
+  const hero = document.querySelector(".home-hero");
+  const watermark = document.querySelector(".home-hero-watermark");
+  if (!hero || !watermark) return;
+
+  const setPaused = (paused) => {
+    watermark.classList.toggle("is-paused", paused);
+  };
+
+  if (reducedMotion.matches) {
+    setPaused(true);
+  } else if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      setPaused(!entries[0].isIntersecting);
+    }, { threshold: 0.05 });
+    observer.observe(hero);
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    setPaused(document.hidden || reducedMotion.matches);
+  });
+}
+
 function initCctvDemo() {
   const demo = document.querySelector("[data-cctv-demo]");
   if (!demo) return;
@@ -217,4 +240,5 @@ export function initMotion() {
   initPointerAccents();
   initLocalTime();
   initCctvDemo();
+  initHeroMarquee();
 }
