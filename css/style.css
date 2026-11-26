@@ -4340,8 +4340,7 @@ html:has(body.page-home) {
 }
 
 .page-home .home-availability,
-.page-home .home-local-time,
-.page-home .visitor-counter {
+.page-home .home-local-time {
   display: inline-flex;
   min-height: 2rem;
   align-items: center;
@@ -4358,16 +4357,6 @@ html:has(body.page-home) {
   border-radius: 50%;
   background: #24ad78;
   box-shadow: 0 0 0 0.22rem color-mix(in srgb, #24ad78 16%, transparent);
-}
-
-.page-home .visitor-counter-value {
-  color: var(--home-text);
-  font-variant-numeric: tabular-nums;
-  font-weight: 650;
-}
-
-.page-home .visitor-counter[data-state="offline"] .visitor-counter-value {
-  color: var(--home-muted);
 }
 
 .page-home .project-explorer {

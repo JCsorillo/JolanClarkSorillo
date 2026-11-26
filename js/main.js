@@ -924,7 +924,7 @@ function initConsent(forceOpen = false) {
       <aside class="cookie-consent-banner" role="dialog" aria-modal="false" aria-labelledby="cookie-consent-title">
         <div>
           <strong id="cookie-consent-title">Cookie preferences</strong>
-          <p>Choose essential storage only or allow Spotify playback and visitor counting.</p>
+          <p>Choose essential storage only or allow Spotify playback.</p>
         </div>
         <div class="cookie-consent-actions">
           <button type="button" class="button button-secondary" data-cookie-choice="essential">Essential only</button>
@@ -938,7 +938,6 @@ function initConsent(forceOpen = false) {
     document.querySelector(".cookie-consent-banner")?.remove();
     if (value === "all") {
       loadSpotifyEmbeds();
-      import("./counter.js").catch(() => {});
     } else {
       document.querySelectorAll("[data-spotify-facade] iframe").forEach((frame) => {
         const facade = frame.parentElement;
@@ -996,9 +995,6 @@ const runModule = () => {
   try { initSpotifyFacades(); } catch (e) { console.error("initSpotifyFacades error:", e); }
   import("./fx.js").then(({ initMotion }) => initMotion()).catch(() => {
     console.warn("Motion module could not be loaded.");
-  });
-  import("./counter.js").catch(() => {
-    console.warn("Visitor counter module could not be loaded.");
   });
 };
 

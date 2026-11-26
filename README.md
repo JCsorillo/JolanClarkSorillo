@@ -29,7 +29,7 @@ Icons are bundled locally in `img/icons.svg` and referenced from the site shell 
 ## Changelog
 
 ### v2.2.0
-- Added consent-safe Spotify facades and lazy visitor counter support.
+- Added consent-safe Spotify facades.
 - Added alternating hero marquees, proof counters, and improved mobile navigation interactions.
 - Added SK-Bangkal to the project carousel and removed misleading commission tag filtering.
 - Standardized visible and SEO-facing name copy to Jolan Clark A. Sorillo.

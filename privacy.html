@@ -72,15 +72,14 @@
       <article class="document-content glass-card reveal">
         <section id="data-collection" class="document-section">
           <h2>1. Data Collection &amp; Privacy</h2>
-          <p>This website is a static developer portfolio. Its essential browser storage is limited to the theme preference (<code>theme</code>) and the cookie choice (<code>jcs_cookie_consent</code>). Session storage records <code>jcs_counted</code> once a visitor has been counted.</p>
-          <p>The visitor counter uses Google Apps Script only when you choose “Accept all” and an endpoint is configured. If no endpoint is configured, the counter is hidden and no request is made.</p>
+          <p>This website is a static developer portfolio. Its essential browser storage is limited to the theme preference (<code>theme</code>) and the cookie choice (<code>jcs_cookie_consent</code>). The site does not use a visitor counter.</p>
         </section>
 
         <section id="browser-caching" class="document-section">
           <h2>2. Browser Caching &amp; Performance</h2>
           <p>To deliver fast load times and smooth page transitions, your web browser may temporarily cache static assets locally on your device, including:</p>
           <ul>
-            <li>JavaScript modules (<code>main.js</code>, <code>counter.js</code>, and lazy motion modules)</li>
+            <li>JavaScript modules (<code>main.js</code> and lazy motion modules)</li>
             <li>CSS stylesheets (<code>style.css</code>, <code>motion.css</code>, and <code>tokens.css</code>)</li>
             <li>Web fonts, SVG icons, and webp graphics</li>
           </ul>
@@ -111,6 +110,6 @@
   </main>
 
   <div id="site-footer"></div>
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/main.js?v=2.2.2"></script>
 </body>
 </html>
