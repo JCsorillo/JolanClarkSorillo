@@ -37,10 +37,12 @@ function renderHeader() {
       </div>
       <nav class="nav-menu" id="primary-navigation" aria-label="Main navigation" inert>
         <a href="index.html#home">Home</a>
-        <a href="index.html#about-section">About</a>
+        <a href="index.html#about">About</a>
         <a href="index.html#experience-section">Experience</a>
         <a href="index.html#workstation-specs">Gear</a>
         <a href="index.html#portfolio-section">Work</a>
+        <a href="index.html#playlists">Playlists</a>
+        <a href="index.html#interests">Beyond the screen</a>
         <a href="resume.html">Resume</a>
         <a class="nav-menu-contact" href="contact.html">Contact</a>
       </nav>
@@ -269,6 +271,17 @@ function initShell() {
     const themeColor = document.querySelector('meta[name="theme-color"]');
     if (themeColor) themeColor.content = getComputedStyle(document.body).getPropertyValue("--color-bg").trim();
   };
+  const applyTheme = (theme) => {
+    document.documentElement.dataset.theme = theme;
+    try { localStorage.setItem("theme", theme); } catch {}
+    setThemeColor();
+    document.querySelectorAll(".theme-toggle").forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(theme === "dark"));
+      btn.setAttribute("aria-label", `Switch to ${theme === "dark" ? "light" : "dark"} theme`);
+      btn.innerHTML = themeIcon(theme);
+    });
+  };
+  let themeTransitionRunning = false;
   setThemeColor();
   const updateHeader = () => siteHeader?.classList.toggle("is-condensed", window.scrollY > 24);
   updateHeader();
@@ -297,14 +310,32 @@ function initShell() {
     const toggle = event.target.closest(".theme-toggle");
     if (!toggle) return;
     const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = nextTheme;
-    try { localStorage.setItem("theme", nextTheme); } catch {}
-    setThemeColor();
-    document.querySelectorAll(".theme-toggle").forEach((btn) => {
-      btn.setAttribute("aria-pressed", String(nextTheme === "dark"));
-      btn.setAttribute("aria-label", `Switch to ${nextTheme === "dark" ? "light" : "dark"} theme`);
-      btn.innerHTML = themeIcon(nextTheme);
-    });
+    const root = document.documentElement;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (typeof document.startViewTransition !== "function" || prefersReducedMotion || themeTransitionRunning) {
+      applyTheme(nextTheme);
+      return;
+    }
+
+    const bounds = toggle.getBoundingClientRect();
+    const originX = bounds.left + bounds.width / 2;
+    const originY = bounds.top + bounds.height / 2;
+    const radius = Math.hypot(
+      Math.max(originX, window.innerWidth - originX),
+      Math.max(originY, window.innerHeight - originY),
+    );
+    root.style.setProperty("--theme-transition-x", `${originX}px`);
+    root.style.setProperty("--theme-transition-y", `${originY}px`);
+    root.style.setProperty("--theme-transition-radius", `${radius}px`);
+    themeTransitionRunning = true;
+    const transition = document.startViewTransition(() => applyTheme(nextTheme));
+    const clearTransitionState = () => {
+      themeTransitionRunning = false;
+      root.style.removeProperty("--theme-transition-x");
+      root.style.removeProperty("--theme-transition-y");
+      root.style.removeProperty("--theme-transition-radius");
+    };
+    transition.finished.then(clearTransitionState, clearTransitionState);
   });
 
   initStaticIcons();
@@ -321,10 +352,13 @@ function initAuroraEffects() {
 }
 
 function initReveals() {
-  const revealTileSelector = ".card, .glass-card, .project-card, .product-card, .product-detail, .store-card, .collection-card, .contact-card, .resume-section, .timeline-entry, .hero-tile, .hero-note-tile, .feature-card";
-  const revealTargets = [...document.querySelectorAll(".reveal")].filter((element) => element.matches(revealTileSelector));
+  const revealTargets = [...new Set([
+    ...document.querySelectorAll(".reveal"),
+    ...document.querySelectorAll(".page-home .page-main > section.container"),
+  ])];
   const sectionCounts = new Map();
   revealTargets.forEach((element) => {
+    element.classList.add("reveal");
     element.classList.add("reveal-tile");
     const section = element.closest("section") || document.body;
     const count = sectionCounts.get(section) || 0;
@@ -344,6 +378,30 @@ function initReveals() {
     });
   }, { threshold: 0.12 });
   revealTargets.filter((element) => !element.classList.contains("is-visible")).forEach((element) => observer.observe(element));
+}
+
+function initGameFilters() {
+  const library = document.querySelector(".game-library-content");
+  const filters = document.querySelector(".game-filter-list");
+  if (!library || !filters) return;
+  library.dataset.filter = "All";
+
+  filters.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-game-filter]");
+    if (!button) return;
+
+    const selected = button.dataset.gameFilter;
+    library.dataset.filter = selected;
+    filters.querySelectorAll("[data-game-filter]").forEach((filter) => {
+      const isActive = filter === button;
+      filter.classList.toggle("is-active", isActive);
+      filter.setAttribute("aria-pressed", String(isActive));
+    });
+    library.querySelectorAll("[data-game-group]").forEach((group) => {
+      const platform = group.dataset.gameGroup;
+      group.hidden = selected !== "All" && platform !== "featured" && platform !== selected;
+    });
+  });
 }
 
 function renderStoreCard(store, visible = false) {
@@ -964,6 +1022,7 @@ const runModule = () => {
   try { initShell(); } catch (e) { console.error("initShell error:", e); }
   try { initContactForm(); } catch (e) { console.error("initContactForm error:", e); }
   try { initReveals(); } catch (e) { console.error("initReveals error:", e); }
+  try { initGameFilters(); } catch (e) { console.error("initGameFilters error:", e); }
   try { loadDynamicProjectsGrid(); } catch (e) { console.error("loadDynamicProjectsGrid error:", e); }
   if (document.body.classList.contains("page-home")) {
     try { initCursorSpotlightAndTilt(); } catch (e) { console.error("initCursorSpotlightAndTilt error:", e); }

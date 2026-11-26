@@ -3071,7 +3071,7 @@ html:has(body.page-home) {
   order: 0;
 }
 
-.page-home .page-main > #about-section {
+.page-home .page-main > #about {
   order: 1;
 }
 
@@ -3091,12 +3091,20 @@ html:has(body.page-home) {
   order: 4;
 }
 
-.page-home .page-main > #faq-section {
+.page-home .page-main > #playlists {
   order: 5;
 }
 
-.page-home .page-main > #contact-section {
+.page-home .page-main > #interests {
   order: 6;
+}
+
+.page-home .page-main > #faq-section {
+  order: 7;
+}
+
+.page-home .page-main > #contact-section {
+  order: 8;
 }
 
 .page-home .site-header {
@@ -3870,5 +3878,464 @@ html:has(body.page-home) {
 @media (prefers-reduced-motion: reduce) {
   .page-home .nav-menu {
     transition: none;
+  }
+}
+
+.page-home .credential-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+
+.page-home .credential-label,
+.page-home .interest-kicker {
+  color: var(--home-muted);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.page-home .credential-label {
+  margin-right: 0.25rem;
+}
+
+.page-home .credential-chip,
+.page-home .interest-note,
+.page-home .game-library-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  min-height: 2rem;
+  padding: 0.36rem 0.72rem;
+  border: 1px solid var(--home-line);
+  border-radius: var(--radius-pill);
+  background: var(--home-card);
+  color: var(--home-muted);
+  font-size: 0.78rem;
+  font-weight: 550;
+  line-height: 1.35;
+  transition: transform 180ms var(--ease-standard), border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.page-home .credential-chip-featured,
+.page-home .credential-inline {
+  color: var(--home-text);
+  font-weight: 650;
+}
+
+.page-home .credential-chip:hover,
+.page-home .interest-note:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--home-text) 32%, var(--home-line));
+  box-shadow: 0 8px 22px var(--color-shadow);
+}
+
+.page-home .home-about .skill-card {
+  transition: transform 220ms var(--ease-standard), border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.page-home .home-about .skill-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--home-text) 28%, var(--home-line));
+  box-shadow: 0 14px 34px var(--color-shadow);
+}
+
+.page-home .mobility-entry {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+  max-width: 54rem;
+  margin: 0 0 1.5rem;
+  padding: clamp(1.15rem, 3vw, 1.7rem);
+  border: 1px solid var(--home-line);
+  border-radius: 1.2rem;
+  background: var(--home-card);
+}
+
+.page-home .mobility-entry-mark {
+  display: grid;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--home-text);
+  color: var(--home-bg);
+  font-size: 1.1rem;
+}
+
+.page-home .mobility-entry .eyebrow {
+  margin-bottom: 0.35rem;
+}
+
+.page-home .mobility-entry h3 {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  letter-spacing: -0.035em;
+}
+
+.page-home .mobility-entry h3 span,
+.page-home .credential-chip-featured > span {
+  color: var(--home-muted);
+}
+
+.page-home .mobility-entry div > p:last-child {
+  margin: 0;
+  color: var(--home-muted);
+}
+
+.page-home .playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.page-home .playlist-card,
+.page-home .interest-card {
+  min-width: 0;
+  padding: clamp(1rem, 2.2vw, 1.4rem);
+  border: 1px solid var(--home-line);
+  border-radius: 1.35rem;
+  background: var(--home-card);
+  transition: transform 220ms var(--ease-standard), border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.page-home .playlist-card:hover,
+.page-home .interest-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--home-text) 30%, var(--home-line));
+  box-shadow: 0 16px 38px var(--color-shadow);
+}
+
+.page-home .playlist-card-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
+}
+
+.page-home .playlist-number {
+  color: var(--home-muted);
+  font-size: 0.73rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.12em;
+}
+
+.page-home .playlist-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.page-home .playlist-card iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 352px;
+  border: 0;
+  background: var(--home-bg);
+}
+
+.page-home .playlist-caption {
+  margin: 1rem 0 0;
+  color: var(--home-muted);
+  font-size: 0.82rem;
+}
+
+.page-home .interest-bento {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.page-home .interest-card-badminton {
+  grid-column: span 7;
+  min-height: 16rem;
+}
+
+.page-home .interest-card-fishing {
+  grid-column: span 5;
+  min-height: 16rem;
+}
+
+.page-home .interest-card-movies {
+  grid-column: span 5;
+}
+
+.page-home .interest-card-games {
+  grid-column: span 7;
+}
+
+.page-home .interest-kicker {
+  margin: 0 0 1.2rem;
+}
+
+.page-home .interest-card h3 {
+  max-width: 18ch;
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  font-weight: 620;
+  letter-spacing: -0.055em;
+  line-height: 1.15;
+}
+
+.page-home .interest-card > p:not(.interest-kicker) {
+  max-width: 44ch;
+  margin: 0;
+  color: var(--home-muted);
+  line-height: 1.7;
+}
+
+.page-home .interest-note {
+  margin-top: 1.2rem;
+}
+
+.page-home .movie-list,
+.page-home .game-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .movie-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--home-line);
+  font-size: 0.94rem;
+}
+
+.page-home .movie-list li > span:last-child {
+  color: var(--home-muted);
+  font-size: 0.8rem;
+}
+
+.page-home .movie-list small,
+.page-home .game-list small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--home-muted);
+  font-size: 0.73rem;
+  font-weight: 450;
+}
+
+.page-home .game-library-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.page-home .game-library-heading .interest-kicker {
+  margin-bottom: 0.65rem;
+}
+
+.page-home .game-library-heading h3 {
+  margin-bottom: 0;
+}
+
+.page-home .game-library-count {
+  flex: 0 0 auto;
+  min-height: 1.7rem;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.09em;
+}
+
+.page-home .game-filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1.15rem;
+}
+
+.page-home .game-filter {
+  min-height: 2.2rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--home-line);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--home-muted);
+  font-size: 0.8rem;
+  font-weight: 550;
+  cursor: pointer;
+  transition: transform 180ms var(--ease-standard), border-color 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.page-home .game-filter:hover,
+.page-home .game-filter:focus-visible {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--home-text) 38%, var(--home-line));
+  color: var(--home-text);
+}
+
+.page-home .game-filter.is-active {
+  border-color: var(--home-text);
+  background: var(--home-text);
+  color: var(--home-bg);
+}
+
+.page-home .game-library-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  max-height: 24rem;
+  margin-top: 1rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: var(--home-line) transparent;
+  scrollbar-width: thin;
+}
+
+.page-home .game-group[hidden] {
+  display: none;
+}
+
+.page-home .game-group[data-game-group="featured"] {
+  grid-column: 1 / -1;
+}
+
+.page-home .game-group h4 {
+  margin: 0;
+  color: var(--home-muted);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.page-home .game-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.page-home .game-group[data-game-group="featured"] .game-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.page-home .game-list li {
+  min-width: 0;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--home-line);
+  border-radius: 0.7rem;
+  color: var(--home-text);
+  font-size: 0.76rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  transition: transform 160ms var(--ease-standard), border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.page-home .game-list li:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--home-text) 30%, var(--home-line));
+  box-shadow: 0 6px 16px var(--color-shadow);
+}
+
+.page-home .game-library-content[data-filter="PC"] .game-group[data-game-group="featured"],
+.page-home .game-library-content[data-filter="Mobile"] .game-group[data-game-group="featured"] {
+  grid-column: auto;
+}
+
+.page-home .game-library-content[data-filter="PC"] .game-group[data-game-group="featured"] .game-list,
+.page-home .game-library-content[data-filter="Mobile"] .game-group[data-game-group="featured"] .game-list {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 980px) {
+  .page-home .playlist-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-home .playlist-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 700px) {
+  .page-home .playlist-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-home .playlist-card:last-child {
+    grid-column: auto;
+  }
+
+  .page-home .interest-card-badminton,
+  .page-home .interest-card-fishing,
+  .page-home .interest-card-movies,
+  .page-home .interest-card-games {
+    grid-column: 1 / -1;
+    min-height: 0;
+  }
+
+  .page-home .game-library-content {
+    grid-template-columns: minmax(0, 1fr);
+    max-height: 25rem;
+  }
+
+  .page-home .game-group[data-game-group="featured"],
+  .page-home .game-library-content[data-filter="PC"] .game-group[data-game-group="featured"],
+  .page-home .game-library-content[data-filter="Mobile"] .game-group[data-game-group="featured"] {
+    grid-column: auto;
+  }
+
+  .page-home .game-group[data-game-group="featured"] .game-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-home .game-library-content[data-filter="PC"] .game-group[data-game-group="featured"] .game-list,
+  .page-home .game-library-content[data-filter="Mobile"] .game-group[data-game-group="featured"] .game-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .page-home .credential-strip {
+    align-items: flex-start;
+  }
+
+  .page-home .credential-label {
+    width: 100%;
+  }
+
+  .page-home .mobility-entry {
+    grid-template-columns: 1fr;
+  }
+
+  .page-home .game-group:not([data-game-group="featured"]) .game-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@supports (view-transition-name: root) {
+  ::view-transition-old(root) {
+    animation: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: theme-circle-reveal 680ms var(--ease-standard) both;
+  }
+}
+
+@keyframes theme-circle-reveal {
+  from {
+    clip-path: circle(0 at var(--theme-transition-x, 50%) var(--theme-transition-y, 50%));
+  }
+  to {
+    clip-path: circle(var(--theme-transition-radius, 150vmax) at var(--theme-transition-x, 50%) var(--theme-transition-y, 50%));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
   }
 }
