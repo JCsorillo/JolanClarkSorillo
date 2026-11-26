@@ -1,4 +1,4 @@
-## Larck Shop
+## Jolan Clark A. Sorillo Portfolio
 
 ![response time](https://img.shields.io/badge/response%20time-24%20h-blue)
 
@@ -24,4 +24,12 @@ A lightweight shop and recommendations hub hosted on GitHub Pages. It uses plain
 
 Update app details in `js/products.js` and recommendations and collections in `js/stores.js`. Preserve the light/dark theme, affiliate disclosure and link rules, and reduced-motion behavior when e[...]
 
-Icons are bundled locally in `img/icons.svg` and referenced from the site shell and page content. Motion is limited to the aurora drift, one-time tile reveals, hover/press feedback, and the theme [...]
+Icons are bundled locally in `img/icons.svg` and referenced from the site shell and page content.
+
+## Changelog
+
+### v2.2.0
+- Added consent-safe Spotify facades and lazy visitor counter support.
+- Added alternating hero marquees, proof counters, and improved mobile navigation interactions.
+- Added SK-Bangkal to the project carousel and removed misleading commission tag filtering.
+- Standardized visible and SEO-facing name copy to Jolan Clark A. Sorillo.

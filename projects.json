@@ -1,5 +1,20 @@
 [
   {
+    "title": "SK-Bangkal",
+    "category": "Barangay SK Website",
+    "year": "2025",
+    "status": "Live Deployment",
+    "description": "A responsive barangay Sangguniang Kabataan website with a clear public-facing content structure.",
+    "features": [
+      "Responsive front-end layout",
+      "Public community information",
+      "Clear, approachable presentation"
+    ],
+    "techStack": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
+    "url": "https://jcsorillo.github.io/SK-Bangkal/",
+    "linkText": "Visit Live Site"
+  },
+  {
     "title": "Ahlia-Daile",
     "category": "Commissioned Front-End Website",
     "year": "2025",
@@ -12,8 +27,7 @@
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Data", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Ahlia-Daile/",
-    "linkText": "Visit Live Site",
-    "tags": ["Catalog", "Frontend", "Data System"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Angel-Mae",
@@ -28,8 +42,7 @@
     ],
     "techStack": ["HTML5", "CSS3 Tokens", "JavaScript ES6", "Responsive Design"],
     "url": "https://jcsorillo.github.io/Angel-Mae/",
-    "linkText": "Visit Live Site",
-    "tags": ["UI Showcase", "CSS", "Frontend"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Angelie",
@@ -44,8 +57,7 @@
     ],
     "techStack": ["JavaScript", "HTML5 Forms", "CSS Variables", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Angelie/",
-    "linkText": "Visit Live Site",
-    "tags": ["Components", "Forms", "UI Lab"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Angelyn",
@@ -60,8 +72,7 @@
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Indexing"],
     "url": "https://jcsorillo.github.io/Angelyn/",
-    "linkText": "Visit Live Site",
-    "tags": ["Archiving", "Module", "Data System"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Dariel",
@@ -76,8 +87,7 @@
     ],
     "techStack": ["JavaScript", "HTML5", "CSS3", "JSON API", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Dariel/",
-    "linkText": "Visit Live Site",
-    "tags": ["Inventory", "Web System", "Operations"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Eidref",
@@ -92,8 +102,7 @@
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Data"],
     "url": "https://jcsorillo.github.io/Eidref/",
-    "linkText": "Visit Live Site",
-    "tags": ["Data System", "Web", "Queries"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Jolan-Clark",
@@ -108,11 +117,10 @@
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript ES6", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Jolan-Clark/",
-    "linkText": "Visit Live Site",
-    "tags": ["Profile", "Hub", "Portfolio"]
+    "linkText": "Visit Live Site"
   },
   {
-    "title": "Jolan-Larck",
+    "title": "Jolan Clark",
     "category": "Commissioned Front-End Website",
     "year": "2025",
     "status": "Live Deployment",
@@ -124,8 +132,7 @@
     ],
     "techStack": ["HTML5", "CSS3 Tokens", "JavaScript ES6+", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Jolan-Larck/",
-    "linkText": "Visit Live Site",
-    "tags": ["Portfolio", "Web", "Interactive"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Lory-Ann",
@@ -140,8 +147,7 @@
     ],
     "techStack": ["JavaScript", "HTML5", "CSS3", "Git"],
     "url": "https://jcsorillo.github.io/Lory-Ann/",
-    "linkText": "Visit Live Site",
-    "tags": ["Web App", "Frontend", "Interactive"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Mary-Gail",
@@ -156,8 +162,7 @@
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Mary-Gail/",
-    "linkText": "Visit Live Site",
-    "tags": ["Template", "Landing", "Responsive"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Rolyn",
@@ -172,8 +177,7 @@
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "JSON Data"],
     "url": "https://jcsorillo.github.io/Rolyn/",
-    "linkText": "Visit Live Site",
-    "tags": ["Portal", "Utilities", "Admin"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Ronabe",
@@ -188,8 +192,7 @@
     ],
     "techStack": ["JavaScript", "HTML5", "CSS3", "IT Utilities"],
     "url": "https://jcsorillo.github.io/Ronabe/",
-    "linkText": "Visit Live Site",
-    "tags": ["IT Support", "Automation", "Utilities"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Saralyn",
@@ -204,8 +207,7 @@
     ],
     "techStack": ["CSS3", "HTML5", "JavaScript ES6", "UI Design"],
     "url": "https://jcsorillo.github.io/Saralyn/",
-    "linkText": "Visit Live Site",
-    "tags": ["Interface", "Design", "Lab"]
+    "linkText": "Visit Live Site"
   },
   {
     "title": "Tricia",
@@ -220,7 +222,6 @@
     ],
     "techStack": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
     "url": "https://jcsorillo.github.io/Tricia/",
-    "linkText": "Visit Live Site",
-    "tags": ["Web App", "Responsive", "UI"]
+    "linkText": "Visit Live Site"
   }
 ]

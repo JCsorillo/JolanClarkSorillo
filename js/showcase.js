@@ -233,6 +233,9 @@ export function createProjectCarousel(container) {
   }
 
   return {
+    getActiveProject() {
+      return projects[activeIndex] || null;
+    },
     setProjects(nextProjects, emptyMessage = "No matching projects found.") {
       projects = nextProjects;
       activeIndex = 0;
@@ -297,7 +300,7 @@ const contactCards = [
     name: "WhatsApp",
     icon: "whatsapp",
     className: "is-whatsapp",
-    detail: `<p class="contact-card-number">+63 9** *** ****</p><div class="contact-typing" aria-hidden="true"><i></i><i></i><i></i></div><p class="contact-typing-copy">Larck is typing... say hi first.</p>`,
+    detail: `<p class="contact-card-number">+63 9** *** ****</p><div class="contact-typing" aria-hidden="true"><i></i><i></i><i></i></div><p class="contact-typing-copy">Jolan is typing... say hi first.</p>`,
     link: "https://wa.me/639287328109",
     linkText: "Message",
     newTab: true,
@@ -307,7 +310,7 @@ const contactCards = [
     name: "Gmail",
     icon: "mail",
     className: "is-gmail",
-    detail: `<div class="gmail-compose"><p><span>To:</span> Jolan Clark</p><p>Remote work inquiry</p><p>Hi Larck, are you open<span class="gmail-caret" aria-hidden="true"></span></p></div>`,
+    detail: `<div class="gmail-compose"><p><span>To:</span> Jolan Clark A. Sorillo</p><p>Remote work inquiry</p><p>Hi Jolan, are you open<span class="gmail-caret" aria-hidden="true"></span></p></div>`,
     link: "mailto:sorillojolanclark@gmail.com?subject=Remote%20work%20inquiry",
     linkText: "Write",
   },
@@ -316,7 +319,7 @@ const contactCards = [
     name: "LinkedIn",
     icon: "linkedin",
     className: "is-linkedin",
-    detail: `<p class="contact-card-person">Jolan Clark Sorillo</p><p>IT Support and Web Developer</p>`,
+    detail: `<p class="contact-card-person">Jolan Clark A. Sorillo</p><p>IT Support and Web Developer</p>`,
     link: "https://www.linkedin.com/in/jolan-clark-sorillo-011197256/?originalSubdomain=ph",
     linkText: "View profile",
     newTab: true,
@@ -337,7 +340,7 @@ function renderContactStack(mount) {
     <div class="contact-stack-profile">
       <img src="img/intro-bg.webp" alt="" width="56" height="56">
       <div class="contact-stack-profile-copy">
-        <strong>Jolan Clark Sorillo</strong>
+        <strong>Jolan Clark A. Sorillo</strong>
         <span>IT Support and Web Developer</span>
         <time class="contact-local-time"></time>
       </div>

@@ -1,0 +1,327 @@
+.reveal.reveal-tile {
+  opacity: 0;
+  transform: translate3d(0, 1rem, 0);
+  transition:
+    opacity 560ms cubic-bezier(0.2, 0.75, 0.25, 1),
+    transform 560ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.reveal-tile.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+.home-hero-watermark-row-right .home-hero-watermark-track {
+  animation: home-marquee-right 38s linear infinite;
+  will-change: transform;
+}
+
+.home-hero-watermark-row-left .home-hero-watermark-track {
+  animation: home-marquee-left 38s linear infinite;
+  will-change: transform;
+}
+
+@keyframes home-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes home-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.page-home .skill-card,
+.page-home .playlist-card,
+.page-home .interest-card,
+.page-home .cctv-card,
+.page-home .home-gear-card {
+  background-repeat: no-repeat;
+}
+
+.page-home .playlist-card,
+.page-home .interest-card,
+.page-home .home-about .skill-card {
+  transition:
+    transform 280ms cubic-bezier(0.2, 1.2, 0.35, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.page-home .cctv-card:hover {
+  transform: translateY(-3px);
+}
+
+.page-home .skill-card.is-pointer-active,
+.page-home .playlist-card.is-pointer-active,
+.page-home .interest-card.is-pointer-active,
+.page-home .cctv-card.is-pointer-active,
+.page-home .home-gear-card.is-pointer-active {
+  background-image: radial-gradient(
+    330px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    color-mix(in srgb, var(--home-text) 8%, transparent),
+    transparent 74%
+  );
+}
+
+.motion-action,
+.page-home .credential-chip,
+.page-home .interest-note,
+.page-home .game-filter,
+.page-home .cctv-ptz-pad button,
+.page-home .project-quick-view,
+.page-home .project-preview-dialog .modal-close {
+  transition:
+    transform 240ms cubic-bezier(0.2, 1.35, 0.4, 1),
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.motion-action:active,
+.page-home .credential-chip:active,
+.page-home .interest-note:active,
+.page-home .game-filter:active,
+.page-home .project-quick-view:active,
+.page-home .cctv-ptz-pad button:active {
+  transform: scale(0.97);
+}
+
+.page-home .playlist-card:hover,
+.page-home .interest-card:hover,
+.page-home .home-about .skill-card:hover,
+.page-home .project-explorer:hover,
+.page-home .cctv-card:hover {
+  box-shadow: 0 16px 38px var(--color-shadow), 0 0 0 1px color-mix(in srgb, var(--home-text) 8%, transparent);
+}
+
+.page-home .game-list li:hover,
+.page-home .credential-chip:hover,
+.page-home .interest-note:hover,
+.page-home .game-filter:hover,
+.page-home .cctv-ptz-pad button:hover {
+  box-shadow: 0 8px 22px var(--color-shadow), 0 0 0 1px color-mix(in srgb, var(--home-text) 10%, transparent);
+}
+
+@supports (view-transition-name: root) {
+  ::view-transition-old(root) {
+    animation: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: theme-circle-reveal 680ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  }
+}
+
+@keyframes theme-circle-reveal {
+  from {
+    clip-path: circle(0 at var(--theme-transition-x, 50%) var(--theme-transition-y, 50%));
+  }
+
+  :root {
+    --marquee-ink: rgba(11, 11, 13, 0.12);
+  }
+
+  [data-theme="dark"] {
+    --marquee-ink: rgba(255, 255, 255, 0.10);
+  }
+
+  .home-hero-watermark {
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .home-hero-watermark-track,
+  .home-hero-watermark-group,
+  .home-hero-watermark-row {
+    will-change: transform;
+  }
+
+  .home-hero-watermark-group span {
+    color: var(--marquee-ink);
+    -webkit-text-stroke: 1px color-mix(in srgb, var(--marquee-ink) 45%, transparent);
+  }
+
+  .home-hero-copy,
+  .home-hero-portrait {
+    position: relative;
+    z-index: 2;
+  }
+
+  .proof-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .proof-stat {
+    min-height: 6.8rem;
+    display: grid;
+    align-content: center;
+    padding: 1rem;
+    border: 1px solid var(--home-line);
+    border-radius: 1rem;
+    background: var(--home-card);
+  }
+
+  .proof-stat strong {
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .proof-stat strong + span {
+    color: var(--home-muted);
+    font-size: 0.82rem;
+  }
+
+  .proof-stat p {
+    margin: 0.35rem 0 0;
+    color: var(--home-muted);
+    font-size: 0.78rem;
+  }
+
+  .spotify-player-facade {
+    min-height: 352px;
+    display: grid;
+    place-items: center;
+    gap: 0.8rem;
+    border: 1px solid var(--home-line);
+    border-radius: 12px;
+    background:
+      radial-gradient(circle at 50% 35%, color-mix(in srgb, #1ed760 18%, transparent), transparent 42%),
+      var(--home-card);
+    color: var(--home-text);
+    text-align: center;
+  }
+
+  .spotify-player-facade:has(.spotify-player) {
+    display: block;
+  }
+
+  .spotify-player {
+    display: block;
+    min-height: 352px;
+    border: 0;
+    border-radius: 12px;
+  }
+
+  .cookie-consent-banner {
+    position: fixed;
+    z-index: 200;
+    right: 1rem;
+    bottom: 1rem;
+    width: min(28rem, calc(100vw - 2rem));
+    display: grid;
+    gap: 0.8rem;
+    padding: 1rem;
+    border: 1px solid var(--home-line);
+    border-radius: 1rem;
+    background: color-mix(in srgb, var(--home-bg) 92%, transparent);
+    box-shadow: 0 18px 48px var(--color-shadow);
+    backdrop-filter: blur(18px);
+  }
+
+  .cookie-consent-banner p {
+    margin: 0.25rem 0 0;
+    color: var(--home-muted);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .cookie-consent-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  .cookie-preferences-button {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  @media (max-width: 700px) {
+    .proof-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cookie-consent-banner {
+      right: 0.75rem;
+      bottom: 0.75rem;
+    }
+  }
+  to {
+    clip-path: circle(var(--theme-transition-radius, 150vmax) at var(--theme-transition-x, 50%) var(--theme-transition-y, 50%));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .reveal.reveal-tile,
+  .reveal.reveal-tile.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .motion-action,
+  .page-home .credential-chip,
+  .page-home .interest-note,
+  .page-home .game-filter,
+  .page-home .cctv-ptz-pad button,
+  .page-home .project-quick-view,
+  .page-home .project-preview-dialog .modal-close {
+    transition: none !important;
+  }
+
+  .motion-action:active,
+  .page-home .credential-chip:active,
+  .page-home .interest-note:active,
+  .page-home .game-filter:active,
+  .page-home .project-quick-view:active,
+  .page-home .cctv-ptz-pad button:active {
+    transform: none;
+  }
+
+  .page-home .playlist-card:hover,
+  .page-home .interest-card:hover,
+  .page-home .home-about .skill-card:hover,
+  .page-home .cctv-card:hover,
+  .page-home .game-list li:hover,
+  .page-home .credential-chip:hover,
+  .page-home .interest-note:hover,
+  .page-home .game-filter:hover {
+    transform: none;
+  }
+
+  .home-hero-watermark-track {
+    animation: none !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}

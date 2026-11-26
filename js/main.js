@@ -27,7 +27,7 @@ function renderHeader() {
   return `
     <header class="site-header">
       <div class="nav-shell">
-        <a class="brand" href="index.html#home" aria-label="Jolan Clark Sorillo home"><span>Jolan</span></a>
+        <a class="brand" href="index.html#home" aria-label="Jolan Clark A. Sorillo home"><span>Jolan</span></a>
         <div class="nav-actions">
           <button class="theme-toggle" type="button" aria-label="Switch to ${currentTheme === "dark" ? "light" : "dark"} theme" aria-pressed="${currentTheme === "dark"}">${themeIcon(currentTheme)}</button>
           <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
@@ -87,10 +87,11 @@ function renderFooter() {
           <nav class="footer-legal-links" aria-label="Legal links">
             <a href="privacy.html">Privacy Policy</a>
             <a href="legal.html">Legal Disclaimer</a>
+            <button class="cookie-preferences-button" type="button" data-open-cookie-preferences>Cookie preferences</button>
           </nav>
         </div>
 
-        <p class="footer-bottom" style="margin-top: 0.75rem; border-top: none; padding: 0;">© ${new Date().getFullYear()} Jolan Clark Sorillo (Larck). All rights reserved.</p>
+        <p class="footer-bottom" style="margin-top: 0.75rem; border-top: none; padding: 0;">© ${new Date().getFullYear()} Jolan Clark A. Sorillo. All rights reserved.</p>
       </div>
     </footer>`;
 }
@@ -302,8 +303,15 @@ function initShell() {
   menu?.addEventListener("click", (event) => {
     if (event.target.closest("a")) setMenuOpen(false);
   });
+  document.addEventListener("pointerdown", (event) => {
+    if (menuToggle?.getAttribute("aria-expanded") !== "true") return;
+    if (menu?.contains(event.target) || menuToggle?.contains(event.target)) return;
+    setMenuOpen(false);
+  });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") setMenuOpen(false);
+    if (event.key !== "Escape" || menuToggle?.getAttribute("aria-expanded") !== "true") return;
+    setMenuOpen(false);
+    menuToggle.focus();
   });
 
   document.addEventListener("click", (event) => {
@@ -357,31 +365,6 @@ function initAuroraEffects() {
   document.addEventListener("visibilitychange", () => {
     document.documentElement.classList.toggle("page-hidden", document.hidden);
   });
-}
-
-function initReveals() {
-  const revealTargets = [...document.querySelectorAll(".reveal")];
-  const sectionCounts = new Map();
-  revealTargets.forEach((element) => {
-    element.classList.add("reveal-tile");
-    const section = element.closest("section") || document.body;
-    const count = sectionCounts.get(section) || 0;
-    element.style.setProperty("--reveal-delay", count < 6 ? `${count * 10}ms` : "0ms");
-    sectionCounts.set(section, count + 1);
-  });
-  if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    revealTargets.forEach((element) => element.classList.add("is-visible"));
-    return;
-  }
-  const observer = new IntersectionObserver((entries, currentObserver) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        currentObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  revealTargets.filter((element) => !element.classList.contains("is-visible")).forEach((element) => observer.observe(element));
 }
 
 function initGameFilters() {
@@ -499,7 +482,7 @@ function initProducts() {
     button.addEventListener("click", () => {
       const product = products.find((item) => item.id === button.dataset.productId);
       if (!product) return;
-      const message = `Hello Larck, I'm interested in ${product.name}. Please send me the details.`;
+      const message = `Hello Jolan, I'm interested in ${product.name}. Please send me the details.`;
       const encodedMessage = encodeURIComponent(message);
       modal.querySelector("#buy-title").textContent = `Buy ${product.name}`;
       modal.querySelector("#buy-description").textContent = `Current listed price: ${product.price}.`;
@@ -714,8 +697,7 @@ async function loadDynamicProductsGrid() {
         </article>`;
     }).join("");
 
-    // Re-run reveals so IntersectionObserver picks up new elements
-    initReveals();
+    initMotion();
   } catch (err) {
     container.innerHTML = `<p class="empty-results">Could not load dynamic products.</p>`;
     // eslint-disable-next-line no-console
@@ -827,42 +809,26 @@ async function loadDynamicProjectsGrid() {
     const res = await fetch("projects.json", { cache: "no-cache" });
     if (!res.ok) throw new Error("Failed to fetch projects.json");
     const projects = await res.json();
-    projects.sort((a, b) => String(a.title || "").localeCompare(String(b.title || ""), undefined, { sensitivity: "base" }));
+    const featured = projects.find((project) => project.title === "SK-Bangkal");
+    const remaining = projects
+      .filter((project) => project !== featured)
+      .sort((a, b) => String(a.title || "").localeCompare(String(b.title || ""), undefined, { sensitivity: "base" }));
+    const orderedProjects = featured ? [featured, ...remaining] : remaining;
 
-    createProjectCarousel(container).setProjects(projects);
+    const carousel = createProjectCarousel(container);
+    carousel.setProjects(orderedProjects);
+    import("./fx.js").then(({ initProjectPreview }) => {
+      initProjectPreview(orderedProjects, carousel);
+    }).catch(() => {
+      console.warn("Project preview module could not be loaded.");
+    });
   } catch (err) {
     container.innerHTML = `<p class="empty-results">Could not load projects.</p>`;
     console.warn("loadDynamicProjectsGrid:", err);
   }
 }
 
-/* --- AWWWARDS INTERACTIVE & DYNAMIC UI EFFECTS --- */
-
-function initCursorSpotlightAndTilt() {
-  const cards = document.querySelectorAll(".glass-card, .project-card, .skill-card, .hero-tile");
-
-  cards.forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      card.style.setProperty("--mouse-x", `${x}px`);
-      card.style.setProperty("--mouse-y", `${y}px`);
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -4;
-      const rotateY = ((x - centerX) / centerX) * 4;
-
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "";
-    });
-  });
-}
+/* --- Live status and portfolio effects --- */
 
 function initLiveClockAndStatus() {
   const timeEl = document.querySelector("#dock-live-time");
@@ -888,6 +854,12 @@ function initLiveClockAndStatus() {
 function initAnimatedCounters() {
   const counters = document.querySelectorAll("[data-counter-target]");
   if (!counters.length) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    counters.forEach((el) => {
+      el.textContent = el.dataset.counterTarget || "0";
+    });
+    return;
+  }
 
   const animateCounter = (el) => {
     const target = parseInt(el.dataset.counterTarget, 10) || 0;
@@ -921,64 +893,6 @@ function initAnimatedCounters() {
   counters.forEach((counter) => observer.observe(counter));
 }
 
-function initInteractiveProjectFilters(projectsData = [], setProjects = () => {}) {
-  const searchInput = document.getElementById("project-search");
-  const filterChipsContainer = document.getElementById("category-filter-chips");
-  const gridContainer = document.getElementById("dynamic-projects-grid");
-
-  if (!gridContainer || !projectsData.length) return;
-
-  let currentCategory = "All";
-  let searchQuery = "";
-  const allProjectsChip = filterChipsContainer?.querySelector('[data-filter="All"]');
-  if (allProjectsChip) allProjectsChip.textContent = `All Projects (${projectsData.length})`;
-
-  const renderFilteredProjects = () => {
-    const query = searchQuery.toLowerCase().trim();
-
-    const filtered = projectsData.filter((project) => {
-      const tags = Array.isArray(project.tags) ? project.tags : [];
-      const techStack = Array.isArray(project.techStack) ? project.techStack : [];
-      const title = String(project.title || "");
-      const description = String(project.description || "");
-      const matchCategory = currentCategory === "All" ||
-        [...tags, ...techStack].some((tag) => String(tag).toLowerCase().includes(currentCategory.toLowerCase())) ||
-        title.toLowerCase().includes(currentCategory.toLowerCase()) ||
-        description.toLowerCase().includes(currentCategory.toLowerCase());
-
-      const searchableText = `${title} ${description} ${tags.join(" ")} ${techStack.join(" ")}`.toLowerCase();
-      const matchSearch = !query || searchableText.includes(query);
-
-      return matchCategory && matchSearch;
-    });
-
-    const emptyMessage = `No matching projects found${searchQuery.trim() ? ` for "${searchQuery.trim()}"` : ""}.`;
-    setProjects(filtered, emptyMessage);
-  };
-
-  if (searchInput) {
-    searchInput.addEventListener("input", (e) => {
-      searchQuery = e.target.value;
-      renderFilteredProjects();
-    });
-  }
-
-  if (filterChipsContainer) {
-    filterChipsContainer.addEventListener("click", (e) => {
-      const chip = e.target.closest(".filter-chip");
-      if (!chip) return;
-
-      filterChipsContainer.querySelectorAll(".filter-chip").forEach((c) => c.classList.remove("is-active"));
-      chip.classList.add("is-active");
-
-      currentCategory = chip.dataset.filter || "All";
-      if (allProjectsChip) allProjectsChip.textContent = `All Projects (${projectsData.length})`;
-      renderFilteredProjects();
-    });
-  }
-  renderFilteredProjects();
-}
-
 function initFloatingDock() {
   if (document.querySelector(".floating-dock")) return;
   const currentTheme = document.documentElement.dataset.theme || "light";
@@ -999,42 +913,94 @@ function initFloatingDock() {
   initLiveClockAndStatus();
 }
 
-function initCursorGlow() {
-  if (document.querySelector(".cursor-glow") || window.innerWidth < 900) return;
-  const glow = document.createElement("div");
-  glow.className = "cursor-glow";
-  document.body.appendChild(glow);
+// v2.2.0
+function initConsent(forceOpen = false) {
+  let consent = null;
+  try { consent = localStorage.getItem("jcs_cookie_consent"); } catch {}
 
-  let mouseX = 0, mouseY = 0;
-  let glowX = 0, glowY = 0;
+  if (forceOpen) document.querySelector(".cookie-consent-banner")?.remove();
+  if (!consent || forceOpen) {
+    document.body.insertAdjacentHTML("beforeend", `
+      <aside class="cookie-consent-banner" role="dialog" aria-modal="false" aria-labelledby="cookie-consent-title">
+        <div>
+          <strong id="cookie-consent-title">Cookie preferences</strong>
+          <p>Choose essential storage only or allow Spotify playback and visitor counting.</p>
+        </div>
+        <div class="cookie-consent-actions">
+          <button type="button" class="button button-secondary" data-cookie-choice="essential">Essential only</button>
+          <button type="button" class="button" data-cookie-choice="all">Accept all</button>
+        </div>
+      </aside>`);
+  }
 
-  document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  const animateGlow = () => {
-    glowX += (mouseX - glowX) * 0.1;
-    glowY += (mouseY - glowY) * 0.1;
-    glow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0)`;
-    requestAnimationFrame(animateGlow);
+  const choose = (value) => {
+    try { localStorage.setItem("jcs_cookie_consent", value); } catch {}
+    document.querySelector(".cookie-consent-banner")?.remove();
+    if (value === "all") {
+      import("./counter.js").catch(() => {});
+    } else {
+      document.querySelectorAll("[data-spotify-facade iframe").forEach((frame) => frame.remove());
+    }
   };
-  requestAnimationFrame(animateGlow);
+
+  document.addEventListener("click", (event) => {
+    const choice = event.target.closest("[data-cookie-choice]");
+    if (choice) choose(choice.dataset.cookieChoice);
+    if (event.target.closest("[data-open-cookie-preferences]")) {
+      const existing = document.querySelector(".cookie-consent-banner");
+      if (!existing) {
+        initConsent(true);
+      } else {
+        existing.querySelector("[data-cookie-choice]")?.focus();
+      }
+    }
+  });
+}
+
+function initSpotifyFacades() {
+  document.querySelectorAll("[data-load-spotify]").forEach((button) => {
+    button.addEventListener("click", () => {
+      let consent = "essential";
+      try { consent = localStorage.getItem("jcs_cookie_consent") || "essential"; } catch {}
+      if (consent !== "all") {
+        const preferences = document.querySelector(".cookie-consent-banner");
+        if (preferences) preferences.querySelector("[data-cookie-choice=\"all\"]")?.focus();
+        else document.querySelector("[data-open-cookie-preferences]")?.click();
+        return;
+      }
+      const facade = button.closest("[data-spotify-facade]");
+      const src = facade?.dataset.spotifySrc;
+      if (!facade || !src) return;
+      const index = [...facade.parentElement.parentElement.querySelectorAll("[data-spotify-facade]")].indexOf(facade) + 1;
+      facade.replaceChildren();
+      const iframe = document.createElement("iframe");
+      iframe.className = "spotify-player";
+      iframe.title = `Spotify Playlist ${index}`;
+      iframe.width = "100%";
+      iframe.height = "352";
+      iframe.loading = "lazy";
+      iframe.setAttribute("allow", "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture");
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.src = src;
+      facade.append(iframe);
+    });
+  });
 }
 
 const runModule = () => {
   try { initShell(); } catch (e) { console.error("initShell error:", e); }
   try { initContactForm(); } catch (e) { console.error("initContactForm error:", e); }
-  try { initReveals(); } catch (e) { console.error("initReveals error:", e); }
   try { initGameFilters(); } catch (e) { console.error("initGameFilters error:", e); }
   try { loadDynamicProjectsGrid(); } catch (e) { console.error("loadDynamicProjectsGrid error:", e); }
-  if (document.body.classList.contains("page-home")) {
-    try { initCursorSpotlightAndTilt(); } catch (e) { console.error("initCursorSpotlightAndTilt error:", e); }
-  }
   try { initAnimatedCounters(); } catch (e) { console.error("initAnimatedCounters error:", e); }
-  if (document.body.classList.contains("page-home")) {
-    try { initCursorGlow(); } catch (e) { console.error("initCursorGlow error:", e); }
-  }
+  try { initConsent(); } catch (e) { console.error("initConsent error:", e); }
+  try { initSpotifyFacades(); } catch (e) { console.error("initSpotifyFacades error:", e); }
+  import("./fx.js").then(({ initMotion }) => initMotion()).catch(() => {
+    console.warn("Motion module could not be loaded.");
+  });
+  import("./counter.js").catch(() => {
+    console.warn("Visitor counter module could not be loaded.");
+  });
 };
 
 if (document.readyState === "loading") {
