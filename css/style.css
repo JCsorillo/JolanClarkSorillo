@@ -3447,6 +3447,12 @@ html:has(body.page-home) {
   grid-column: auto !important;
 }
 
+.page-home .home-about .feature-grid > :last-child:nth-child(odd) {
+  grid-column: 1 / -1 !important;
+  width: min(100%, calc((100% - 0.8rem) / 2));
+  justify-self: center;
+}
+
 .page-home .home-about .skill-card {
   min-height: 12rem;
   padding: clamp(1.25rem, 3vw, 2rem);
@@ -3824,6 +3830,12 @@ html:has(body.page-home) {
 
   .page-home .home-about .skill-card {
     min-height: 0;
+  }
+
+  .page-home .home-about .feature-grid > :last-child:nth-child(odd) {
+    grid-column: auto !important;
+    width: 100%;
+    justify-self: stretch;
   }
 
   .page-home .timeline-entry {
