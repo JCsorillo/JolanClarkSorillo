@@ -3348,7 +3348,7 @@ html:has(body.page-home) {
   gap: 0.04em;
   overflow: hidden;
   color: var(--marquee-ink);
-  font-size: clamp(2.75rem, 8vw, 6rem);
+  font-size: clamp(4rem, 11vw, 9rem);
   font-weight: 800;
   letter-spacing: -0.06em;
   line-height: 0.88;
@@ -3388,7 +3388,7 @@ html:has(body.page-home) {
   .page-home .home-hero-watermark {
     align-content: center;
     padding-top: 3.5rem;
-    font-size: clamp(2.2rem, 10vw, 3.75rem);
+    font-size: clamp(3rem, 12vw, 5rem);
   }
 }
 
