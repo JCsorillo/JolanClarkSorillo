@@ -2928,6 +2928,12 @@ h4 {
   border: none;
   box-shadow: none;
   padding: 0;
+  opacity: 0.55;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.floating-dock:hover {
+  opacity: 1;
 }
 
 /* Top item (Dot of the "i"): Circular Theme Switcher Button */

@@ -50,12 +50,7 @@ function renderHeader() {
 }
 
 function renderQuickNavigation() {
-  return `
-    <nav class="quick-nav-floating" aria-label="Scroll to next section">
-      <button class="next-section-btn" type="button" aria-label="Scroll to next section" title="Scroll to next section">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-      </button>
-    </nav>`;
+  return "";
 }
 
 function renderFooter() {
