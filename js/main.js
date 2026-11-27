@@ -1075,6 +1075,30 @@ function initSpotifyFacades() {
   if (consent === "all") loadSpotifyEmbeds();
 }
 
+function initGlobalMediaCoordinator() {
+  let currentActiveMedia = null;
+
+  // Global capture listener for audio and video play events
+  document.addEventListener("play", (event) => {
+    const activeMedia = event.target;
+    if (activeMedia && (activeMedia.tagName === "AUDIO" || activeMedia.tagName === "VIDEO")) {
+      document.querySelectorAll("audio, video").forEach((media) => {
+        if (media !== activeMedia && !media.paused) {
+          media.pause();
+        }
+      });
+      currentActiveMedia = activeMedia;
+    }
+  }, true);
+
+  // Pause playback when leaving or hiding the browser tab
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && currentActiveMedia && !currentActiveMedia.paused) {
+      currentActiveMedia.pause();
+    }
+  });
+}
+
 const runModule = () => {
   window.addEventListener("hashchange", alignLocationHash);
   try { initShell(); } catch (e) { console.error("initShell error:", e); }
@@ -1085,6 +1109,7 @@ const runModule = () => {
   try { initAnimatedCounters(); } catch (e) { console.error("initAnimatedCounters error:", e); }
   try { initConsent(); } catch (e) { console.error("initConsent error:", e); }
   try { initSpotifyFacades(); } catch (e) { console.error("initSpotifyFacades error:", e); }
+  try { initGlobalMediaCoordinator(); } catch (e) { console.error("initGlobalMediaCoordinator error:", e); }
   Promise.all([projectLoad, document.fonts?.ready].filter(Boolean)).then(scheduleHashAlignment);
   import("./fx.js").then(({ initMotion }) => initMotion()).catch(() => {
     console.warn("Motion module could not be loaded.");
