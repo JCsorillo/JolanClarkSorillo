@@ -4718,14 +4718,25 @@ html:has(body.page-home) {
   font-size: 1.05rem;
   font-weight: 500;
   text-decoration: none;
-  transition: background 180ms ease, color 180ms ease;
+  border-left: 3.5px solid transparent;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
 }
 
 .nav-menu a:hover,
-.nav-menu a:focus-visible,
-.nav-menu a[aria-current="page"] {
-  background: var(--color-accent) !important;
+.nav-menu a:focus-visible {
+  background: rgba(255, 255, 255, 0.08) !important;
   color: #ffffff !important;
+}
+
+/* Line-only left border indicator for current page in hamburger menu */
+.nav-menu a[aria-current="page"],
+.page-home .nav-menu a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-left: 3.5px solid var(--color-accent, #3b82f6) !important;
+  border-radius: 0 0.85rem 0.85rem 0 !important;
+  padding-left: 1rem !important;
 }
 
 .nav-menu a:focus-visible {
@@ -4744,9 +4755,8 @@ html:has(body.page-home) {
 }
 
 .page-home .nav-menu a:hover,
-.page-home .nav-menu a:focus-visible,
-.page-home .nav-menu a[aria-current="page"] {
-  background: var(--color-accent) !important;
+.page-home .nav-menu a:focus-visible {
+  background: rgba(255, 255, 255, 0.08) !important;
   color: #ffffff !important;
 }
 
@@ -4758,6 +4768,19 @@ html:has(body.page-home) {
   font-size: 1.05rem !important;
   font-weight: 700 !important;
   border-radius: var(--radius-pill) !important;
+  border-left: none !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-top: 0.5rem !important;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.25) !important;
+}
+
+.nav-menu a[href="contact.html"]:hover,
+.page-home .nav-menu a[href="contact.html"]:hover {
+  background: #f0f0f0 !important;
+  color: #000000 !important;
+  transform: translateY(-1px) !important;
+}
   justify-content: center !important;
   text-align: center !important;
   margin-top: 0.5rem !important;
