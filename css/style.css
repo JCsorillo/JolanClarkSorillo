@@ -4750,6 +4750,27 @@ html:has(body.page-home) {
   color: #ffffff !important;
 }
 
+/* Contact Button as solid White Button at bottom of hamburger list */
+.nav-menu a[href="contact.html"],
+.page-home .nav-menu a[href="contact.html"] {
+  background: #ffffff !important;
+  color: #000000 !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-pill) !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-top: 0.5rem !important;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.25) !important;
+}
+
+.nav-menu a[href="contact.html"]:hover,
+.page-home .nav-menu a[href="contact.html"]:hover {
+  background: #f0f0f0 !important;
+  color: #000000 !important;
+  transform: translateY(-1px) !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .nav-menu {
     transition: none;
