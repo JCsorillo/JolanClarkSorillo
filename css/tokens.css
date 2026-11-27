@@ -1,24 +1,24 @@
 :root {
   color-scheme: light;
-  --color-bg: #edf1fa;
-  --color-surface: rgba(255, 255, 255, 0.76);
-  --color-raised: rgba(255, 255, 255, 0.68);
-  --color-surface-fallback: rgba(255, 255, 255, 0.96);
-  --color-border: rgba(255, 255, 255, 0.74);
-  --color-border-strong: rgba(255, 255, 255, 0.9);
-  --color-card-top: rgba(255, 255, 255, 0.62);
-  --color-text: #0b1220;
-  --color-muted: #4a566d;
+  --color-bg: #eeece9;
+  --color-surface: rgba(250, 248, 245, 0.78);
+  --color-raised: rgba(241, 239, 235, 0.86);
+  --color-surface-fallback: #f5f3f0;
+  --color-border: rgba(57, 53, 47, 0.12);
+  --color-border-strong: rgba(57, 53, 47, 0.2);
+  --color-card-top: rgba(255, 255, 255, 0.42);
+  --color-text: #191816;
+  --color-muted: #64615b;
   --color-accent: #1d63e0;
   --color-link: #1858cb;
   --color-button-bg: #1d63e0;
   --color-accent-contrast: #ffffff;
   --color-focus: #1d63e0;
-  --color-shadow: rgba(60, 80, 140, 0.12);
-  --color-spotlight: rgba(255, 255, 255, 0.22);
-  --color-nav: rgba(237, 241, 250, 0.78);
-  --color-nav-scrolled: rgba(237, 241, 250, 0.92);
-  --color-footer: rgba(255, 255, 255, 0.52);
+  --color-shadow: rgba(50, 45, 38, 0.1);
+  --color-spotlight: rgba(255, 255, 255, 0.18);
+  --color-nav: rgba(238, 236, 233, 0.88);
+  --color-nav-scrolled: rgba(238, 236, 233, 0.96);
+  --color-footer: #e4e1dc;
   --color-modal-backdrop: rgba(17, 28, 52, 0.38);
   --color-print-paper: #fff;
   --color-print-ink: #111;
@@ -27,7 +27,7 @@
   --color-print-rule-light: #aaa;
   --color-print-rule-mid: #bbb;
 
-  --aurora-base: #edf1fa;
+  --aurora-base: #eeece9;
   --aurora-sky: rgba(156, 211, 255, 0.5);
   --aurora-lavender: rgba(196, 181, 253, 0.42);
   --aurora-mint: rgba(167, 243, 208, 0.38);

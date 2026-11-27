@@ -39,8 +39,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/style.css?v=2.2.5">
+  <link rel="stylesheet" href="css/tokens.css?v=2.2.6">
+  <link rel="stylesheet" href="css/style.css?v=2.2.7">
   <link rel="stylesheet" href="css/showcase.css">
   <link rel="stylesheet" href="css/motion.css?v=2.2.1">
   <script type="application/ld+json">
@@ -686,13 +686,15 @@
         <div class="game-carousel" data-game-carousel aria-roledescription="carousel" aria-label="Game previews">
           <div class="game-preview-screen">
             <canvas width="720" height="320" data-game-preview-canvas aria-hidden="true"></canvas>
-            <a class="game-preview-play" data-game-preview-play href="game.html?game=bughop" aria-label="Play Bug Hop">
-              <span aria-hidden="true">▶</span><span>Play game</span>
-            </a>
             <div class="game-preview-caption" aria-live="polite">
               <span data-game-preview-number>01 / 07</span>
               <div><h4 data-game-preview-title>Bug Hop</h4><p data-game-preview-description>Jump over pixel bugs. See how long you can last.</p></div>
             </div>
+          </div>
+          <div class="game-preview-actions">
+            <a class="game-preview-play" data-game-preview-play href="game.html?game=bughop" aria-label="Play Bug Hop">
+              <span aria-hidden="true">▶</span><span data-game-preview-play-label>Play Bug Hop</span>
+            </a>
           </div>
           <div class="game-carousel-controls">
             <p data-game-preview-instructions>Press Space, ↑, or W to jump.</p>
@@ -773,17 +775,17 @@
             <p>Need assistance with web development, vibe coding project execution, IT support, SEO analytics monitoring, or virtual assistant operations?</p>
               </div>
             </div>
-            <span class="contact-availability">Available for remote work</span>
+            <span class="contact-availability">Available for remote work</span> 
           </div>
           <div class="contact-stack-mount"></div>
         </div>
-      </div>
+      </div> <br>
     </section>
 
   </main>
 
   <div id="site-footer"></div>
-  <script type="module" src="js/main.js?v=2.2.2"></script>
+  <script type="module" src="js/main.js?v=2.2.7"></script>
   <script type="module" src="js/showcase.js" defer></script>
   <script type="module">
     const loadWhenNear = (selector, loader) => {
@@ -797,7 +799,7 @@
       observer.observe(target);
     };
     const carousel = document.querySelector("[data-game-carousel]");
-    if (carousel) loadWhenNear("[data-game-carousel]", () => import("./js/game-lobby.js"));
+    if (carousel) loadWhenNear("[data-game-carousel]", () => import("./js/game-lobby.js?v=2.2.6"));
     loadWhenNear("#playlists", () => import("./js/music.js"));
   </script>
 </body>

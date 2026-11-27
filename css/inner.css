@@ -1,9 +1,9 @@
 html:has(body:not(.page-home)) {
-  --inner-bg: #fcfbfc;
-  --inner-text: #0a0a0b;
-  --inner-muted: #77777c;
-  --inner-line: #e4e3e6;
-  --inner-card: #f5f4f6;
+  --inner-bg: #eeece9;
+  --inner-text: #191816;
+  --inner-muted: #6b6862;
+  --inner-line: #d7d4ce;
+  --inner-card: #e5e2dd;
   --color-bg: var(--inner-bg);
   --color-text: var(--inner-text);
   --color-muted: var(--inner-muted);
@@ -14,13 +14,13 @@ html:has(body:not(.page-home)) {
   --color-focus: #8276ed;
   --color-surface: var(--inner-card);
   --color-raised: var(--inner-card);
-  --color-surface-fallback: #fff;
+  --color-surface-fallback: #f5f3f0;
   --color-border: var(--inner-line);
   --color-border-strong: var(--inner-line);
   --color-card-top: transparent;
+  --color-footer: var(--inner-bg);
   --color-nav: color-mix(in srgb, var(--inner-bg) 92%, transparent);
   --color-nav-scrolled: color-mix(in srgb, var(--inner-bg) 97%, transparent);
-  --color-footer: var(--inner-bg);
   --color-shadow: rgba(15, 15, 20, 0.04);
   --shadow-card: none;
   background: var(--inner-bg);
@@ -36,17 +36,18 @@ html:has(body:not(.page-home))[data-theme="dark"] {
   --color-nav: color-mix(in srgb, var(--inner-bg) 92%, transparent);
   --color-nav-scrolled: color-mix(in srgb, var(--inner-bg) 97%, transparent);
   --color-shadow: rgba(0, 0, 0, 0.18);
+  --color-footer: var(--inner-bg);
 }
 
 body:not(.page-home) {
   min-height: 100vh;
   background: var(--inner-bg);
   color: var(--inner-text);
-  --inner-bg: #fcfbfc;
-  --inner-text: #0a0a0b;
-  --inner-muted: #77777c;
-  --inner-line: #e4e3e6;
-  --inner-card: #f5f4f6;
+  --inner-bg: #eeece9;
+  --inner-text: #191816;
+  --inner-muted: #6b6862;
+  --inner-line: #d7d4ce;
+  --inner-card: #e5e2dd;
   --color-bg: var(--inner-bg);
   --color-text: var(--inner-text);
   --color-muted: var(--inner-muted);
@@ -59,6 +60,7 @@ body:not(.page-home) {
   --color-border: var(--inner-line);
   --color-border-strong: var(--inner-line);
   --color-card-top: transparent;
+  --color-footer: var(--inner-bg);
   --color-shadow: rgba(15, 15, 20, 0.04);
   --shadow-card: none;
 }
@@ -70,6 +72,7 @@ html[data-theme="dark"] body:not(.page-home) {
   --inner-line: #303034;
   --inner-card: #17171a;
   --color-shadow: rgba(0, 0, 0, 0.18);
+  --color-footer: var(--inner-bg);
 }
 
 body:not(.page-home) .aurora-background,
@@ -92,7 +95,7 @@ body:not(.page-home) .site-header {
 body:not(.page-home) .site-header.is-condensed {
   top: 0.65rem;
   border-color: var(--inner-line);
-  background: color-mix(in srgb, var(--inner-bg) 96%, transparent);
+  background: color-mix(in srgb, var(--inner-bg) 94%, transparent);
 }
 
 body:not(.page-home) .nav-shell {
@@ -145,7 +148,7 @@ body:not(.page-home) .nav-menu {
   padding: 0.7rem;
   border: 1px solid var(--inner-line);
   border-radius: 1.5rem;
-  background: color-mix(in srgb, var(--inner-bg) 96%, transparent);
+  background: color-mix(in srgb, var(--inner-bg) 95%, transparent);
   box-shadow: 0 20px 55px rgba(10, 10, 12, 0.12);
   opacity: 0;
   pointer-events: none;
@@ -172,7 +175,7 @@ body:not(.page-home) .nav-menu a {
 
 body:not(.page-home) .nav-menu a:hover,
 body:not(.page-home) .nav-menu a:focus-visible {
-  background: var(--inner-card);
+  background: var(--inner-bg);
   color: var(--inner-text);
 }
 
@@ -288,37 +291,28 @@ body:not(.page-home) .category-chip {
 }
 
 body:not(.page-home) .site-footer {
+  margin-top: 0;
   border-top: 1px solid var(--inner-line);
   background: var(--inner-bg);
   background-image: none;
+  color: var(--inner-text);
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
 
 body:not(.page-home) .footer-primary-nav {
-  justify-content: flex-start;
-  gap: 0.5rem 1.5rem;
+  justify-content: space-evenly;
+  gap: 0.85rem 1.25rem;
 }
 
 body:not(.page-home) .footer-nav-link,
 body:not(.page-home) .footer-socials a {
-  width: auto;
-  height: auto;
-  padding: 0.25rem 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--inner-muted);
+  color: var(--inner-text);
 }
 
 body:not(.page-home) .footer-nav-link:hover,
-body:not(.page-home) .footer-socials a:hover,
-body:not(.page-home) .footer-legal-links a:hover {
-  background: transparent;
+body:not(.page-home) .footer-socials a:hover {
   color: var(--inner-text);
-  text-decoration: underline;
-  transform: none;
-  box-shadow: none;
 }
 
 body:not(.page-home) .footer-socials {
@@ -774,17 +768,18 @@ body.page-inner .game-back-link:focus-visible {
 }
 
 body.page-inner.page-home {
-  --inner-bg: #fcfbfc;
-  --inner-text: #0a0a0b;
-  --inner-muted: #77777c;
-  --inner-line: #e4e3e6;
-  --inner-card: #f5f4f6;
+  --inner-bg: #eeece9;
+  --inner-text: #191816;
+  --inner-muted: #6b6862;
+  --inner-line: #d7d4ce;
+  --inner-card: #e5e2dd;
   --color-bg: var(--inner-bg);
   --color-text: var(--inner-text);
   --color-muted: var(--inner-muted);
   --color-border: var(--inner-line);
   --color-surface: var(--inner-card);
   --color-raised: var(--inner-card);
+  --color-footer: var(--inner-bg);
   background: var(--inner-bg);
   color: var(--inner-text);
 }
@@ -801,6 +796,7 @@ html[data-theme="dark"] body.page-inner.page-home {
   --color-border: var(--inner-line);
   --color-surface: var(--inner-card);
   --color-raised: var(--inner-card);
+  --color-footer: var(--inner-bg);
   background: var(--inner-bg);
 }
 
@@ -815,6 +811,7 @@ body.page-inner .site-header {
 }
 
 body.page-inner .site-footer {
+  margin-top: 0;
   border-top: 1px solid var(--inner-line);
   background: var(--inner-bg);
   background-image: none;
@@ -824,30 +821,18 @@ body.page-inner .site-footer {
 }
 
 body.page-inner .footer-primary-nav {
-  justify-content: flex-start;
-  gap: 0.5rem 1.5rem;
+  justify-content: space-evenly;
+  gap: 0.85rem 1.25rem;
 }
 
 body.page-inner .footer-nav-link,
 body.page-inner .footer-socials a {
-  width: auto;
-  height: auto;
-  padding: 0.25rem 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--inner-muted);
+  color: var(--inner-text);
 }
 
 body.page-inner .footer-nav-link:hover,
-body.page-inner .footer-socials a:hover,
-body.page-inner .footer-legal-links a:hover,
-body.page-inner .footer-legal-links button:hover {
-  background: transparent;
+body.page-inner .footer-socials a:hover {
   color: var(--inner-text);
-  text-decoration: underline;
-  transform: none;
-  box-shadow: none;
 }
 
 body.page-inner .footer-socials {

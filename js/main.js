@@ -21,6 +21,7 @@ const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
 }[char]));
 
 const themeIcon = (theme) => iconSvg(theme === "dark" ? "sun" : "moon");
+const homeAnchor = (id) => `${document.body?.dataset.page === "home" ? "" : "index.html"}#${id}`;
 
 function renderHeader() {
   const currentTheme = document.documentElement.dataset.theme;
@@ -36,14 +37,14 @@ function renderHeader() {
         </div>
       </div>
       <nav class="nav-menu" id="primary-navigation" aria-label="Main navigation" inert>
-        <a href="index.html#home">Home</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#experience-section">Experience</a>
-        <a href="index.html#workstation-specs">Gear</a>
-        <a href="index.html#portfolio-section">Work</a>
-        <a href="index.html#interests">Beyond the screen</a>
-        <a href="index.html#playlists">Playlists</a>
-        <a href="index.html#arcade-preview">Games</a>
+        <a href="${homeAnchor("home")}">Home</a>
+        <a href="${homeAnchor("about")}">About</a>
+        <a href="${homeAnchor("experience-section")}">Experience</a>
+        <a href="${homeAnchor("workstation-specs")}">Gear</a>
+        <a href="${homeAnchor("portfolio-section")}">Work</a>
+        <a href="${homeAnchor("interests")}">Beyond the screen</a>
+        <a href="${homeAnchor("playlists")}">Playlists</a>
+        <a href="${homeAnchor("arcade-preview")}">Games</a>
         <a href="entertainment.html">Entertainment</a>
         <a href="resume.html">Resume</a>
         <a class="nav-menu-contact" href="contact.html">Contact</a>
@@ -360,6 +361,69 @@ function initShell() {
   initStaticIcons();
   initCommandPalette();
   initAuroraEffects();
+  initBackToTop();
+}
+
+function initBackToTop() {
+  if (document.querySelector("[data-back-to-top]")) return;
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "back-to-top";
+  button.dataset.backToTop = "";
+  button.setAttribute("aria-label", "Back to top");
+  button.innerHTML = '<span aria-hidden="true">↑</span><span>Top</span>';
+  document.body.append(button);
+
+  const updateConsentOffset = () => {
+    const consent = document.querySelector(".cookie-consent-banner");
+    if (!consent || window.innerWidth > 700) {
+      button.style.removeProperty("--back-to-top-consent-bottom");
+      return;
+    }
+    const offset = window.innerHeight - consent.getBoundingClientRect().top + 16;
+    button.style.setProperty("--back-to-top-consent-bottom", `${Math.ceil(offset)}px`);
+  };
+  const consentResizeObserver = typeof ResizeObserver !== "undefined"
+    ? new ResizeObserver(updateConsentOffset)
+    : null;
+  const syncConsentOffset = () => {
+    const consent = document.querySelector(".cookie-consent-banner");
+    consentResizeObserver?.disconnect();
+    if (consent) consentResizeObserver?.observe(consent);
+    updateConsentOffset();
+  };
+  new MutationObserver(syncConsentOffset).observe(document.body, { childList: true });
+  window.addEventListener("resize", updateConsentOffset, { passive: true });
+  syncConsentOffset();
+
+  const updateVisibility = () => {
+    button.hidden = window.scrollY < 480;
+  };
+  window.addEventListener("scroll", updateVisibility, { passive: true });
+  updateVisibility();
+  button.addEventListener("click", () => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) window.scrollTo(0, 0);
+    else window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+function alignLocationHash() {
+  if (!window.location.hash) return;
+  const target = document.getElementById(window.location.hash.slice(1));
+  if (!target) return;
+  const headingId = target.getAttribute("aria-labelledby");
+  const scrollTarget = (headingId && document.getElementById(headingId)) || target.querySelector("h1, h2, h3") || target;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    const headerBottom = document.querySelector(".site-header")?.getBoundingClientRect().bottom || 0;
+    const top = window.scrollY + scrollTarget.getBoundingClientRect().top - headerBottom - 16;
+    window.scrollTo({ top: Math.max(0, top), behavior: "instant" });
+  }));
+}
+
+function scheduleHashAlignment() {
+  const alignAfterLoad = () => window.setTimeout(alignLocationHash, 200);
+  if (document.readyState === "complete") alignAfterLoad();
+  else window.addEventListener("load", alignAfterLoad, { once: true });
 }
 
 function initAuroraEffects() {
@@ -374,12 +438,8 @@ function initGameFilters() {
   const library = document.querySelector(".game-library-content");
   const filters = document.querySelector(".game-filter-list");
   if (!library || !filters) return;
-  library.dataset.filter = "All";
 
-  filters.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-game-filter]");
-    if (!button) return;
-
+  const applyFilter = (button) => {
     const selected = button.dataset.gameFilter;
     library.dataset.filter = selected;
     filters.querySelectorAll("[data-game-filter]").forEach((filter) => {
@@ -389,8 +449,15 @@ function initGameFilters() {
     });
     library.querySelectorAll("[data-game-group]").forEach((group) => {
       const platform = group.dataset.gameGroup;
-      group.hidden = selected !== "All" && platform !== "featured" && platform !== selected;
+      group.hidden = selected !== "All" && platform !== selected;
     });
+  };
+
+  const defaultFilter = filters.querySelector('[data-game-filter="All"]');
+  if (defaultFilter) applyFilter(defaultFilter);
+  filters.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-game-filter]");
+    if (button) applyFilter(button);
   });
 }
 
@@ -990,13 +1057,16 @@ function initSpotifyFacades() {
 }
 
 const runModule = () => {
+  window.addEventListener("hashchange", alignLocationHash);
   try { initShell(); } catch (e) { console.error("initShell error:", e); }
   try { initContactForm(); } catch (e) { console.error("initContactForm error:", e); }
   try { initGameFilters(); } catch (e) { console.error("initGameFilters error:", e); }
-  try { loadDynamicProjectsGrid(); } catch (e) { console.error("loadDynamicProjectsGrid error:", e); }
+  let projectLoad = Promise.resolve();
+  try { projectLoad = loadDynamicProjectsGrid(); } catch (e) { console.error("loadDynamicProjectsGrid error:", e); }
   try { initAnimatedCounters(); } catch (e) { console.error("initAnimatedCounters error:", e); }
   try { initConsent(); } catch (e) { console.error("initConsent error:", e); }
   try { initSpotifyFacades(); } catch (e) { console.error("initSpotifyFacades error:", e); }
+  Promise.all([projectLoad, document.fonts?.ready].filter(Boolean)).then(scheduleHashAlignment);
   import("./fx.js").then(({ initMotion }) => initMotion()).catch(() => {
     console.warn("Motion module could not be loaded.");
   });

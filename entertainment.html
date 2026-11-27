@@ -8,13 +8,21 @@
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#EDF1FA">
   <title>Entertainment | Jolan Clark A. Sorillo</title>
+  <script>
+    (() => {
+      let theme = null;
+      try { theme = localStorage.getItem("theme"); } catch {}
+      if (theme !== "light" && theme !== "dark") theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
   <link rel="apple-touch-icon" sizes="192x192" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/inner.css">
+  <link rel="stylesheet" href="css/tokens.css?v=2.2.6">
+  <link rel="stylesheet" href="css/style.css?v=2.2.7">
+  <link rel="stylesheet" href="css/inner.css?v=1.1.1">
 </head>
 <body class="page-home page-inner" data-page="entertainment">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -119,7 +127,7 @@
   </main>
   <div id="site-footer"></div>
   <noscript><footer><p><a href="mailto:sorillojolanclark@gmail.com">Email Jolan Clark A. Sorillo</a></p></footer></noscript>
-  <script type="module" src="js/main.js?v=2.2.3"></script>
+  <script type="module" src="js/main.js?v=2.2.7"></script>
   <script type="module">
     const music = document.querySelector("#music");
     if (music) {

@@ -1,12 +1,14 @@
 const carousel = document.querySelector("[data-game-carousel]");
 if (carousel) {
   const canvas = carousel.querySelector("[data-game-preview-canvas]");
+  const screen = carousel.querySelector(".game-preview-screen");
   const context = canvas.getContext("2d");
   const title = carousel.querySelector("[data-game-preview-title]");
   const description = carousel.querySelector("[data-game-preview-description]");
   const instructions = carousel.querySelector("[data-game-preview-instructions]");
   const number = carousel.querySelector("[data-game-preview-number]");
   const play = carousel.querySelector("[data-game-preview-play]");
+  const playLabel = carousel.querySelector("[data-game-preview-play-label]");
   const dots = carousel.querySelector("[data-game-preview-dots]");
   const games = [
     { key: "bughop", name: "Bug Hop", description: "Jump over pixel bugs. See how long you can last.", instructions: "Press Space, ↑, or W to jump.", scene: "bughop" },
@@ -24,6 +26,7 @@ if (carousel) {
   let lastTime = 0;
   let width = 720;
   let height = 320;
+  let touchStartX = null;
 
   const colors = () => {
     const style = getComputedStyle(document.body);
@@ -184,6 +187,7 @@ if (carousel) {
     number.textContent = `${String(index + 1).padStart(2, "0")} / ${String(games.length).padStart(2, "0")}`;
     play.href = `game.html?game=${game.key}`;
     play.setAttribute("aria-label", `Play ${game.name}`);
+    playLabel.textContent = `Play ${game.name}`;
     dots.querySelectorAll("button").forEach((dot, dotIndex) => {
       dot.setAttribute("aria-current", String(dotIndex === index));
       dot.setAttribute("aria-label", `Show ${games[dotIndex].name} preview`);
@@ -201,6 +205,16 @@ if (carousel) {
   });
   carousel.querySelector("[data-game-preview-prev]").addEventListener("click", () => select(index - 1));
   carousel.querySelector("[data-game-preview-next]").addEventListener("click", () => select(index + 1));
+  screen.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "touch") touchStartX = event.clientX;
+  });
+  screen.addEventListener("pointerup", (event) => {
+    if (touchStartX === null) return;
+    const distance = event.clientX - touchStartX;
+    touchStartX = null;
+    if (Math.abs(distance) > 48) select(index + (distance < 0 ? 1 : -1));
+  });
+  screen.addEventListener("pointercancel", () => { touchStartX = null; });
   carousel.addEventListener("keydown", (event) => {
     if (event.key === "ArrowLeft") select(index - 1);
     if (event.key === "ArrowRight") select(index + 1);
@@ -223,6 +237,7 @@ if (carousel) {
   observer.observe(carousel);
   document.addEventListener("visibilitychange", start);
   reducedMotion.addEventListener?.("change", start);
+  new MutationObserver(drawScene).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
   window.addEventListener("resize", resize);
   select(0);
   resize();
