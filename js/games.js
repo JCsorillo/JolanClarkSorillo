@@ -21,7 +21,8 @@ export function initEntertainmentGames() {
     typing: ["Typing Speed", "Type the sample exactly and track your pace and accuracy."],
     hangman: ["Hangman", "Guess the hidden word before the drawing is complete."],
     spelling: ["Spelling Bee", "Unscramble each set of letters to find the word."],
-    words: ["Word Builder", "Build as many different words as you can before time runs out."]
+    words: ["Word Builder", "Build as many different words as you can before time runs out."],
+    memory: ["Memory Match", "Find all six matching pairs in as few moves as you can."]
   };
   const requestedGame = new URLSearchParams(location.search).get("game");
   const activeGame = Object.prototype.hasOwnProperty.call(gameInfo, requestedGame) ? requestedGame : "bughop";
@@ -38,6 +39,7 @@ export function initEntertainmentGames() {
   if (activeGame === "hangman") initHangman();
   if (activeGame === "spelling") initSpelling();
   if (activeGame === "words") initWordBuilder();
+  if (activeGame === "memory") initMemoryMatch();
 
   const startScreen = activePanel.querySelector("[data-play-screen]");
   const gameContent = activePanel.querySelector("[data-game-content]");
@@ -50,7 +52,8 @@ export function initEntertainmentGames() {
       math: "[data-math-start]",
       typing: "[data-typing-start]",
       hangman: "[data-hangman-reset]",
-      words: "[data-words-start]"
+      words: "[data-words-start]",
+      memory: "[data-memory-reset]"
     }[activeGame];
     if (starter) activePanel.querySelector(starter).click();
     else activePanel.querySelector("input")?.focus();
@@ -737,6 +740,102 @@ export function initEntertainmentGames() {
       } else live.textContent = "Use at least 3 letters, each available letter once, without repeats.";
       input.value = "";
     });
+  }
+
+  function initMemoryMatch() {
+    const panel = document.querySelector('[data-game-panel="memory"]');
+    if (!panel) return;
+    const board = panel.querySelector("[data-memory-board]");
+    const pairsLabel = panel.querySelector("[data-memory-pairs]");
+    const movesLabel = panel.querySelector("[data-memory-moves]");
+    const live = panel.querySelector("[data-memory-live]");
+    const reset = panel.querySelector("[data-memory-reset]");
+    const symbols = ["◆", "●", "▲", "★", "■", "✦"];
+    let cards = [];
+    let flipped = [];
+    let matched = new Set();
+    let moves = 0;
+    let locked = false;
+    let round = 0;
+    let mismatchTimer = 0;
+
+    const startRound = () => {
+      round += 1;
+      if (mismatchTimer) window.clearTimeout(mismatchTimer);
+      mismatchTimer = 0;
+      cards = [...symbols, ...symbols];
+      for (let i = cards.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+      }
+      flipped = [];
+      matched = new Set();
+      moves = 0;
+      locked = false;
+      pairsLabel.textContent = "0 / 6";
+      movesLabel.textContent = "0";
+      live.textContent = "Choose two cards to find a matching pair.";
+      board.replaceChildren(...cards.map((_, index) => {
+        const card = document.createElement("button");
+        card.className = "memory-card";
+        card.type = "button";
+        card.dataset.memoryIndex = String(index);
+        card.textContent = "?";
+        card.setAttribute("aria-label", `Card ${index + 1}, hidden`);
+        card.setAttribute("aria-pressed", "false");
+        return card;
+      }));
+    };
+
+    board.addEventListener("click", (event) => {
+      const card = event.target.closest("button[data-memory-index]");
+      if (!card || locked || card.disabled) return;
+      const index = Number(card.dataset.memoryIndex);
+      if (flipped.includes(index)) return;
+      card.textContent = cards[index];
+      card.setAttribute("aria-label", `Card ${index + 1}: ${cards[index]}`);
+      card.setAttribute("aria-pressed", "true");
+      flipped.push(index);
+      if (flipped.length < 2) return;
+
+      moves += 1;
+      movesLabel.textContent = String(moves);
+      const [first, second] = flipped;
+      if (cards[first] === cards[second]) {
+        [first, second].forEach((matchedIndex) => {
+          matched.add(matchedIndex);
+          const matchedCard = board.querySelector(`[data-memory-index="${matchedIndex}"]`);
+          matchedCard.disabled = true;
+          matchedCard.classList.add("is-matched");
+          matchedCard.setAttribute("aria-label", `Card ${matchedIndex + 1}: ${cards[matchedIndex]}, matched`);
+        });
+        pairsLabel.textContent = `${matched.size / 2} / 6`;
+        flipped = [];
+        if (matched.size === cards.length) live.textContent = `All pairs found in ${moves} moves. Play again or try to beat your score.`;
+        else live.textContent = `Match found. ${matched.size / 2} of 6 pairs found.`;
+        return;
+      }
+
+      locked = true;
+      live.textContent = "No match. The cards will turn back over.";
+      const currentRound = round;
+      mismatchTimer = window.setTimeout(() => {
+        if (currentRound !== round) return;
+        [first, second].forEach((mismatchIndex) => {
+          const mismatchCard = board.querySelector(`[data-memory-index="${mismatchIndex}"]`);
+          mismatchCard.textContent = "?";
+          mismatchCard.setAttribute("aria-label", `Card ${mismatchIndex + 1}, hidden`);
+          mismatchCard.setAttribute("aria-pressed", "false");
+        });
+        flipped = [];
+        locked = false;
+        mismatchTimer = 0;
+        live.textContent = "Choose two cards to find a matching pair.";
+      }, 750);
+    });
+
+    reset.addEventListener("click", startRound);
+    startRound();
   }
 }
 

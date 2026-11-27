@@ -21,8 +21,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="css/tokens.css?v=2.2.6">
-  <link rel="stylesheet" href="css/style.css?v=2.2.7">
-  <link rel="stylesheet" href="css/inner.css?v=1.1.1">
+  <link rel="stylesheet" href="css/style.css?v=2.2.12">
+  <link rel="stylesheet" href="css/inner.css?v=1.1.7">
 </head>
 <body class="page-home page-inner" data-page="game">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -30,14 +30,14 @@
   <noscript><nav aria-label="Main navigation"><a href="index.html">Home</a> · <a href="entertainment.html">Entertainment</a></nav></noscript>
   <main id="main-content" class="page-main">
     <section class="container page-intro page-intro-tile glass-card game-page-intro">
-      <a class="game-back-link" href="entertainment.html#game-catalogue">← All games</a>
+      <a class="button game-back-link" href="entertainment.html#game-catalogue">← Choose another game</a>
       <p class="eyebrow">The arcade · Playground</p>
       <h1 data-game-title>Bug Hop</h1>
       <p class="lead" data-game-description>Jump the bugs, dodge the 404s, and keep your run alive.</p>
     </section>
 
     <section class="container section game-playground" id="game-stage" aria-label="Game playground">
-      <div class="game-panel game-stage-panel" role="region" aria-label="Game" data-game-panel="bughop">
+      <div class="game-panel game-stage-panel" role="region" aria-label="Game" data-game-panel="bughop" hidden>
         <div class="game-start-screen" data-play-screen>
           <span class="game-start-kicker">READY WHEN YOU ARE</span>
           <h2>Bug Hop</h2>
@@ -90,20 +90,49 @@
         <div class="game-start-screen" data-play-screen><span class="game-start-kicker">60-SECOND ROUND</span><h2>Word Builder</h2><p>Use a set of letters to create as many different words as you can.</p><button class="button" type="button" data-game-start>Play Word Builder</button></div>
         <div class="game-play-content" data-game-content inert><p class="simple-game-question" data-words-letters></p><form class="simple-game-form" data-words-form><label>Create a word<input data-words-input autocomplete="off"></label><button class="button" type="submit">Submit</button></form><div class="game-status-row"><div><span>Time</span><strong data-words-time>60</strong></div><div><span>Words</span><strong data-words-count>0</strong></div></div><button class="button game-action-button" type="button" data-words-start>Start round</button><p class="game-live-region" role="status" aria-live="polite" data-words-live></p></div>
       </div>
+
+      <div class="game-panel game-stage-panel" role="region" aria-label="Game" data-game-panel="memory" hidden>
+        <div class="game-start-screen" data-play-screen><span class="game-start-kicker">MATCH THE PAIRS</span><h2>Memory Match</h2><p>Turn over two cards at a time and find all six pairs.</p><button class="button" type="button" data-game-start>Play Memory Match</button></div>
+        <div class="game-play-content" data-game-content inert>
+          <div class="game-status-row"><div><span>Pairs</span><strong data-memory-pairs>0 / 6</strong></div><div><span>Moves</span><strong data-memory-moves>0</strong></div></div>
+          <div class="memory-grid" data-memory-board role="group" aria-label="Memory Match cards"></div>
+          <p class="game-live-region" role="status" aria-live="polite" data-memory-live>Find all six pairs.</p>
+          <button class="button game-action-button" type="button" data-memory-reset>New game</button>
+        </div>
+      </div>
     </section>
+    <div class="container game-back-row">
+      <a class="button game-back-link" href="entertainment.html#game-catalogue">← Choose another game</a>
+    </div>
   </main>
   <div id="site-footer"></div>
   <noscript><footer><p><a href="entertainment.html">Back to Entertainment</a></p></footer></noscript>
-  <script type="module" src="js/main.js?v=2.2.7"></script>
+  <script type="module" src="js/main.js?v=2.2.12"></script>
+  <script>
+    const gamePanels = [...document.querySelectorAll("[data-game-panel]")];
+    const requestedGame = new URLSearchParams(location.search).get("game");
+    const selectedGamePanel = gamePanels.find((panel) => panel.dataset.gamePanel === requestedGame) || gamePanels[0];
+    gamePanels.forEach((panel) => { panel.hidden = panel !== selectedGamePanel; });
+    const selectedGameTitle = selectedGamePanel.querySelector("[data-play-screen] h2").textContent.trim();
+    const selectedGameDescription = selectedGamePanel.querySelector("[data-play-screen] p").textContent.trim();
+    document.querySelector("[data-game-title]").textContent = selectedGameTitle;
+    document.querySelector("[data-game-description]").textContent = selectedGameDescription;
+    document.title = `${selectedGameTitle} | Entertainment | Jolan Clark A. Sorillo`;
+  </script>
   <script type="module">
     const stage = document.querySelector("#game-stage");
-    if (stage) {
+    const loadSelectedGame = () => {
+      import("./js/games.js?v=2.2.9").catch((error) => console.error("Could not load the selected game.", error));
+    };
+    if (stage && "IntersectionObserver" in window) {
       const observer = new IntersectionObserver((entries, instance) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
         instance.disconnect();
-        requestAnimationFrame(() => import("./js/games.js"));
+        requestAnimationFrame(loadSelectedGame);
       }, { rootMargin: "200px 0px" });
       observer.observe(stage);
+    } else {
+      requestAnimationFrame(loadSelectedGame);
     }
   </script>
 </body>

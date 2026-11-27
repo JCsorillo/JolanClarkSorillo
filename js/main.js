@@ -5,8 +5,12 @@ import { createProjectCarousel } from "./showcase.js";
 document.documentElement.classList.add("has-js");
 
 const pages = [
-  ["index.html", "Home", "home", "house"],
-  ["resume.html", "Resume", "resume", "file-text"],
+  ["index.html", "Home", "home"],
+  ["portfolio.html", "Portfolio", "portfolio"],
+  ["about.html", "About", "about"],
+  ["resume.html", "Resume", "resume"],
+  ["entertainment.html", "Entertainment", "entertainment"],
+  ["contact.html", "Contact", "contact"],
 ];
 
 const iconSvg = (name, size = 20, className = "") =>
@@ -25,31 +29,41 @@ const homeAnchor = (id) => `${document.body?.dataset.page === "home" ? "" : "ind
 
 function renderHeader() {
   const currentTheme = document.documentElement.dataset.theme;
+  const pageLinks = pages.map(([href, label, page]) =>
+    `<a href="${href}"${document.body?.dataset.page === page ? ' aria-current="page"' : ""}>${label}</a>`
+  ).join("");
   return `
     <header class="site-header">
       <div class="nav-shell">
         <a class="brand" href="index.html#home" aria-label="Jolan Clark A. Sorillo home"><span>Jolan</span></a>
         <div class="nav-actions">
           <button class="theme-toggle" type="button" aria-label="Switch to ${currentTheme === "dark" ? "light" : "dark"} theme" aria-pressed="${currentTheme === "dark"}">${themeIcon(currentTheme)}</button>
-          <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+          <button class="menu-toggle" type="button" aria-label="Open page navigation" aria-expanded="false" aria-controls="primary-navigation">
             <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
           </button>
         </div>
       </div>
-      <nav class="nav-menu" id="primary-navigation" aria-label="Main navigation" inert>
-        <a href="${homeAnchor("home")}">Home</a>
-        <a href="${homeAnchor("about")}">About</a>
-        <a href="${homeAnchor("experience-section")}">Experience</a>
-        <a href="${homeAnchor("workstation-specs")}">Gear</a>
-        <a href="${homeAnchor("portfolio-section")}">Work</a>
-        <a href="${homeAnchor("interests")}">Beyond the screen</a>
-        <a href="${homeAnchor("playlists")}">Playlists</a>
-        <a href="${homeAnchor("arcade-preview")}">Games</a>
-        <a href="entertainment.html">Entertainment</a>
-        <a href="resume.html">Resume</a>
-        <a class="nav-menu-contact" href="contact.html">Contact</a>
+      <nav class="nav-menu" id="primary-navigation" aria-label="Pages" inert>
+        ${pageLinks}
       </nav>
     </header>`;
+}
+
+function renderQuickNavigation() {
+  const links = [
+    ["about", "About", "ab<br>out"],
+    ["experience-section", "Experience", "ex<br>peri<br>ence"],
+    ["workstation-specs", "Gear", "ge<br>ar"],
+    ["portfolio-section", "Work", "wo<br>rk"],
+    ["interests", "Beyond the screen", "by<br>ond<br>the<br>scr<br>een"],
+    ["arcade-preview", "Games", "gam<br>es"],
+  ];
+  return `
+    <nav class="quick-nav-list" aria-label="Home sections">
+      ${links.map(([id, label, display]) =>
+        `<a href="${homeAnchor(id)}" aria-label="${label}" title="${label}"><span aria-hidden="true">${display}</span></a>`
+      ).join("")}
+    </nav>`;
 }
 
 function renderFooter() {
@@ -297,7 +311,7 @@ function initShell() {
   const setMenuOpen = (isOpen) => {
     if (!menuToggle || !menu) return;
     menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+    menuToggle.setAttribute("aria-label", isOpen ? "Close page navigation" : "Open page navigation");
     menu.inert = !isOpen;
     siteHeader.classList.toggle("menu-open", isOpen);
   };
@@ -361,27 +375,37 @@ function initShell() {
   initStaticIcons();
   initCommandPalette();
   initAuroraEffects();
-  initBackToTop();
+  initQuickNavigation();
 }
 
-function initBackToTop() {
-  if (document.querySelector("[data-back-to-top]")) return;
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "back-to-top";
-  button.dataset.backToTop = "";
-  button.setAttribute("aria-label", "Back to top");
-  button.innerHTML = '<span aria-hidden="true">↑</span><span>Top</span>';
-  document.body.append(button);
+function initQuickNavigation() {
+  if (document.querySelector("[data-quick-navigation]")) return;
+  const isHomePage = document.body?.dataset.page === "home";
+  const floatingNav = document.createElement("div");
+  floatingNav.className = `floating-navigation${isHomePage ? " has-section-links" : ""}`;
+  floatingNav.dataset.quickNavigation = "";
+  floatingNav.innerHTML = `
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top" title="Back to top">
+      <span aria-hidden="true">↑</span>
+    </button>
+    ${isHomePage ? renderQuickNavigation() : ""}`;
+  document.body.append(floatingNav);
+  const button = floatingNav.querySelector("[data-back-to-top]");
 
   const updateConsentOffset = () => {
     const consent = document.querySelector(".cookie-consent-banner");
-    if (!consent || window.innerWidth > 700) {
-      button.style.removeProperty("--back-to-top-consent-bottom");
+    if (!consent) {
+      floatingNav.style.removeProperty("--quick-navigation-bottom");
       return;
     }
-    const offset = window.innerHeight - consent.getBoundingClientRect().top + 16;
-    button.style.setProperty("--back-to-top-consent-bottom", `${Math.ceil(offset)}px`);
+    const consentBounds = consent.getBoundingClientRect();
+    const consentIsFixed = getComputedStyle(consent).position === "fixed";
+    if (!consentIsFixed && (consentBounds.top >= window.innerHeight || consentBounds.bottom <= 0)) {
+      floatingNav.style.removeProperty("--quick-navigation-bottom");
+      return;
+    }
+    const offset = window.innerHeight - consentBounds.top + 16;
+    floatingNav.style.setProperty("--quick-navigation-bottom", `${Math.ceil(offset)}px`);
   };
   const consentResizeObserver = typeof ResizeObserver !== "undefined"
     ? new ResizeObserver(updateConsentOffset)
@@ -394,13 +418,9 @@ function initBackToTop() {
   };
   new MutationObserver(syncConsentOffset).observe(document.body, { childList: true });
   window.addEventListener("resize", updateConsentOffset, { passive: true });
+  window.addEventListener("scroll", updateConsentOffset, { passive: true });
   syncConsentOffset();
 
-  const updateVisibility = () => {
-    button.hidden = window.scrollY < 480;
-  };
-  window.addEventListener("scroll", updateVisibility, { passive: true });
-  updateVisibility();
   button.addEventListener("click", () => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) window.scrollTo(0, 0);
     else window.scrollTo({ top: 0, behavior: "smooth" });

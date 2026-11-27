@@ -36,9 +36,9 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="css/tokens.css?v=2.2.6">
-  <link rel="stylesheet" href="css/style.css?v=2.2.7">
+  <link rel="stylesheet" href="css/style.css?v=2.2.12">
   <link rel="stylesheet" href="css/showcase.css">
-  <link rel="stylesheet" href="css/inner.css?v=1.1.1">
+  <link rel="stylesheet" href="css/inner.css?v=1.1.7">
 </head>
 <body data-page="portfolio">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -53,9 +53,9 @@
 
   <main id="main-content" class="page-main">
     <!-- PORTFOLIO HEADER / DIRECTORY INTRO -->
-    <section class="container page-intro page-intro-tile glass-card reveal" id="portfolio">
-      <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.25rem;">
-        <div class="span-8">
+    <section class="container page-intro page-intro-tile portfolio-page-intro reveal" id="portfolio">
+      <div class="portfolio-intro-layout">
+        <div class="portfolio-intro-copy">
           <p class="eyebrow">Selected front-end work</p>
           <h1>Web projects made for real people and communities.</h1>
           <p class="lead">A look at commissioned front-end websites, the SK Bangkal community project, and a custom Android kiosk showcase. I focus on clear content, responsive layouts, and practical details that help each project serve its audience.</p>
@@ -68,30 +68,29 @@
           </div>
         </div>
 
-        <div class="span-4 glass-card" style="padding: 1.25rem; border-radius: var(--radius-card); display: flex; flex-direction: column; justify-content: center;">
-          <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Built by Jolan Clark A. Sorillo</h3>
-          <p style="font-size: 0.88rem; color: var(--color-muted); line-height: 1.5; margin-bottom: 0.75rem;">An Iloilo City IT graduate combining customer support experience with hands-on front-end development and practical IT work.</p>
-          <a class="inline-link" href="resume.html" style="font-size: 0.85rem;">View experience and skills →</a>
+        <aside class="portfolio-intro-note">
+          <h2>Built by Jolan Clark A. Sorillo</h2>
+          <p>An Iloilo City IT graduate combining customer support experience with hands-on front-end development and practical IT work.</p>
+          <a class="inline-link" href="resume.html">View experience and skills →</a>
         </div>
       </div>
 
-      <!-- Portfolio Summary Stats Bar (Flexible Flex Container to prevent text wrapping) -->
-      <div style="display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.25rem;">
-        <div class="glass-card" style="flex: 1 1 180px; padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
-          <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text);">14+ Projects</div>
-          <div style="font-size: 0.78rem; color: var(--color-muted);">Front-end websites</div>
+      <div class="portfolio-stat-strip" aria-label="Portfolio highlights">
+        <div class="portfolio-stat">
+          <strong>14+ Projects</strong>
+          <span>Front-end websites</span>
         </div>
-        <div class="glass-card" style="flex: 1 1 180px; padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
-          <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text);">Made for clients</div>
-          <div style="font-size: 0.78rem; color: var(--color-muted);">Commissioned projects</div>
+        <div class="portfolio-stat">
+          <strong>Made for clients</strong>
+          <span>Commissioned projects</span>
         </div>
-        <div class="glass-card" style="flex: 1 1 180px; padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
-          <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text);">Content first</div>
-          <div style="font-size: 0.78rem; color: var(--color-muted);">Portfolios &amp; information</div>
+        <div class="portfolio-stat">
+          <strong>Content first</strong>
+          <span>Portfolios &amp; information</span>
         </div>
-        <div class="glass-card" style="flex: 1 1 180px; padding: 0.85rem 1rem; text-align: center; border-radius: var(--radius-card);">
-          <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-text);">Stories too</div>
-          <div style="font-size: 0.78rem; color: var(--color-muted);">Books &amp; novel projects</div>
+        <div class="portfolio-stat">
+          <strong>Stories too</strong>
+          <span>Books &amp; novel projects</span>
         </div>
       </div>
     </section>
@@ -242,6 +241,6 @@
   </main>
 
   <div id="site-footer"></div>
-  <script type="module" src="js/main.js?v=2.2.7"></script>
+  <script type="module" src="js/main.js?v=2.2.12"></script>
 </body>
 </html>

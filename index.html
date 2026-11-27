@@ -40,7 +40,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="css/tokens.css?v=2.2.6">
-  <link rel="stylesheet" href="css/style.css?v=2.2.7">
+  <link rel="stylesheet" href="css/style.css?v=2.2.12">
   <link rel="stylesheet" href="css/showcase.css">
   <link rel="stylesheet" href="css/motion.css?v=2.2.1">
   <script type="application/ld+json">
@@ -687,7 +687,7 @@
           <div class="game-preview-screen">
             <canvas width="720" height="320" data-game-preview-canvas aria-hidden="true"></canvas>
             <div class="game-preview-caption" aria-live="polite">
-              <span data-game-preview-number>01 / 07</span>
+              <span data-game-preview-number>01 / 08</span>
               <div><h4 data-game-preview-title>Bug Hop</h4><p data-game-preview-description>Jump over pixel bugs. See how long you can last.</p></div>
             </div>
           </div>
@@ -785,7 +785,7 @@
   </main>
 
   <div id="site-footer"></div>
-  <script type="module" src="js/main.js?v=2.2.7"></script>
+  <script type="module" src="js/main.js?v=2.2.12"></script>
   <script type="module" src="js/showcase.js" defer></script>
   <script type="module">
     const loadWhenNear = (selector, loader) => {
@@ -799,7 +799,7 @@
       observer.observe(target);
     };
     const carousel = document.querySelector("[data-game-carousel]");
-    if (carousel) loadWhenNear("[data-game-carousel]", () => import("./js/game-lobby.js?v=2.2.6"));
+    if (carousel) loadWhenNear("[data-game-carousel]", () => import("./js/game-lobby.js?v=2.2.8"));
     loadWhenNear("#playlists", () => import("./js/music.js"));
   </script>
 </body>

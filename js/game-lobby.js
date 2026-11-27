@@ -17,7 +17,8 @@ if (carousel) {
     { key: "typing", name: "Typing Speed", description: "Find your pace and accuracy in a quick typing test.", instructions: "Type the sample exactly as it appears.", scene: "typing" },
     { key: "hangman", name: "Hangman", description: "Guess the hidden word one letter at a time.", instructions: "Pick letters before the drawing is complete.", scene: "hangman" },
     { key: "spelling", name: "Spelling Bee", description: "Put the mixed-up letters back in the right order.", instructions: "Unscramble the letters and submit the word.", scene: "spelling" },
-    { key: "words", name: "Word Builder", description: "Make words from a small set of letters before time runs out.", instructions: "Use each available letter no more than once per word.", scene: "words" }
+    { key: "words", name: "Word Builder", description: "Make words from a small set of letters before time runs out.", instructions: "Use each available letter no more than once per word.", scene: "words" },
+    { key: "memory", name: "Memory Match", description: "Flip two cards at a time and match all six pairs.", instructions: "Choose two cards per turn. Find all six pairs.", scene: "memory" }
   ];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let index = 0;
@@ -70,7 +71,7 @@ if (carousel) {
     context.globalAlpha = 1;
     text("JOLAN'S MINI ARCADE", 42, 48, 11, muted, 700);
     roundedRect(width - 147, 28, 104, 30, 15, line);
-    text(`${String(index + 1).padStart(2, "0")} / 07`, width - 95, 48, 11, ink, 700, "center");
+    text(`${String(index + 1).padStart(2, "0")} / ${String(games.length).padStart(2, "0")}`, width - 95, 48, 11, ink, 700, "center");
 
     if (game.scene === "bughop") {
       context.fillStyle = line;
@@ -145,6 +146,15 @@ if (carousel) {
       });
       roundedRect(229, 203, 262, 2, line);
       text("PLANET", 360, 236, 13, ink, 700, "center");
+    } else if (game.scene === "memory") {
+      text("FIND THE MATCHING PAIRS", 360, 82, 11, muted, 700, "center");
+      ["◆", "●", "▲", "★", "●", "■", "◆", "★"].forEach((symbol, cardIndex) => {
+        const x = 227 + (cardIndex % 4) * 70;
+        const y = 104 + Math.floor(cardIndex / 4) * 78;
+        roundedRect(x, y, 56, 64, 10, cardIndex === 1 || cardIndex === 6 ? accent : line);
+        text(cardIndex === 1 || cardIndex === 6 ? symbol : "?", x + 28, y + 40, 23, cardIndex === 1 || cardIndex === 6 ? "#fff" : muted, 700, "center");
+      });
+      text("PAIRS  2 / 6", 360, 284, 12, ink, 700, "center");
     } else {
       text("BUILD WORDS BEFORE TIME RUNS OUT", 360, 103, 11, muted, 700, "center");
       ["P", "L", "A", "N", "E", "T"].forEach((letter, i) => {
