@@ -41,8 +41,10 @@ function renderHeader() {
         <a href="index.html#experience-section">Experience</a>
         <a href="index.html#workstation-specs">Gear</a>
         <a href="index.html#portfolio-section">Work</a>
-        <a href="index.html#playlists">Playlists</a>
         <a href="index.html#interests">Beyond the screen</a>
+        <a href="index.html#playlists">Playlists</a>
+        <a href="index.html#arcade-preview">Games</a>
+        <a href="entertainment.html">Entertainment</a>
         <a href="resume.html">Resume</a>
         <a class="nav-menu-contact" href="contact.html">Contact</a>
       </nav>
@@ -53,6 +55,7 @@ function renderFooter() {
   const links = [
     ["Home", "index.html", "house"],
     ["Portfolio", "portfolio.html", "briefcase"],
+    ["Entertainment", "entertainment.html", "sparkles"],
     ["About", "about.html", "file-text"],
     ["Resume", "resume.html", "file-text"],
     ["Shop", "shop.html", "store"],
@@ -915,6 +918,7 @@ function initFloatingDock() {
 
 // v2.2.0
 function initConsent(forceOpen = false) {
+  if (!document.querySelector("[data-spotify-facade]")) return;
   let consent = null;
   try { consent = localStorage.getItem("jcs_cookie_consent"); } catch {}
 

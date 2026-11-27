@@ -3230,6 +3230,7 @@ html:has(body.page-home) {
   gap: clamp(2rem, 7vw, 7rem);
   overflow: hidden;
   padding-top: 8rem !important;
+  padding-bottom: 0 !important;
 }
 
 .page-home .home-hero-copy {
@@ -3799,7 +3800,7 @@ html:has(body.page-home) {
     grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
     padding-top: 7rem !important;
-    padding-bottom: 2rem !important;
+    padding-bottom: 0 !important;
   }
 
   .page-home .home-hero h1 {
@@ -3920,6 +3921,186 @@ html:has(body.page-home) {
   transition: transform 180ms var(--ease-standard), border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
 }
 
+.page-home .game-arcade-preview {
+  margin-top: clamp(2.5rem, 6vw, 5rem);
+  padding: clamp(1.1rem, 3vw, 2rem);
+  border: 1px solid var(--home-line);
+  border-radius: 1.5rem;
+  background: var(--home-card);
+}
+
+.page-home .game-arcade-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.page-home .game-arcade-heading .eyebrow {
+  margin-bottom: 0.6rem;
+}
+
+.page-home .game-arcade-heading h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  letter-spacing: -0.05em;
+}
+
+.page-home .game-arcade-heading p:not(.eyebrow) {
+  max-width: 42rem;
+  margin: 0.5rem 0 0;
+  color: var(--home-muted);
+}
+
+.page-home .game-arcade-all-link {
+  flex: 0 0 auto;
+  color: var(--home-text);
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.page-home .game-preview-screen {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--home-line);
+  border-radius: 1.15rem;
+  background: var(--home-bg);
+  aspect-ratio: 16 / 7.1;
+}
+
+.page-home .game-preview-screen canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.page-home .game-preview-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  width: clamp(5.5rem, 12vw, 7.5rem);
+  height: clamp(5.5rem, 12vw, 7.5rem);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 1px solid rgba(255,255,255,0.38);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--home-bg) 82%, transparent);
+  color: var(--home-text);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translate(-50%, -50%);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.page-home .game-preview-play span:first-child {
+  font-size: 1.25rem;
+}
+
+.page-home .game-preview-play:hover,
+.page-home .game-preview-play:focus-visible {
+  background: var(--home-text);
+  color: var(--home-bg);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.page-home .game-preview-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 1.6rem);
+  background: linear-gradient(transparent, rgba(0,0,0,.78));
+  color: #fff;
+  pointer-events: none;
+}
+
+.page-home .game-preview-caption > span {
+  padding-bottom: 0.35rem;
+  color: rgba(255,255,255,.72);
+  font-size: 0.7rem;
+  letter-spacing: .12em;
+  white-space: nowrap;
+}
+
+.page-home .game-preview-caption h4 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+.page-home .game-preview-caption p {
+  margin: 0.2rem 0 0;
+  color: rgba(255,255,255,.76);
+  font-size: 0.85rem;
+}
+
+.page-home .game-carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.85rem;
+}
+
+.page-home .game-carousel-controls > p {
+  margin: 0;
+  color: var(--home-muted);
+  font-size: 0.85rem;
+}
+
+.page-home .game-carousel-buttons,
+.page-home .game-carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.page-home .game-carousel-buttons > button {
+  display: grid;
+  width: 2.45rem;
+  height: 2.45rem;
+  place-items: center;
+  border: 1px solid var(--home-line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--home-text);
+  cursor: pointer;
+}
+
+.page-home .game-carousel-dots button {
+  width: 0.48rem;
+  height: 0.48rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--home-muted);
+  cursor: pointer;
+  opacity: 0.42;
+}
+
+.page-home .game-carousel-dots button[aria-current="true"] {
+  width: 1.3rem;
+  border-radius: 999px;
+  background: var(--home-text);
+  opacity: 1;
+}
+
+.page-home .game-carousel :focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
 .page-home .credential-chip-featured,
 .page-home .credential-inline {
   color: var(--home-text);
@@ -3991,6 +4172,101 @@ html:has(body.page-home) {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.8rem;
+}
+
+.page-home .local-playlist {
+  padding: clamp(1rem, 2.2vw, 1.4rem);
+  margin-top: 0.8rem;
+}
+
+.page-home .top-music-heading {
+  margin-top: clamp(2.25rem, 5vw, 4rem);
+  margin-bottom: 0.8rem;
+}
+
+.page-home .top-music-heading .eyebrow {
+  margin-bottom: 0.35rem;
+}
+
+.page-home .top-music-heading h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+.page-home .local-player-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--home-line);
+}
+
+.page-home .local-player-status {
+  min-width: 0;
+}
+
+.page-home .local-player-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--home-muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
+.page-home .local-player-status strong {
+  display: block;
+  overflow: hidden;
+  font-size: 1.05rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.page-home .local-player-panel audio {
+  width: 100%;
+  height: 42px;
+}
+
+.page-home .music-track-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.page-home .music-track {
+  display: grid;
+  grid-template-columns: 2.1rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 0.8rem;
+  background: color-mix(in srgb, var(--home-text) 4%, transparent);
+  color: var(--home-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.page-home .music-track:hover,
+.page-home .music-track.is-playing {
+  border-color: color-mix(in srgb, var(--home-text) 20%, var(--home-line));
+  background: color-mix(in srgb, var(--home-text) 8%, transparent);
+}
+
+.page-home .music-track-name {
+  overflow: hidden;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.page-home .music-track-action {
+  color: var(--home-muted);
+  font-size: 0.72rem;
 }
 
 .page-home .playlist-card,
@@ -4067,6 +4343,7 @@ html:has(body.page-home) {
 
 .page-home .interest-card-games {
   grid-column: span 7;
+  scroll-margin-top: calc(var(--nav-h) + 1.5rem);
 }
 
 .page-home .interest-kicker {
@@ -4263,6 +4540,14 @@ html:has(body.page-home) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .page-home .music-track-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-home .local-player-panel {
+    grid-template-columns: 1fr;
+  }
+
   .page-home .playlist-card:last-child {
     grid-column: 1 / -1;
   }
@@ -4271,6 +4556,28 @@ html:has(body.page-home) {
 @media (max-width: 700px) {
   .page-home .playlist-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-home .game-arcade-heading,
+  .page-home .game-carousel-controls {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .page-home .game-arcade-all-link {
+    align-self: flex-start;
+  }
+
+  .page-home .game-preview-screen {
+    aspect-ratio: 4 / 3;
+  }
+
+  .page-home .game-preview-caption > span {
+    display: none;
+  }
+
+  .page-home .music-track-list {
+    grid-template-columns: 1fr;
   }
 
   .page-home .playlist-card:last-child {

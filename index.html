@@ -508,8 +508,8 @@
       <div class="section-heading reveal">
         <div>
           <p class="eyebrow">SOUNDTRACK FOR THE BUILD</p>
-          <h2 id="playlists-title">Coding &amp; Chill Playlists</h2>
-          <p>Three mixes I keep nearby for focused work, late-night tinkering, or a slower afternoon.</p>
+          <h2 id="playlists-title">My Spotify Playlists</h2>
+          <p>Follow the mixes below, then check out my Top 15 music of 2026.</p>
         </div>
       </div>
       <div class="playlist-grid">
@@ -526,6 +526,33 @@
           <div class="spotify-player-facade" data-spotify-facade data-spotify-src="https://open.spotify.com/embed/playlist/1csNVGdGEAMhS3sMx7TxbD?utm_source=generator&amp;si=54233c123c014eed"><span>Spotify players appear automatically after you accept media cookies.</span></div>
         </article>
       </div>
+      <div class="top-music-heading reveal">
+        <p class="eyebrow">2026</p>
+        <h3>My Top 15 Music</h3>
+      </div>
+      <article class="playlist-card local-playlist reveal" data-local-playlist>
+        <div class="local-player-panel">
+          <div class="local-player-status"><span class="local-player-label">NOW PLAYING</span><strong data-now-playing aria-live="polite">Select a track</strong></div>
+          <audio data-music-player aria-label="Local music player" controls preload="metadata"></audio>
+        </div>
+        <div class="music-track-list">
+          <button type="button" class="music-track" data-track="1" data-src="media/music/1.%20Buenos%20Dias.mp3"><span class="playlist-number">01</span><span class="music-track-name">Buenos Dias</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="2" data-src="media/music/2.%20Feen.mp3"><span class="playlist-number">02</span><span class="music-track-name">Feen</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="3" data-src="media/music/3.%20Walang%20Alam.mp3"><span class="playlist-number">03</span><span class="music-track-name">Walang Alam</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="4" data-src="media/music/4.%20Mahal%20Magmahal.mp3"><span class="playlist-number">04</span><span class="music-track-name">Mahal Magmahal</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="5" data-src="media/music/5.%20Need%20Ya.mp3"><span class="playlist-number">05</span><span class="music-track-name">Need Ya</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="6" data-src="media/music/6.%20Shuloks.mp3"><span class="playlist-number">06</span><span class="music-track-name">Shuloks</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="7" data-src="media/music/7.%20Alabang.mp3"><span class="playlist-number">07</span><span class="music-track-name">Alabang</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="8" data-src="media/music/8.%20Para%20Sa%20Streets.mp3"><span class="playlist-number">08</span><span class="music-track-name">Para Sa Streets</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="9" data-src="media/music/9.%20Eyes%20Can't%20Lie.mp3"><span class="playlist-number">09</span><span class="music-track-name">Eyes Can't Lie</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="10" data-src="media/music/10.%20Ayoko%20Maging%20Kaibigan.mp3"><span class="playlist-number">10</span><span class="music-track-name">Ayoko Maging Kaibigan</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="11" data-src="media/music/11.%20Baby%20123.mp3"><span class="playlist-number">11</span><span class="music-track-name">Baby 123</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="12" data-src="media/music/12.%20Love%20Me.mp3"><span class="playlist-number">12</span><span class="music-track-name">Love Me</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="13" data-src="media/music/13.%20Babaero.mp3"><span class="playlist-number">13</span><span class="music-track-name">Babaero</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="14" data-src="media/music/14.%20BbY%20WOW.mp3"><span class="playlist-number">14</span><span class="music-track-name">BbY WOW</span><span class="music-track-action">Play</span></button>
+          <button type="button" class="music-track" data-track="15" data-src="media/music/15.%20Wyw%20my%20sweetie%20%23JerseyClub%20-%20Slowed.mp3"><span class="playlist-number">15</span><span class="music-track-name">Wyw my sweetie · JerseyClub · Slowed</span><span class="music-track-action">Play</span></button>
+        </div>
+      </article>
       <p class="playlist-caption">Log in to Spotify in this browser and allow third-party cookies for full, ad-free playback.</p>
     </section>
 
@@ -563,7 +590,7 @@
             <li><span>300 <small>Spartan film</small></span><span>07</span></li>
           </ul>
         </article>
-        <article class="interest-card interest-card-games reveal">
+        <article class="interest-card interest-card-games reveal" id="game-library">
           <div class="game-library-heading">
             <div>
               <p class="interest-kicker">04 / GAME LIBRARY</p>
@@ -647,6 +674,36 @@
           </div>
         </article>
       </div>
+      <section class="game-arcade-preview" id="arcade-preview" aria-labelledby="arcade-preview-title">
+        <div class="game-arcade-heading">
+          <div>
+            <p class="eyebrow">A little arcade</p>
+            <h3 id="arcade-preview-title">Pick a game. Take a quick break.</h3>
+            <p>Small, self-contained games made for this page. No ads, accounts, or downloads.</p>
+          </div>
+          <a class="game-arcade-all-link" href="entertainment.html">Explore all games <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="game-carousel" data-game-carousel aria-roledescription="carousel" aria-label="Game previews">
+          <div class="game-preview-screen">
+            <canvas width="720" height="320" data-game-preview-canvas aria-hidden="true"></canvas>
+            <a class="game-preview-play" data-game-preview-play href="game.html?game=bughop" aria-label="Play Bug Hop">
+              <span aria-hidden="true">▶</span><span>Play game</span>
+            </a>
+            <div class="game-preview-caption" aria-live="polite">
+              <span data-game-preview-number>01 / 07</span>
+              <div><h4 data-game-preview-title>Bug Hop</h4><p data-game-preview-description>Jump over pixel bugs. See how long you can last.</p></div>
+            </div>
+          </div>
+          <div class="game-carousel-controls">
+            <p data-game-preview-instructions>Press Space, ↑, or W to jump.</p>
+            <div class="game-carousel-buttons">
+              <button type="button" data-game-preview-prev aria-label="Previous game preview">←</button>
+              <div class="game-carousel-dots" role="group" aria-label="Choose a game preview" data-game-preview-dots></div>
+              <button type="button" data-game-preview-next aria-label="Next game preview">→</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
 
     <!-- 7. FREQUENTLY ASKED QUESTIONS (FAQ) -->
@@ -728,5 +785,20 @@
   <div id="site-footer"></div>
   <script type="module" src="js/main.js?v=2.2.2"></script>
   <script type="module" src="js/showcase.js" defer></script>
+  <script type="module">
+    const loadWhenNear = (selector, loader) => {
+      const target = document.querySelector(selector);
+      if (!target) return;
+      const observer = new IntersectionObserver((entries, instance) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        instance.disconnect();
+        requestAnimationFrame(() => loader());
+      }, { rootMargin: "250px 0px" });
+      observer.observe(target);
+    };
+    const carousel = document.querySelector("[data-game-carousel]");
+    if (carousel) loadWhenNear("[data-game-carousel]", () => import("./js/game-lobby.js"));
+    loadWhenNear("#playlists", () => import("./js/music.js"));
+  </script>
 </body>
 </html>

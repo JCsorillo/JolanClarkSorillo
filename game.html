@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Play a small, built-in game. No ads, accounts, or downloads.">
+  <meta name="author" content="Jolan Clark A. Sorillo">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#EDF1FA">
+  <title>Play | Entertainment</title>
+  <link rel="apple-touch-icon" sizes="192x192" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/inner.css">
+</head>
+<body class="page-home page-inner" data-page="game">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div id="site-header"></div>
+  <noscript><nav aria-label="Main navigation"><a href="index.html">Home</a> · <a href="entertainment.html">Entertainment</a></nav></noscript>
+  <main id="main-content" class="page-main">
+    <section class="container page-intro page-intro-tile glass-card game-page-intro">
+      <a class="game-back-link" href="entertainment.html#game-catalogue">← All games</a>
+      <p class="eyebrow">The arcade · Playground</p>
+      <h1 data-game-title>Bug Hop</h1>
+      <p class="lead" data-game-description>Jump the bugs, dodge the 404s, and keep your run alive.</p>
+    </section>
+
+    <section class="container section game-playground" id="game-stage" aria-label="Game playground">
+      <div class="game-panel game-stage-panel" role="region" aria-label="Game" data-game-panel="bughop">
+        <div class="game-start-screen" data-play-screen>
+          <span class="game-start-kicker">READY WHEN YOU ARE</span>
+          <h2>Bug Hop</h2>
+          <p>Jump over bugs and error blocks. Your run gets faster as your score grows.</p>
+          <button class="button" type="button" data-game-start>Play Bug Hop</button>
+        </div>
+        <div class="game-play-content" data-game-content inert>
+          <div class="game-status-row"><div><span>Score</span><strong data-bug-score>0</strong></div><div><span>Best</span><strong data-bug-best>0</strong></div></div>
+          <canvas class="bughop-canvas" data-bughop-canvas width="720" height="220" aria-label="Bug Hop endless runner" tabindex="0"></canvas>
+          <button class="button game-action-button" type="button" data-bug-jump>Jump / Start</button>
+          <p class="game-instructions">Press Space, Arrow Up, or W. You can also click or tap the canvas.</p>
+          <p class="game-live-region" role="status" aria-live="polite" data-bug-live>Press Space or tap to start.</p>
+        </div>
+      </div>
+
+      <div class="game-panel game-stage-panel" role="region" aria-label="Game" data-game-panel="math" hidden>
+        <div class="game-start-screen" data-play-screen><span class="game-start-kicker">30-SECOND ROUND</span><h2>Quick Math</h2><p>Choose an answer or type it. Correct streaks earn bonus points.</p><button class="button" type="button" data-game-start>Play Quick Math</button></div>
+        <div class="game-play-content" data-game-content inert>
+          <div class="game-status-row"><div><span>Score</span><strong data-math-score>0</strong></div><div><span>Best</span><strong data-math-best>0</strong></div><div><span>Time</span><strong data-math-time>30</strong></div></div>
+          <div class="math-time-bar" aria-hidden="true"><span data-math-bar></span></div>
+          <p class="math-question" data-math-question>Press play to begin.</p>
+          <div class="math-choices" data-math-choices></div>
+          <form class="math-answer-form" data-math-form><label>Or type the answer<input data-math-input type="number" inputmode="numeric" autocomplete="off" disabled></label><button class="button" type="submit" disabled>Enter</button></form>
+          <p class="game-live-region" role="status" aria-live="polite" data-math-live>30-second arithmetic round.</p>
+          <button class="button game-action-button" type="button" data-math-start>Start round</button>
+        </div>
+      </div>
+
+      <div class="game-panel game-stage-panel" role="region" aria-label="Game" data-game-panel="riddle" hidden>
+        <div class="game-start-screen" data-play-screen><span class="game-start-kicker">THINK IT THROUGH</span><h2>Riddle Me This</h2><p>Read the clue, type your answer, and check it.</p><button class="button" type="button" data-game-start>Play Riddle</button></div>
+        <div class="game-play-content" data-game-content inert><p class="simple-game-question" data-riddle-question></p><form class="simple-game-form" data-riddle-form><label>Answer<input data-riddle-input autocomplete="off"></label><button class="button" type="submit">Check</button></form><p class="game-live-region" role="status" aria-live="polite" data-riddle-live></p></div>
+      </div>
+
+      <div class="game-panel game-stage-panel" role="region" aria-label="Game" data-game-panel="typing" hidden>
+        <div class="game-start-screen" data-play-screen><span class="game-start-kicker">FIND YOUR FLOW</span><h2>Typing Speed</h2><p>Type the sample exactly and watch your speed and accuracy update.</p><button class="button" type="button" data-game-start>Play Typing Speed</button></div>
+        <div class="game-play-content" data-game-content inert><p class="typing-prompt" data-typing-prompt></p><textarea data-typing-input rows="3" aria-label="Typing prompt" disabled></textarea><div class="game-status-row"><div><span>Words/min</span><strong data-typing-wpm>0</strong></div><div><span>Accuracy</span><strong data-typing-accuracy>0%</strong></div></div><button class="button game-action-button" type="button" data-typing-start>Start typing test</button><p class="game-live-region" role="status" aria-live="polite" data-typing-live></p></div>
+      </div>
+
+      <div class="game-panel game-stage-panel" role="region" aria-label="Game" data-game-panel="hangman" hidden>
+        <div class="game-start-screen" data-play-screen><span class="game-start-kicker">WORD GUESS</span><h2>Hangman</h2><p>Guess the hidden word before the drawing is complete.</p><button class="button" type="button" data-game-start>Play Hangman</button></div>
+        <div class="game-play-content" data-game-content inert><div class="hangman-drawing" data-hangman-drawing aria-hidden="true">___</div><p class="hangman-word" data-hangman-word></p><div class="hangman-letters" data-hangman-letters></div><p class="game-live-region" role="status" aria-live="polite" data-hangman-live></p><button class="button game-action-button" type="button" data-hangman-reset>New word</button></div>
+      </div>
+
+      <div class="game-panel game-stage-panel" role="region" aria-label="Game" data-game-panel="spelling" hidden>
+        <div class="game-start-screen" data-play-screen><span class="game-start-kicker">SPELLING BEE</span><h2>Spelling Bee</h2><p>Unscramble a set of letters and enter the word.</p><button class="button" type="button" data-game-start>Play Spelling Bee</button></div>
+        <div class="game-play-content" data-game-content inert><p class="simple-game-question">Unscramble the next word.</p><p class="spelling-letters" data-spelling-letters></p><form class="simple-game-form" data-spelling-form><label>Word<input data-spelling-input autocomplete="off"></label><button class="button" type="submit">Check</button></form><p class="game-live-region" role="status" aria-live="polite" data-spelling-live></p></div>
+      </div>
+
+      <div class="game-panel game-stage-panel" role="region" aria-label="Game" data-game-panel="words" hidden>
+        <div class="game-start-screen" data-play-screen><span class="game-start-kicker">60-SECOND ROUND</span><h2>Word Builder</h2><p>Use a set of letters to create as many different words as you can.</p><button class="button" type="button" data-game-start>Play Word Builder</button></div>
+        <div class="game-play-content" data-game-content inert><p class="simple-game-question" data-words-letters></p><form class="simple-game-form" data-words-form><label>Create a word<input data-words-input autocomplete="off"></label><button class="button" type="submit">Submit</button></form><div class="game-status-row"><div><span>Time</span><strong data-words-time>60</strong></div><div><span>Words</span><strong data-words-count>0</strong></div></div><button class="button game-action-button" type="button" data-words-start>Start round</button><p class="game-live-region" role="status" aria-live="polite" data-words-live></p></div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <noscript><footer><p><a href="entertainment.html">Back to Entertainment</a></p></footer></noscript>
+  <script type="module" src="js/main.js?v=2.2.3"></script>
+  <script type="module">
+    const stage = document.querySelector("#game-stage");
+    if (stage) {
+      const observer = new IntersectionObserver((entries, instance) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        instance.disconnect();
+        requestAnimationFrame(() => import("./js/games.js"));
+      }, { rootMargin: "200px 0px" });
+      observer.observe(stage);
+    }
+  </script>
+</body>
+</html>
