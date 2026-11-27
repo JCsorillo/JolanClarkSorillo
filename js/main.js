@@ -50,19 +50,11 @@ function renderHeader() {
 }
 
 function renderQuickNavigation() {
-  const links = [
-    ["about", "About", "ab<br>out"],
-    ["experience-section", "Experience", "ex<br>peri<br>ence"],
-    ["workstation-specs", "Gear", "ge<br>ar"],
-    ["portfolio-section", "Work", "wo<br>rk"],
-    ["interests", "Beyond the screen", "by<br>ond<br>the<br>scr<br>een"],
-    ["arcade-preview", "Games", "gam<br>es"],
-  ];
   return `
-    <nav class="quick-nav-list" aria-label="Home sections">
-      ${links.map(([id, label, display]) =>
-        `<a href="${homeAnchor(id)}" aria-label="${label}" title="${label}"><span aria-hidden="true">${display}</span></a>`
-      ).join("")}
+    <nav class="quick-nav-floating" aria-label="Scroll to next section">
+      <button class="next-section-btn" type="button" aria-label="Scroll to next section" title="Scroll to next section">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </button>
     </nav>`;
 }
 
@@ -370,6 +362,18 @@ function initShell() {
       return;
     }
     transition.finished.then(clearTransitionState, clearTransitionState);
+  });
+
+  document.querySelector(".next-section-btn")?.addEventListener("click", () => {
+    const sections = [...document.querySelectorAll("section.container, .section, #about-section, #workstation-specs, #portfolio-section, #faq-section, #contact-section")];
+    const scrollPos = window.scrollY + 120;
+    const nextSection = sections.find((sec) => sec.offsetTop > scrollPos) || sections[0];
+    if (nextSection) {
+      window.scrollTo({
+        top: nextSection.offsetTop - 80,
+        behavior: "smooth"
+      });
+    }
   });
 
   initStaticIcons();

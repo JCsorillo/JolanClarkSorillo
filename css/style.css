@@ -2960,6 +2960,38 @@ h4 {
   fill: currentColor;
 }
 
+/* Floating Single Next Section Down Button */
+.quick-nav-floating {
+  position: fixed;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  z-index: 98;
+}
+
+.next-section-btn {
+  display: grid;
+  place-items: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text);
+  box-shadow: 0 8px 24px var(--color-shadow);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  cursor: pointer;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.next-section-btn:hover {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border-color: var(--color-accent);
+  transform: translateY(3px) scale(1.08);
+}
+
 /* Bottom item (Line/Stem of the "i"): Narrow Vertical Live PST Clock Pill */
 .dock-clock-pill-vertical {
   display: flex;
@@ -4672,20 +4704,22 @@ html:has(body.page-home) {
 
 .nav-menu a {
   display: flex;
-  min-height: 2.9rem;
+  min-height: 3rem;
   align-items: center;
-  padding: 0.5rem 1rem;
-  border-radius: 0.8rem;
-  color: var(--color-muted);
-  font-size: 1rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 0.85rem;
+  color: #ffffff !important;
+  font-size: 1.05rem;
+  font-weight: 500;
   text-decoration: none;
+  transition: background 180ms ease, color 180ms ease;
 }
 
 .nav-menu a:hover,
 .nav-menu a:focus-visible,
 .nav-menu a[aria-current="page"] {
-  background: var(--color-raised);
-  color: var(--color-text);
+  background: var(--color-accent) !important;
+  color: #ffffff !important;
 }
 
 .nav-menu a:focus-visible {
@@ -4700,14 +4734,14 @@ html:has(body.page-home) {
 }
 
 .page-home .nav-menu a {
-  color: var(--home-muted);
+  color: #ffffff !important;
 }
 
 .page-home .nav-menu a:hover,
 .page-home .nav-menu a:focus-visible,
 .page-home .nav-menu a[aria-current="page"] {
-  background: var(--home-card);
-  color: var(--home-text);
+  background: var(--color-accent) !important;
+  color: #ffffff !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

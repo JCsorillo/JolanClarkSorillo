@@ -24,8 +24,19 @@ export function initEntertainmentGames() {
     words: ["Word Builder", "Build as many different words as you can before time runs out."],
     memory: ["Memory Match", "Find all six matching pairs in as few moves as you can."]
   };
-  const requestedGame = new URLSearchParams(location.search).get("game");
-  const activeGame = Object.prototype.hasOwnProperty.call(gameInfo, requestedGame) ? requestedGame : "bughop";
+  const rawParam = new URLSearchParams(window.location.search).get("game") || "";
+  const requestedGame = rawParam.toLowerCase().trim().replace(/[^a-z0-9]/g, "");
+  const gameAlias = {
+    bughop: "bughop", bug: "bughop", hop: "bughop",
+    math: "math", quickmath: "math",
+    riddle: "riddle",
+    typing: "typing", typetest: "typing",
+    hangman: "hangman",
+    spelling: "spelling", spellingbee: "spelling",
+    words: "words", wordbuilder: "words",
+    memory: "memory", memorymatch: "memory"
+  };
+  const activeGame = gameAlias[requestedGame] || "bughop";
   const activePanel = panels.find((panel) => panel.dataset.gamePanel === activeGame);
   panels.forEach((panel) => { panel.hidden = panel !== activePanel; });
   document.querySelector("[data-game-title]").textContent = gameInfo[activeGame][0];

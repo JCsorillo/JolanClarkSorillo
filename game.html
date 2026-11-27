@@ -110,8 +110,20 @@
   <script type="module" src="js/main.js?v=2.2.12"></script>
   <script>
     const gamePanels = [...document.querySelectorAll("[data-game-panel]")];
-    const requestedGame = new URLSearchParams(location.search).get("game");
-    const selectedGamePanel = gamePanels.find((panel) => panel.dataset.gamePanel === requestedGame) || gamePanels[0];
+    const rawParam = new URLSearchParams(window.location.search).get("game") || "";
+    const requestedGame = rawParam.toLowerCase().trim().replace(/[^a-z0-9]/g, "");
+    const gameAlias = {
+      bughop: "bughop", bug: "bughop", hop: "bughop",
+      math: "math", quickmath: "math",
+      riddle: "riddle",
+      typing: "typing", typetest: "typing",
+      hangman: "hangman",
+      spelling: "spelling", spellingbee: "spelling",
+      words: "words", wordbuilder: "words",
+      memory: "memory", memorymatch: "memory"
+    };
+    const activeGame = gameAlias[requestedGame] || "bughop";
+    const selectedGamePanel = gamePanels.find((panel) => panel.dataset.gamePanel === activeGame) || gamePanels[0];
     gamePanels.forEach((panel) => { panel.hidden = panel !== selectedGamePanel; });
     const selectedGameTitle = selectedGamePanel.querySelector("[data-play-screen] h2").textContent.trim();
     const selectedGameDescription = selectedGamePanel.querySelector("[data-play-screen] p").textContent.trim();
